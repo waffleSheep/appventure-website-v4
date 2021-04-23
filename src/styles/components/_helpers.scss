@@ -129,3 +129,14 @@
   width: 1px;
   overflow: hidden;
 }
+
+/* additional stuff to primitive */
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.column {
+  display: flex;
+  flex-flow: column wrap;
+}
