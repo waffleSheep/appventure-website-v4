@@ -1,6 +1,6 @@
 <template>
   <div id="nav" class="medium-container">
-    <router-link to="/">AppVenture <span class="tiny-text">by NUS High</span></router-link>
+    <router-link class="brand" to="/">AppVenture <span class="tiny-text">by NUS High</span></router-link>
     <span style="flex: 1" />
     <router-link to="/about">About</router-link>
     <router-link to="/projects">Projects</router-link>
@@ -32,15 +32,15 @@ main {
     padding: .2rem .6rem;
     margin: 0 .8rem;
     text-decoration: none;
-    border-radius: .2rem;
+    border-radius: .4rem;
 
     &.router-link-exact-active {
       color: #009a90;
     }
+  }
 
-    &:hover {
-      background-color: lightgrey;
-    }
+  a:not(.brand):hover {
+    background-color: #eee;
   }
 }
 

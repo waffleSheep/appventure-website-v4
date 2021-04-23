@@ -1,6 +1,6 @@
 <template>
   <main class="home">
-    <div class="banner medium-container content-section">
+    <div class="banner medium-container">
       <div class="info">
         <h3>An adventure into the work of our CS students</h3>
 
@@ -13,10 +13,10 @@
   </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/styles/main.scss';
 
-.banner {
+div.banner {
   border-radius: 1rem;
   background-color: $primary-color;
   color: #fff;
