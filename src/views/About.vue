@@ -14,6 +14,12 @@
         <Profile v-for="p in profiles" v-bind:key="p.id" v-bind="p" />
       </div>
     </div>
+
+    <h1>Credits</h1>
+    <p>The first version of this site only lives on in vague Github descriptions.</p>
+    <p>The earliest recorded version of this site was hand-crafted by <a href="https://ambrose.makerforce.io/">Ambrose</a> and Wayne.</p>
+    <p>The next iteration was a rewrite in javascript by Xavier.</p>
+    <p>This version, heavily based on earlier works, is designed and maintained by Yue Chen, _____ (TBC).</p>
   </main>
 </template>
 
