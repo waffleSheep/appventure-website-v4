@@ -31,7 +31,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.2.0",
     "gridsome-plugin-typescript": "0.4.0",
-    "husky": "^2.7.0",
+    "husky": "^6.0.0",
     "lint-staged": "^8.2.0",
     "node-sass": "^5.0.0",
     "sass-loader": "10.1.1",

@@ -7,13 +7,13 @@ function addStyleResource (rule) {
       patterns: [
         path.resolve(__dirname, './src/assets/styles/base/_variables.scss'),
         // you can also use a glob if you'd prefer
-        //path.resolve(__dirname, './src/assets/sass/*.scss'),
+        //path.resolve(__dirname, './src/assets/styles/**/*.scss'),
       ],
     })
 }
 
 module.exports = {
-  siteName: 'Gridsome',
+  siteName: 'AppVenture',
   icon: 'src/assets/favicon.png',
   plugins: [
     { use: 'gridsome-plugin-typescript' },
