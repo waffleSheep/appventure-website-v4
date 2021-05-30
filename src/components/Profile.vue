@@ -1,6 +1,11 @@
 <template>
   <div class="profile">
-    <img :title="name" :alt="name" :src="avatar" class="picture">
+    <img
+      :title="name"
+      :alt="name"
+      :src="avatar"
+      class="picture"
+    >
     <div class="text">
       <h3>{{ name }}</h3>
       <p>{{ description }}</p>
@@ -37,9 +42,15 @@ import { Component, Vue } from 'vue-property-decorator';
 
 const ProfileProps = Vue.extend({
   props: {
-    name: String,
-    description: String
-  }
+    name: {
+      default: '',
+      type: String,
+    },
+    description: {
+      default: '',
+      type: String,
+    },
+  },
 });
 
 @Component
@@ -49,8 +60,8 @@ export default class Profile extends ProfileProps {
     if (!this.name) {
       return 'test';
     }
-    const fileName = this.name.toLowerCase().replace(' ', '_')
-    return require(`@/assets/images/profiles/${fileName}.jpg`) // the module request
+    const fileName = this.name.toLowerCase().replace(' ', '_');
+    return require(`@/assets/images/profiles/${fileName}.jpg`); // the module request
   }
 }
 </script>

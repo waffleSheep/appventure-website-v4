@@ -1,6 +1,6 @@
-# Typescript Starter for Gridsome
+# AppVenture Website V4 
 
-This is a starter template for Gridsome using Typescript. It uses **eslint** and **typescript** for static code analisys. In order to integrate these tools with Visual Studio Code, you'll need to install **ESLint** and **Vetur** extensions for the editor.
+This project is based the starter template for Gridsome using Typescript. It uses **eslint** and **typescript** for static code analisys. In order to integrate these tools with Visual Studio Code, you'll need to install **ESLint** and **Vetur** extensions for the editor.
 
 ### 1. Install Gridsome CLI tool if you don't have
 

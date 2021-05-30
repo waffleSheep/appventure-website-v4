@@ -5,11 +5,20 @@
         <div class="info">
           <h3>An adventure into the work of our CS students</h3>
 
-          <a class="icon-button lab la-instagram" href="https://www.instagram.com/appventure_nush/"></a>
-          <a class="icon-button lab la-youtube" href="https://www.youtube.com/channel/UCBLSYkLt1hFDL7RL8rEeU0w/"></a>
-
+          <a
+            class="icon-button lab la-instagram"
+            href="https://www.instagram.com/appventure_nush/"
+          />
+          <a
+            class="icon-button lab la-youtube"
+            href="https://www.youtube.com/channel/UCBLSYkLt1hFDL7RL8rEeU0w/"
+          />
         </div>
-        <img alt="AppVenture logo" src="@/assets/images/nush_animation.svg" height="256">
+        <img
+          alt="AppVenture logo"
+          src="@/assets/images/nush_animation.svg"
+          height="256"
+        >
       </div>
     </main>
   </Layout>
@@ -60,5 +69,5 @@ a.icon-button {
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class HomePage extends Vue {};
+export default class HomePage extends Vue {}
 </script>

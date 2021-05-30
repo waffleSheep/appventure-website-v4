@@ -1,5 +1,5 @@
 {
-  "name": "gridsome-ts",
+  "name": "appventure-website",
   "private": true,
   "scripts": {
     "build": "gridsome build",

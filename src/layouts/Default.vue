@@ -1,22 +1,57 @@
 <template>
   <div class="layout">
     <header class="header">
-      <g-link class="brand" to="/">
-        <img class="logo" alt="AppVenture Logo" src="@/assets/images/appventure_logo_nobg.svg">
-        {{ $static.metaData.siteName }}
+      <g-link
+        class="brand"
+        to="/"
+      >
+        <img
+          class="logo"
+          alt="AppVenture Logo"
+          src="@/assets/images/appventure_logo_nobg.svg"
+        >
+        {{ $static.metadata.siteName }}
         <span class="tiny-text">by NUS High</span>
       </g-link>
-      <span style="flex: 1"></span>
+      <span style="flex: 1" />
       <nav class="nav">
-        <g-link class="nav__link" to="/about">About</g-link>
-        <g-link class="nav__link" to="/projects">Projects</g-link>
-        <g-link class="nav__link" to="/cybersec">Cybersec</g-link>
-        <g-link class="nav__link" to="/blog">Blog</g-link>
-        <g-link class="nav__link" to="/contact">Contact</g-link>
+        <g-link
+          class="nav__link"
+          to="/about"
+        >
+          About
+        </g-link>
+        <g-link
+          class="nav__link"
+          to="/projects"
+        >
+          Projects
+        </g-link>
+        <g-link
+          class="nav__link"
+          to="/cybersec"
+        >
+          Cybersec
+        </g-link>
+        <g-link
+          class="nav__link"
+          to="/blog"
+        >
+          Blog
+        </g-link>
+        <g-link
+          class="nav__link"
+          to="/contact"
+        >
+          Contact
+        </g-link>
       </nav>
     </header>
 
-    <transition name="fade" appear>
+    <transition
+      name="fade"
+      appear
+    >
       <main>
         <slot />
       </main>
@@ -26,10 +61,19 @@
       <div class="medium-container">
         <div class="column">
           <a href="http://www.nushigh.edu.sg">
-            <img src="@/assets/images/nush_logo_color.svg" title="Visit school website" width="146">
+            <img
+              src="@/assets/images/nush_logo_color.svg"
+              title="Visit school website"
+              width="146"
+            >
           </a>
           <ul class="links">
-            <li class="link"><a href="//maps.google.com/?q=20+Clementi+Ave+1,+Singapore+129957" title="Open address in Google Maps"><address>20 Clementi Ave 1, Singapore 129957</address></a></li>
+            <li class="link">
+              <a
+                href="//maps.google.com/?q=20+Clementi+Ave+1,+Singapore+129957"
+                title="Open address in Google Maps"
+              ><address>20 Clementi Ave 1, Singapore 129957</address></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -43,7 +87,7 @@
 
 <static-query>
   query {
-    metaData {
+    metadata {
       siteName
     }
   }

@@ -7,12 +7,30 @@
 
       <h1>The Team</h1>
       <div class="timeline">
-        <div class="tab" v-for="(profiles, year) in teams" v-bind:key="year" v-on:click="selectedYear = year" :class="[ selectedYear == year ? 'selected' : '' ]">{{ year }}</div>
+        <div
+          class="tab"
+          v-for="(profiles, year) in teams"
+          :key="year"
+          @click="selectedYear = year"
+          :class="[ selectedYear == year ? 'selected' : '' ]"
+        >
+          {{ year }}
+        </div>
       </div>
 
-      <div v-for="(profiles, year) in teams" v-bind:key="year">
-        <div class="team" v-if="selectedYear == year">
-          <Profile v-for="p in profiles" v-bind:key="p.id" v-bind="p" />
+      <div
+        v-for="(profiles, year) in teams"
+        :key="year"
+      >
+        <div
+          class="team"
+          v-if="selectedYear == year"
+        >
+          <Profile
+            v-for="p in profiles"
+            :key="p.id"
+            v-bind="p"
+          />
         </div>
       </div>
 
@@ -60,8 +78,8 @@ import Profile from '~/components/Profile.vue';
 
 @Component({
   components: {
-    Profile
-  }
+    Profile,
+  },
 })
 export default class AboutPage extends Vue {
   public title = 'Typescript Starter for Gridsome';
@@ -72,16 +90,16 @@ export default class AboutPage extends Vue {
       teams: {
         2017: [
           { name: 'Wayne', description: 'Wayne believes in using technology to make life better. Interested in everything from cryptography to web development, Wayne looks forward to the exciting world ahead. He is also Ambrose\'s best friend.' },
-          { name: 'Ambrose', description: 'Ambrose started programming when he first went into robotics but went on to learn Python. He started his adventures in building websites and used to run them from a laptop at home, but since then has upgraded. He loves anything computerish. He is also Wayne\'s best friend.' }
+          { name: 'Ambrose', description: 'Ambrose started programming when he first went into robotics but went on to learn Python. He started his adventures in building websites and used to run them from a laptop at home, but since then has upgraded. He loves anything computerish. He is also Wayne\'s best friend.' },
         ],
         2018: [
         ],
         2019: [
         ],
         2021: [
-        ]
-      }
-    }
+        ],
+      },
+    };
   }
 }
 </script>
