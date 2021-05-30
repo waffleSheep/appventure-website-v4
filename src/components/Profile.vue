@@ -1,6 +1,11 @@
 <template>
   <div class="profile">
-    <img :title="name" :alt="name" :src="avatar" class="picture">
+    <img
+      :title="name"
+      :alt="name"
+      :src="avatar"
+      class="picture"
+    >
     <div class="text">
       <h3>{{ name }}</h3>
       <p>{{ description }}</p>
@@ -32,23 +37,31 @@
 }
 </style>
 
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default defineComponent({
-  name: 'Profile',
-  computed: {
-    avatar () {
-      if (!this.name) {
-        return
-      }
-      const fileName = this.name.toLowerCase().replace(' ', '_')
-      return require(`@/assets/profiles/${fileName}.jpg`) // the module request
-    }
-  },
+const ProfileProps = Vue.extend({
   props: {
-    name: String,
-    description: String
+    name: {
+      default: '',
+      type: String,
+    },
+    description: {
+      default: '',
+      type: String,
+    },
+  },
+});
+
+@Component
+export default class Profile extends ProfileProps {
+
+  get avatar() {
+    if (!this.name) {
+      return 'test';
+    }
+    const fileName = this.name.toLowerCase().replace(' ', '_');
+    return require(`@/assets/images/profiles/${fileName}.jpg`); // the module request
   }
-})
+}
 </script>
