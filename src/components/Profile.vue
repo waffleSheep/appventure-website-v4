@@ -32,23 +32,25 @@
 }
 </style>
 
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default defineComponent({
-  name: 'Profile',
-  computed: {
-    avatar () {
-      if (!this.name) {
-        return
-      }
-      const fileName = this.name.toLowerCase().replace(' ', '_')
-      return require(`@/assets/profiles/${fileName}.jpg`) // the module request
-    }
-  },
+const ProfileProps = Vue.extend({
   props: {
     name: String,
     description: String
   }
-})
+});
+
+@Component
+export default class Profile extends ProfileProps {
+
+  get avatar() {
+    if (!this.name) {
+      return 'test';
+    }
+    const fileName = this.name.toLowerCase().replace(' ', '_')
+    return require(`@/assets/images/profiles/${fileName}.jpg`) // the module request
+  }
+}
 </script>

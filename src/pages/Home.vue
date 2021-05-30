@@ -8,7 +8,7 @@
         <a class="icon-button lab la-youtube" href="https://www.youtube.com/channel/UCBLSYkLt1hFDL7RL8rEeU0w/"></a>
 
       </div>
-      <img alt="AppVenture logo" src="../assets/nush_animation.svg" height="256">
+      <!--<img alt="AppVenture logo" src="../assets/nush_animation.svg" height="256">-->
     </div>
   </main>
 </template>
@@ -57,11 +57,11 @@ a.icon-button {
 </style>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'Home',
-  components: {
-  }
-})
+//import { defineComponent } from 'vue'
+//
+//export default defineComponent({
+//  name: 'Home',
+//  components: {
+//  }
+//})
 </script>

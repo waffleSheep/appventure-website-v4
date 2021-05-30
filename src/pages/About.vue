@@ -23,7 +23,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
+@import "@/styles/main.scss";
 
 .timeline {
   display: flex;
@@ -55,16 +55,18 @@
 </style>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Profile from '@/components/Profile.vue'
-// import axios from 'axios'
+import { Component, Vue } from 'vue-property-decorator';
+import Profile from '~/components/Profile.vue';
 
-export default defineComponent({
-  name: 'About',
+@Component({
   components: {
     Profile
-  },
-  data () {
+  }
+})
+export default class AboutPage extends Vue {
+  public title = 'Typescript Starter for Gridsome';
+
+  public data() {
     return {
       selectedYear: 2021,
       teams: {
@@ -79,19 +81,7 @@ export default defineComponent({
         2021: [
         ]
       }
-      // profiles: null
     }
   }
-  // created: function () {
-  //   axios
-  //     .get('https://jsonplaceholder.typicode.com/users')
-  //     .then(res => {
-  //       console.log(res)
-  //       this.profiles = res.data
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
-})
+}
 </script>
