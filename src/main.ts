@@ -11,7 +11,8 @@ import { ClientApiConstructor } from './types';
 /**
  * Global css imports
  */
-import '~/assets/css/global.css';
+//import '~/assets/css/global.css';
+import '@/assets/styles/main.scss';
 
 /**
  * Layout imports

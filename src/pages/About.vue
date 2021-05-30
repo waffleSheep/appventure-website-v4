@@ -1,30 +1,30 @@
 <template>
-  <main class="about">
-    <h1>What's AppVenture?</h1>
-    <p>AppVenture is a community consisting of passionate students from NUS High. We develop a wide range of apps to benefit staff and students from NUS High.</p>
-    <p>This website showcases outstanding CS projects done by students from NUS High. These apps are handpicked by staff and range from small utility apps to award-winning projects. AppVenture aims to recognise the efforts students have put into their projects, and at the same time publicise the apps to those who may find them useful. Take a look to see what we are doing at NUS High!</p>
+  <Layout>
+    <main class="about">
+      <h1>What's AppVenture?</h1>
+      <p>AppVenture is a community consisting of passionate students from NUS High. We develop a wide range of apps to benefit staff and students from NUS High.</p>
+      <p>This website showcases outstanding CS projects done by students from NUS High. These apps are handpicked by staff and range from small utility apps to award-winning projects. AppVenture aims to recognise the efforts students have put into their projects, and at the same time publicise the apps to those who may find them useful. Take a look to see what we are doing at NUS High!</p>
 
-    <h1>The Team</h1>
-    <div class="timeline">
-      <div class="tab" v-for="(profiles, year) in teams" v-bind:key="year" v-on:click="selectedYear = year" :class="[ selectedYear == year ? 'selected' : '' ]">{{ year }}</div>
-    </div>
-
-    <div v-for="(profiles, year) in teams" v-bind:key="year">
-      <div class="team" v-if="selectedYear == year">
-        <Profile v-for="p in profiles" v-bind:key="p.id" v-bind="p" />
+      <h1>The Team</h1>
+      <div class="timeline">
+        <div class="tab" v-for="(profiles, year) in teams" v-bind:key="year" v-on:click="selectedYear = year" :class="[ selectedYear == year ? 'selected' : '' ]">{{ year }}</div>
       </div>
-    </div>
 
-    <h1>Credits</h1>
-    <p>The earliest version of this site was hand-crafted by <a href="https://ambrose.makerforce.io/">Ambrose</a> and Wayne.</p>
-    <p>The next iteration was a rewrite in javascript by Xavier.</p>
-    <p>This version, heavily based on earlier works, is designed and maintained by Yue Chen, _____ (TBC).</p>
-  </main>
+      <div v-for="(profiles, year) in teams" v-bind:key="year">
+        <div class="team" v-if="selectedYear == year">
+          <Profile v-for="p in profiles" v-bind:key="p.id" v-bind="p" />
+        </div>
+      </div>
+
+      <h1>Credits</h1>
+      <p>The earliest version of this site was hand-crafted by <a href="https://ambrose.makerforce.io/">Ambrose</a> and Wayne.</p>
+      <p>The next iteration was a rewrite in javascript by Xavier.</p>
+      <p>This version, heavily based on earlier works, is designed and maintained by Yue Chen, _____ (TBC).</p>
+    </main>
+  </Layout>
 </template>
 
 <style lang="scss" scoped>
-@import "@/styles/main.scss";
-
 .timeline {
   display: flex;
   justify-content: center;

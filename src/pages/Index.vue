@@ -1,71 +1,67 @@
 <template>
   <Layout>
-    <g-image
-      class="image"
-      alt="Gridsome"
-      src="~/assets/favicon.png"
-      width="135"
-    />
+    <main class="home">
+      <div class="banner medium-container">
+        <div class="info">
+          <h3>An adventure into the work of our CS students</h3>
 
-    <h1 class="title">
-      {{ title }}
-    </h1>
+          <a class="icon-button lab la-instagram" href="https://www.instagram.com/appventure_nush/"></a>
+          <a class="icon-button lab la-youtube" href="https://www.youtube.com/channel/UCBLSYkLt1hFDL7RL8rEeU0w/"></a>
 
-    <p>
-      This is a starter template for Gridsome using Typescript.
-      It uses <strong>eslint</strong> and <strong>typescript</strong>
-      to run static code analisys in your project.
-      In order to integrate these tools with Visual Studio Code,
-      you'll need to install <strong>EsLint</strong> and <strong>Vetur</strong>
-      extensions for the editor.
-    </p>
-
-    <p class="home-links">
-      <a
-        href="https://gridsome.org/docs"
-        target="_blank"
-        rel="noopener"
-      >
-        Gridsome Docs
-      </a>
-      <a
-        href="https://github.com/gridsome/gridsome"
-        target="_blank"
-        rel="noopener"
-      >
-        GitHub
-      </a>
-    </p>
+        </div>
+        <!--<img alt="AppVenture logo" src="../assets/nush_animation.svg" height="256">-->
+      </div>
+    </main>
   </Layout>
 </template>
 
-<script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import { HelloService } from '../services';
+<style lang="scss" scoped>
+div.banner {
+  border-radius: 1rem;
+  background-color: $primary-color;
+  color: #fff;
 
+  padding: 1rem 2rem;
 
-  @Component
-  export default class HomePage extends Vue {
-    public title = 'Typescript Starter for Gridsome';
+  display: flex;
+  flex-flow: row wrap;
 
-    public mounted(): void {
-      HelloService.sayHello('Gridsome');
-    }
+  .info {
+    flex: 1;
+
+    h3 { color: #fff; }
   }
-</script>
+}
 
-<style>
-  .home-links a {
-    margin-right: 1rem;
-  }
+a.icon-button {
+  text-decoration: none;
+  font-size: 2rem;
 
-  .image {
-    display: block;
-    margin: 0 auto;
-  }
+  border: .2rem solid #fff;
+  border-radius: 50%;
 
-  .title {
-    text-align: center;
-    margin: 36px auto 24px;
+  padding: .2rem;
+
+  margin-right: .8rem;
+
+  background-color: #fff;
+  color: $primary-color;
+  transition: all ease-in-out .2s;
+
+  &:hover {
+    background-color: $primary-color;
+    color: #fff;
   }
+}
+
 </style>
+
+<script lang="ts">
+//import { defineComponent } from 'vue'
+//
+//export default defineComponent({
+//  name: 'Home',
+//  components: {
+//  }
+//})
+</script>
