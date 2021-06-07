@@ -65,7 +65,7 @@
               src="@/assets/images/nush_logo_color.svg"
               alt="school-logo"
               title="Visit school website"
-              width="146"
+              width="126"
             >
           </a>
           <ul class="links">
