@@ -13,6 +13,7 @@ import { ClientApiConstructor } from './types';
  */
 //import '~/assets/css/global.css';
 import '@/assets/styles/main.scss';
+import 'prismjs/themes/prism.css';
 
 /**
  * Layout imports

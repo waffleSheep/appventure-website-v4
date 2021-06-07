@@ -53,3 +53,7 @@ jspm_packages/
 # IDE
 .idea
 .vscode
+
+# graphql
+.graphqlconfig
+schema.graphql

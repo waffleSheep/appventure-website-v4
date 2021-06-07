@@ -60,9 +60,10 @@
     <footer>
       <div class="medium-container">
         <div class="column">
-          <a href="http://www.nushigh.edu.sg">
+          <a href="https://www.nushigh.edu.sg">
             <img
               src="@/assets/images/nush_logo_color.svg"
+              alt="school-logo"
               title="Visit school website"
               width="146"
             >
