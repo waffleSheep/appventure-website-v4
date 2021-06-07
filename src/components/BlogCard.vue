@@ -4,7 +4,9 @@
       class="link"
       :to="blogPost.path"
     />
+
     <div class="info">
+      <g-image v-if="blogPost.poster" class="blog-poster" :src="blogPost.poster"/>
       <h3 class="title">
         {{ blogPost.title }}
       </h3>
@@ -32,17 +34,18 @@ export default class BlogCard extends Vue {
 
 div.blog-card {
   position: relative;
-  background-color: $background;
+  background-color: $primary-color;
+  color: white;
   padding: 0;
   border-radius: 1rem;
-  box-shadow: 0 5px 9px 1px #EFEFEF;
+  box-shadow: 0 5px 9px 2px rgba(177, 184, 183, 0.93);
   display: flex;
   flex-flow: row;
 
   transition: box-shadow .3s, transform .3s;
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 14px 4px #EFEFEF;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 23px 4px rgba(177, 184, 183, 0.93);
   }
 
   .info {
@@ -58,7 +61,17 @@ div.blog-card {
   .title {
     margin-top: 0;
     margin-bottom: 1rem;
+    color: white;
+  }
+  .blog-poster {
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 2rem;
   }
 }
+::v-deep a {
+  color: white;
+}
+
 
 </style>

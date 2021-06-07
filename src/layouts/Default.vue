@@ -129,7 +129,7 @@
     }
 
     .logo {
-      height: 1.4rem;
+      height: 1.6rem;
       margin: auto 0;
       padding-right: .2rem;
     }
@@ -198,6 +198,7 @@ footer {
   }
 
   .link a, .link address {
+    font-size: 0.9rem;
     color: inherit;
     text-decoration: none;
 

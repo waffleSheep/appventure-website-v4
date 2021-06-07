@@ -3,11 +3,13 @@
     <main class="contributor">
       <div class="contributor-info text-center medium-container">
         <g-image class="author-avatar" :alt="$page.contributor.title" :src="$page.contributor.avatar"/>
-        <h1>{{$page.contributor.title}}</h1>
-        <p class="lede" v-if="$page.contributor.bio">
-          {{$page.contributor.bio}}
-        </p>
+        <h1 class="contributor-title">{{$page.contributor.title}}</h1>
+        <h4 class="lede quote" v-if="$page.contributor.quote">
+          <q>{{$page.contributor.quote}}</q>
+        </h4>
+        <p v-if="$page.contributor.bio" class="bio">{{ $page.contributor.bio }}</p>
       </div>
+      <hr/>
       <div class="blog-list">
         <h3 class="text-center">Blog posts</h3>
         <BlogCard
@@ -27,6 +29,7 @@ query ($id: ID!) {
     id
     title
     bio
+    quote
     avatar (width: 124)
     posts:belongsTo(filter: {typeName: {eq: BlogPost}}) {
       pageInfo {
@@ -70,20 +73,36 @@ import BlogCard from '../components/BlogCard.vue';
 export default class Contributor extends Vue {}
 </script>
 
-<style scoped>
-.author-avatar {
-  width: 124px;
-  border-radius: 99px;
-  vertical-align: middle;
-  margin: 0 6px;
-}
-.bio {
-  font-size: 1.2rem;
+<style scoped lang="scss">
+.contributor-info {
+  margin-bottom: 4rem;
+  .author-avatar {
+    width: 184px;
+    border-radius: 200px;
+    vertical-align: middle;
+    margin: 0 6px;
+  }
+  .contributor-title {
+    margin: 2rem auto;
+  }
+  .quote {
+    font-size: 1.3rem;
+    font-style: italic;
+    //&:before {
+    //  content: '"';
+    //  font-size: large;
+    //}
+    //&:after {
+    //  content: '"';
+    //  font-size: large;
+    //}
+  }
+  .bio {
+    padding: 0 4rem 0;
+  }
 }
 .blog-entries {
   margin: 0 0 2rem;
 }
-.contributor-info {
-  margin-bottom: 4rem;
-}
+
 </style>

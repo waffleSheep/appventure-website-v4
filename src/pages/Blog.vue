@@ -25,6 +25,7 @@ query {
         path
         date (format: "D. MMMM YYYY")
         excerpt
+        poster
         content
         author {
           title
