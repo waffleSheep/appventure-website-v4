@@ -10,12 +10,8 @@
   avatar: ./images/hjvedvik.png
   twitter: "@hjvedvik"
 
-- id: gridsome
-  name: Gridsome
-  bio: "Official Gridsome Projects"
-  twitter: "@gridsome"
-
 - id: codybarr
   name: Cody Barr
+  avatar: ./images/default_avatar.svg
   bio: "Web Developer"
   twitter: "@codybarr"

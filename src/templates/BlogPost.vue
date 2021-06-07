@@ -48,10 +48,6 @@ export default class BlogPost extends Vue {}
     max-width: 110%;
   }
 }
-.lede {
-  font-size: 1.2em;
-  margin: 3rem auto;
-}
 .end-mark {
   display: block;
   margin-left: auto;

@@ -6,26 +6,19 @@
         <template v-for="(author, i) in post.author">
           <span v-if="i && i === post.author.length - 1"> and </span>
           <span v-else-if="i > 0">, </span>
-          <g-link class="author-link" :to="author.path" :key="author.id">
-            <template v-if="author.avatar">
-              <g-image class="author-image" :alt="author.title" :src="author.avatar" />
-            </template>
-            <template v-else>
-              <g-image class="author-image" :alt="author.title" src="@/assets/images/contributor_avatar_default.svg" />
-            </template>
+          <g-link class="author-link" :to="author.path">
+              <g-image class="author-avatar" :alt="author.title" :src="author.avatar"/>
           </g-link>
-          <g-link class="author-link" :to="author.path" :key="author.id">{{ author.title }}</g-link>
+          <g-link class="author-link" :to="author.path">{{ author.title }}</g-link>
         </template>
-      </template>
-      <template v-else>
-        uh oh
       </template>
     </small>
   </p>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop  } from 'vue-property-decorator';
+import { Vue, Prop, Component } from 'vue-property-decorator';
+
 @Component
 export default class BlogMeta extends Vue {
   @Prop() post!: object;
@@ -33,7 +26,7 @@ export default class BlogMeta extends Vue {
 </script>
 
 <style>
-.author-image {
+.author-avatar {
   width: 30px;
   border-radius: 99px;
   vertical-align: middle;

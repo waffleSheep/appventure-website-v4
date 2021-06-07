@@ -2,6 +2,8 @@
   <Layout>
     <main class="blog">
       <div class="blog-list">
+        <h1 class="text-center">Blog posts</h1>
+        <p class="lede text-center">Featuring articles written by students from NUS High</p>
         <BlogCard
           class="blog-entries"
           v-for="edge in $page.posts.edges"
@@ -27,7 +29,7 @@ query {
         author {
           title
           path
-          avatar (width: 60)
+          avatar (width: 30)
         }
       }
     }
@@ -45,13 +47,12 @@ import BlogCard from '../components/BlogCard.vue';
   },
 })
 
-export default class BlogPage extends Vue {
-
-}
+export default class BlogPage extends Vue {}
 </script>
 
 <style scoped lang="scss">
+
 .blog-entries {
-  margin: 4rem 0;
+  margin: 0 0 2rem;
 }
 </style>
