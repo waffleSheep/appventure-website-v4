@@ -11,28 +11,20 @@
       <p class="excerpt">
         {{ blogPost.excerpt }}
       </p>
-    </div>
-    <div class="metainfo">
-
+      <BlogMeta :post="blogPost"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop  } from 'vue-property-decorator';
+import BlogMeta from './BlogMeta.vue';
+@Component({
+  components: { BlogMeta },
+})
 
-interface BlogPost {
-  author: {title: string; path: string; avatar: string};
-  date: string;
-  title: string;
-  content: string;
-  excerpt: string;
-  path: string;
-}
-
-@Component
 export default class BlogCard extends Vue {
-  @Prop() blogPost!: BlogPost;
+  @Prop() blogPost!: object;
 }
 </script>
 
@@ -40,7 +32,6 @@ export default class BlogCard extends Vue {
 
 div.blog-card {
   position: relative;
-  height: 250px;
   background-color: $background;
   padding: 0;
   border-radius: 1rem;
@@ -55,7 +46,7 @@ div.blog-card {
   }
 
   .info {
-    padding: 2rem;
+    padding: 3rem;
     overflow: hidden;
   }
 
@@ -63,6 +54,10 @@ div.blog-card {
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+  .title {
+    margin-top: 0;
+    margin-bottom: 1rem;
   }
 }
 

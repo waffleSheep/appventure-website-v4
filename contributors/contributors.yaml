@@ -1,0 +1,21 @@
+- id: tommyvedvik
+  name: Tommy Vedvik
+  bio: "Co-creator of @gridsome. UX & Design."
+  avatar: ./images/tommyvedvik.png
+  twitter: "@tommyvedvik"
+
+- id: hjvedvik
+  name: Hans-Jørgen Vedvik
+  bio: "Co-creator of @gridsome. Developer lead."
+  avatar: ./images/hjvedvik.png
+  twitter: "@hjvedvik"
+
+- id: gridsome
+  name: Gridsome
+  bio: "Official Gridsome Projects"
+  twitter: "@gridsome"
+
+- id: codybarr
+  name: Cody Barr
+  bio: "Web Developer"
+  twitter: "@codybarr"

@@ -22,13 +22,19 @@ module.exports = {
       options: {
         typeName: 'BlogPost',
         path: 'blog/**/*.md',
+        refs: {
+          author: 'Contributor',
+        },
         remark: {
           plugins: [['@gridsome/remark-prismjs', {transformInlineCode: true}]]
         }
       },
     },
   ],
-  templates: { BlogPost: '/blog/:year/:month/:day/:slug' },
+  templates: {
+    BlogPost: '/blog/:year/:month/:day/:slug',
+    Contributor: '/contributor/:id',
+  },
   chainWebpack (config) {
     // Load variables for all vue-files
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal'];

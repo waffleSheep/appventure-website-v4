@@ -24,6 +24,11 @@ query {
         date (format: "D. MMMM YYYY")
         excerpt
         content
+        author {
+          title
+          path
+          avatar (width: 60)
+        }
       }
     }
   }
@@ -40,7 +45,9 @@ import BlogCard from '../components/BlogCard.vue';
   },
 })
 
-export default class BlogPage extends Vue {}
+export default class BlogPage extends Vue {
+
+}
 </script>
 
 <style scoped lang="scss">

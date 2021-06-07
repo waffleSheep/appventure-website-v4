@@ -21,11 +21,18 @@ import 'prismjs/themes/prism.css';
 import DefaultLayout from '~/layouts/Default.vue';
 
 /**
+ * script imports
+ */
+import InfiniteLoading from 'vue-infinite-loading';
+
+/**
  * Client API contructor
  */
 const client: ClientApiConstructor = (Vue, { head }) => {
   Vue.component('Layout', DefaultLayout);
   head.title = "My Awesome Gridsome Project";
+
+  Vue.use(InfiniteLoading)
 
   // Add an external CSS file
   if (head.link) {
