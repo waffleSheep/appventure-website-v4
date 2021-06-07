@@ -21,9 +21,10 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         typeName: 'BlogPost',
-        path: 'blog/**/*.md',
+        path: 'content/blog/**/*.md',
         refs: {
           author: 'Contributor',
+          tags: 'Tag',
         },
         remark: {
           plugins: [['@gridsome/remark-prismjs', {transformInlineCode: true}]]

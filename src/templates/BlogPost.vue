@@ -48,6 +48,9 @@ export default class BlogPost extends Vue {}
     max-width: 110%;
   }
 }
+.main {
+  margin-bottom: 0;
+}
 .end-mark {
   display: block;
   margin-left: auto;

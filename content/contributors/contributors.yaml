@@ -1,17 +1,14 @@
 - id: tommyvedvik
   name: Tommy Vedvik
-  bio: "Co-creator of @gridsome. UX & Design."
+  bio: Co-creator of @gridsome. UX & Design.
   avatar: ./images/tommyvedvik.png
-  twitter: "@tommyvedvik"
 
 - id: hjvedvik
   name: Hans-Jørgen Vedvik
-  bio: "Co-creator of @gridsome. Developer lead."
+  bio: Co-creator of @gridsome. Developer lead.
   avatar: ./images/hjvedvik.png
-  twitter: "@hjvedvik"
 
 - id: codybarr
   name: Cody Barr
   avatar: ./images/default_avatar.svg
-  bio: "Web Developer"
-  twitter: "@codybarr"
+  bio: Web Developer

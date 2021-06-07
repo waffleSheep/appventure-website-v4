@@ -137,7 +137,7 @@ We redesigned https://gridsome.org to be more lightweight & clean. This is a web
 
 We also added a [Starter library](/starters) to help anyone get quickly up and running with Gridsome.
 
-![Starters](starters.png)
+![Starters](./starters.png)
 
 ## Breaking changes
 
