@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "gridsome": "^0.7.23",
+    "infinite-loading": "^0.2.8",
     "vue-infinite-loading": "^2.4.5",
     "vue-property-decorator": "^8.2.0"
   },
