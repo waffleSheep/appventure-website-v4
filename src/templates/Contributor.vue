@@ -12,12 +12,20 @@
       <hr/>
       <div class="blog-list">
         <h3 class="text-center">Blog posts</h3>
+        <transition-group name="fade">
         <BlogCard
           class="blog-entries"
           v-for="edge in $page.contributor.posts.edges"
           :key="edge.node.id"
           :blog-post="edge.node"
         />
+        </transition-group>
+        <ClientOnly>
+          <infinite-loading @infinite="infiniteHandler" spinner="spiral">
+            <div slot="no-more"/>
+            <div slot="no-results"/>
+          </infinite-loading>
+        </ClientOnly>
       </div>
     </main>
   </Layout>
@@ -63,6 +71,7 @@ query ($id: ID!) {
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import BlogCard from '../components/BlogCard.vue';
+import { StateChanger } from 'vue-infinite-loading';
 
 @Component({
   components: {
@@ -70,7 +79,35 @@ import BlogCard from '../components/BlogCard.vue';
   },
 })
 
-export default class Contributor extends Vue {}
+export default class Contributor extends Vue {
+  loadedPosts: Array<object> = [];
+  currentPage: number = 1;
+
+  created() {
+    // @ts-ignore
+    this.loadedPosts.push(...this.$page.contributor.posts.edges);
+  }
+
+  async infiniteHandler($state: StateChanger) : Promise<void> {
+    // @ts-ignore
+    if (this.currentPage + 1 > this.$page.contributor.posts.pageInfo.totalPages) {
+      $state.complete()
+    } else {
+      // @ts-ignore
+      const { data } = await this.$fetch(
+        // @ts-ignore
+        `/contributor/${this.$page.contributor.id}/${this.currentPage + 1}`
+      )
+      if (data.posts.edges.length) {
+        this.currentPage = data.posts.pageInfo.currentPage
+        this.loadedPosts.push(...data.posts.edges)
+        $state.loaded()
+      } else {
+        $state.complete()
+      }
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
