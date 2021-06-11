@@ -4,7 +4,6 @@
       class="link"
       :to="blogPost.path"
     />
-
     <div class="info">
       <g-image v-if="blogPost.poster" class="blog-poster" :src="blogPost.poster"/>
       <h3 class="title">
@@ -14,6 +13,13 @@
         {{ blogPost.excerpt }}
       </p>
       <BlogMeta :post="blogPost"/>
+      <div class="tags">
+        <TagChip class="tagChip"
+                 v-for="tag in sortedTags"
+                 :key="tag.id"
+                 :tag="tag">
+        </TagChip>
+      </div>
     </div>
   </div>
 </template>
@@ -21,12 +27,17 @@
 <script lang="ts">
 import { Component, Vue, Prop  } from 'vue-property-decorator';
 import BlogMeta from './BlogMeta.vue';
+import TagChip from './TagChip.vue';
 @Component({
-  components: { BlogMeta },
+  components: { BlogMeta,TagChip },
 })
-
 export default class BlogCard extends Vue {
   @Prop() blogPost!: object;
+
+  get sortedTags() : Array<object> {
+    // @ts-ignore
+    return this.blogPost.tags.sort((u: object,v: object) => v.category.localeCompare(u.category));
+  }
 }
 </script>
 
@@ -49,7 +60,7 @@ div.blog-card {
   }
 
   .info {
-    padding: 3rem;
+    padding: 3rem 3rem 2rem;
     overflow: hidden;
   }
 
@@ -67,6 +78,9 @@ div.blog-card {
     border-radius: 20px;
     width: 100%;
     margin-bottom: 2rem;
+  }
+  .tags {
+    margin-top: 1rem;
   }
 }
 ::v-deep a {

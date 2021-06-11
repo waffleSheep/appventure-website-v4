@@ -60,6 +60,10 @@ query ($id: ID!) {
             }
             excerpt
             content
+            tags {
+              name
+              category
+            }
           }
         }
       }

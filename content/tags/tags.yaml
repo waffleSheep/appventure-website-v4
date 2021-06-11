@@ -1,0 +1,76 @@
+- id: ml
+  name: machine learning
+  description: Subset of AI to engineer systems to learn from data, spot patterns and make decisions with minimal human interaction.
+  category: cs
+
+- id: ctf
+  name: cybersecurity/CTF
+  description: Description for cybersecurity & CTF
+  type: cs
+  category: cs
+
+- id: web
+  name: web-development
+  description: Description for web-development
+  type: cs
+  category: cs
+
+- id: android
+  name: android
+  description: Description for web-development
+  category: cs
+
+- id: eso
+  name: esoteric
+  description: Description for esoteric
+  category: cs
+
+- id: toc
+  name: theory-of-computation
+  description: Description for theory of computation
+  category: cs
+
+- id: numeric
+  name: numerical-methods
+  description: Description for numerical methods
+  category: cs
+
+- id: optimisation
+  name: optimisation
+  description: Description for optimisation
+  category: cs
+
+- id: unix
+  name: unix
+  description: Description for unix systems
+  category: cs
+
+- id: infra
+  name: infrastructure
+  description: Description for infrastructure
+  category: cs
+
+- id: backend
+  name: backend
+  description: Description for backend
+  category: cs
+
+- id: frontend
+  name: frontend
+  description: Description for frontend
+  category: cs
+
+- id: crypto
+  name: cryptography
+  description: Description for cryptography
+  category: cs
+
+- id: outreach
+  name: outreach
+  description: Description for outreach
+  category: internal
+
+- id: event
+  name: event
+  description: Description for event
+  category: internal

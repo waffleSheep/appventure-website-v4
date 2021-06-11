@@ -22,8 +22,17 @@ module.exports = function (api) {
     });
 
     // tagging
+    const tagsPath = path.join(__dirname, 'content/tags/tags.yaml');
+    const tagsRaw = await fs.readFile(tagsPath, 'utf8');
+    const tagsJson = yaml.load(tagsRaw);
     const tags = store.addCollection('Tag');
 
+    tagsJson.forEach(({id,...fields}) => {
+      tags.addNode({
+        id,
+        ...fields
+      });
+    });
 
   });
 };

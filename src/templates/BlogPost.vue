@@ -1,12 +1,20 @@
 <template>
   <Layout>
     <main class="blog-post">
-      <div>
+      <div class="blog-header">
         <g-image class="blog-poster" poster v-if="$page.post.poster" quality="1" :src="$page.post.poster"/>
         <h1 class="text-center">{{ $page.post.title }}</h1>
         <BlogMeta class=text-center :post="$page.post"/>
-        <hr class="title-rule"/>
+        <div class="tagChips flex-row justify-center">
+        <TagChip class="tagChip"
+                 v-for="tag in sortedTags"
+                 :key="tag.id"
+                 :tag="tag"
+                 :filled="false">
+        </TagChip>
+        </div>
       </div>
+      <hr class="title-rule"/>
       <div class="blog-body">
         <p class="lede" v-html="$page.post.excerpt"/>
         <div class="content" v-html="$page.post.content"/>
@@ -27,19 +35,29 @@ query ($id: ID!){
       path
       avatar (width: 60)
     }
+    tags {
+      name
+      category
+    }
     content
     excerpt
   }
 }
 </page-query>
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import BlogMeta from '../components/BlogMeta';
+import TagChip from '../components/TagChip.vue';
 @Component({
-  components: { BlogMeta },
+  components: { BlogMeta, TagChip },
 })
-export default class BlogPost extends Vue {}
+export default class BlogPost extends Vue {
+  get sortedTags() : Array<object> {
+    // @ts-ignore
+    return this.$page.post.tags.sort((u: object,v: object) => v.category.localeCompare(u.category));
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -65,7 +83,14 @@ export default class BlogPost extends Vue {}
   width: 2.5em;
 }
 .title-rule {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
+
+.blog-header {
+  .tagChips {
+    margin-top: 1rem;
+  }
+}
+
 
 </style>

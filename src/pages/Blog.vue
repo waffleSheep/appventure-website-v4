@@ -44,6 +44,10 @@ query BlogPage($page: Int){
           path
           avatar (width: 30)
         }
+        tags {
+          name
+          category
+        }
       }
     }
   }
@@ -76,7 +80,7 @@ export default class BlogPage extends Vue {
       $state.complete()
     } else {
       // @ts-ignore
-      const { data } = await this.$fetch(
+      const { data } = await $fetch(
         `/blog/${this.currentPage + 1}`
       )
       if (data.posts.edges.length) {
