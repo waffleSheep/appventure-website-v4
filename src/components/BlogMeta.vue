@@ -7,9 +7,9 @@
           <span v-if="i && i === post.author.length - 1"> , </span>
           <span v-else-if="i > 0">, </span>
           <g-link class="author-link" :to="author.path">
-              <g-image class="author-avatar" :alt="author.title" :src="author.avatar"/>
+              <g-image class="author-avatar" :alt="author.name" :src="author.avatar"/>
           </g-link>
-          <g-link class="author-link" :to="author.path">{{ author.title }}</g-link>
+          <g-link class="author-link" :to="author.path">{{ author.name }}</g-link>
         </template>
       </template>
     </small>

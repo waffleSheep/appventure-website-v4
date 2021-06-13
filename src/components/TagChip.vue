@@ -1,27 +1,43 @@
 <template>
-  <Button class="round-button chip" :style="cssProps">{{ tag.name }}</Button>
+  <g-link class="round-button chip route" :style="cssProps" :to="routerLink" @click="onClick">{{ tag.name }}</g-link>
 </template>
 
 <script lang="ts">
 import { Vue, Prop, Component } from 'vue-property-decorator';
 
-interface Tag {category: String,name: String}
+interface Tag {category: String,name: String, id: String}
 
 @Component
 export default class TagChip extends Vue {
   @Prop() tag!: Tag;
-  @Prop({default: true}) filled!: Boolean;
+  @Prop({default: true}) filled!: boolean;
+  @Prop({default: true}) linkEnabled!: boolean;
+
+  get routerLink() {
+    if(this.$route.path === '/blog'){
+      return null;
+    } else {
+      return {path: '/blog', query: {id: this.tag.id}}
+    }
+  }
+
+  onClick() {
+    console.log(this.tag.id);
+    this.$emit('tagClicked',this.tag.id)
+  }
 
   get cssProps() {
     if (this.filled) {
       return {
         '--color': '#009a90',
-        '--chip-color': 'white'
+        '--chip-color': 'white',
+        'pointer-events': this.linkEnabled ? 'auto' : 'none',
       }
     } else {
       return {
         '--color': 'white',
-        '--chip-color': '#009a90'
+        '--chip-color': '#009a90',
+        'pointer-events': this.linkEnabled ? 'auto' : 'none',
       }
     }
 
@@ -46,12 +62,15 @@ export default class TagChip extends Vue {
 
   transition: all ease-in-out .2s;
 
-  border-width: .15rem;
-  border-color: var(--chip-color);
+  border: solid var(--chip-color) .15rem;
 
   &:hover {
     background-color: var(--color);
     color: var(--chip-color);
   }
+}
+.route {
+  padding: .2rem .3rem;
+  font-weight: bold;
 }
 </style>

@@ -10,10 +10,9 @@ module.exports = function (api) {
     const authorsJson = yaml.load(authorsRaw);
     const authors = store.addCollection('Contributor');
 
-    authorsJson.forEach(({id, name:title,...fields }) => {
+    authorsJson.forEach(({id,...fields }) => {
       authors.addNode({
         id,
-        title,
         internal: {
           origin:authorsPath
         },

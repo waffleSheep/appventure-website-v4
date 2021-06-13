@@ -2,8 +2,8 @@
   <Layout>
     <main class="contributor">
       <div class="contributor-info text-center medium-container">
-        <g-image class="author-avatar" :alt="$page.contributor.title" :src="$page.contributor.avatar"/>
-        <h1 class="contributor-title">{{$page.contributor.title}}</h1>
+        <g-image class="author-avatar" :alt="$page.contributor.name" :src="$page.contributor.avatar"/>
+        <h1 class="contributor-title">{{$page.contributor.name}}</h1>
         <h4 class="lede quote" v-if="$page.contributor.quote">
           <q>{{$page.contributor.quote}}</q>
         </h4>
@@ -35,7 +35,7 @@
 query ($id: ID!) {
   contributor (id: $id) {
     id
-    title
+    name
     bio
     quote
     avatar (width: 124)
@@ -54,7 +54,7 @@ query ($id: ID!) {
             timeToRead
             author {
               id
-              title
+              name
               path
               avatar (width: 30)
             }

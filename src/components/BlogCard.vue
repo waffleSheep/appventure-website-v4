@@ -17,7 +17,9 @@
         <TagChip class="tagChip"
                  v-for="tag in sortedTags"
                  :key="tag.id"
-                 :tag="tag">
+                 @tagClicked="(u) => $emit('tagClicked',u)"
+                 :tag="tag"
+                 :link-enabled="tagLinkEnabled">
         </TagChip>
       </div>
     </div>
@@ -33,6 +35,7 @@ import TagChip from './TagChip.vue';
 })
 export default class BlogCard extends Vue {
   @Prop() blogPost!: object;
+  @Prop({default: true}) tagLinkEnabled!: boolean
 
   get sortedTags() : Array<object> {
     // @ts-ignore

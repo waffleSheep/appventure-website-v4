@@ -31,11 +31,12 @@ query ($id: ID!){
     date (format: "D. MMMM YYYY")
     poster
     author {
-      title
+      name
       path
       avatar (width: 60)
     }
     tags {
+      id
       name
       category
     }
