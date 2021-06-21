@@ -56,6 +56,10 @@ div.blog-card {
   display: flex;
   flex-flow: row;
 
+  background-image: url("../assets/images/nush_logo_asterisk.svg");
+  background-repeat: no-repeat;
+  background-position: right (-20 + random(40)-20) + px bottom (-100 + random(40)-20 ) + px;
+
   transition: box-shadow .3s, transform .3s;
   &:hover {
     transform: translateY(-1px);
