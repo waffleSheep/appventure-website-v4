@@ -2,8 +2,9 @@
   <Layout>
     <main class="blog">
       <div class="blog-list">
+        <div class="preamble medium-container">
         <h1 class="text-center">Blog posts</h1>
-        <p class="lede text-center">Featuring articles written by students from NUS High</p>
+        <p class="lede text-center">Featuring student-written articles on programming and internal events</p>
         <multiselect class="search-bar"
                      v-model="searchValue"
                      placeholder="Add search filter"
@@ -18,6 +19,7 @@
                      group-values="entries"
                      @tag="addTag"
         />
+        </div>
         <hr/>
         <transition-group name="fade">
           <BlogCard
