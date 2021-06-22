@@ -76,6 +76,7 @@ query ($id: ID!) {
 import { Component, Vue } from 'vue-property-decorator';
 import BlogCard from '../components/BlogCard.vue';
 import { StateChanger } from 'vue-infinite-loading';
+import { BlogPost } from '../types/BlogPost';
 
 @Component({
   components: {
@@ -84,7 +85,7 @@ import { StateChanger } from 'vue-infinite-loading';
 })
 
 export default class Contributor extends Vue {
-  loadedPosts: Array<object> = [];
+  loadedPosts: BlogPost[] = [];
   currentPage: number = 1;
 
   created() {

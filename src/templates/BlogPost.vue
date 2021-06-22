@@ -50,13 +50,15 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import BlogMeta from '../components/BlogMeta';
 import TagChip from '../components/TagChip.vue';
+import { Tag } from '../types/Tag';
+
 @Component({
   components: { BlogMeta, TagChip },
 })
 export default class BlogPost extends Vue {
-  get sortedTags() : Array<object> {
+  get sortedTags() : Tag[] {
     // @ts-ignore
-    return this.$page.post.tags.sort((u: object,v: object) => v.category.localeCompare(u.category));
+    return this.$page.post.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
   }
 }
 </script>

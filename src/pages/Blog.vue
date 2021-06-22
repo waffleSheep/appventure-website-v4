@@ -95,7 +95,9 @@ import { Component, Vue } from 'vue-property-decorator';
 import BlogCard from '../components/BlogCard.vue';
 import { StateChanger } from 'vue-infinite-loading';
 import Multiselect from 'vue-multiselect';
-import BlogPost from '../templates/BlogPost.vue';
+import { BlogPost } from '../types/BlogPost';
+import { Tag } from '../types/Tag';
+import { Contributor } from '../types/Contributor';
 
 @Component({
   components: {
@@ -104,34 +106,30 @@ import BlogPost from '../templates/BlogPost.vue';
 })
 
 export default class BlogPage extends Vue {
-  private loadedPosts: Array<any> = [];
+  private loadedPosts: BlogPost[] = [];
   currentPage: number = 1;
-  searchValue: Array<any> = [];
-  options: Array<object> = [];
+  searchValue: object[] = [];
+  options: object[] = [];
 
   get filteredPosts() {
     return this.loadedPosts.filter(post => this.filterPost(post));
   }
 
-  addTag(tag: String) {
-    console.log(tag);
+  addTag(tag: string) {
     const obj = {name: tag.trim(), id: tag.trim()};
     this.searchValue.push(obj);
   }
 
-  pushTag(tagId: any){
-    console.log(tagId);
+  pushTag(tagId: string){
     // @ts-ignore
-    const res = this.$page.tags.edges.find(n => n.node.id === tagId)
+    const res = this.$page.tags.edges.find((n: any) => n.node.id === tagId)
     if(res)
       this.searchValue.push(res.node);
-
   }
 
   created() {
-    console.log(this.$route);
     if(this.$route.query.id)
-      this.pushTag(this.$route.query.id);
+      this.pushTag(this.$route.query.id as string);
 
     // @ts-ignore
     this.loadedPosts.push(...this.$page.posts.edges.map(n => n.node));
@@ -149,11 +147,11 @@ export default class BlogPage extends Vue {
     ];
   }
 
-  filterPost(blogPost: any) : boolean {
-    return this.searchValue.every(tag =>{
-      return blogPost.tags.find((o: any) => o.id === tag.id)
-        || blogPost.author.find((o: any) => o.id === tag.id)
-        || blogPost.author.find((o: any) => o.name.includes(tag.name))
+  filterPost(blogPost: BlogPost) : boolean {
+    return this.searchValue.every((tag: any) =>{
+      return blogPost.tags.find((o: Tag) => o.id === tag.id)
+        || blogPost.author.find((o: Contributor) => o.id === tag.id)
+        || blogPost.author.find((o: Contributor) => o.name.includes(tag.name))
         || blogPost.title.toLowerCase()
           .concat(" \t " + blogPost.excerpt.toLowerCase())
           .includes(tag.name.toLowerCase());
@@ -188,7 +186,7 @@ export default class BlogPage extends Vue {
   margin: 0 0 2rem;
 }
 hr {
-  margin: 2rem 0rem;
+  margin: 2rem 0;
 }
 .search-bar {
   max-height: inherit;
