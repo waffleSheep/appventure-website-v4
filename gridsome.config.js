@@ -31,6 +31,19 @@ module.exports = {
         }
       },
     },
+
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Project',
+        path: 'content/projects/**/*.yaml',
+        refs: {
+          author: 'Contributor',
+          tags: 'Tag',
+        },
+      },
+    },
+
   ],
   templates: {
     BlogPost: '/blog/:year/:month/:day/:slug',

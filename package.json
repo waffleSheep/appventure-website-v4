@@ -17,6 +17,7 @@
     "*.(vue|ts)": "yarn lint:check"
   },
   "dependencies": {
+    "@gridsome/transformer-yaml": "^0.2.1",
     "gridsome": "^0.7.23",
     "infinite-loading": "^0.2.8",
     "vue-infinite-loading": "^2.4.5",
