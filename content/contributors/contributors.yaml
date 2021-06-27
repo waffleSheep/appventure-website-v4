@@ -14,3 +14,15 @@
   name: Cody Barr
   avatar: ./images/default_avatar.svg
   bio: I enjoy long walks off something something
+
+- id: royang
+  name: Roy Ang Kang Rong
+  avatar: ./images/default_avatar.svg
+
+- id: kylezheng
+  name: Kyle Zheng Ching Chan
+  avatar: ./images/default_avatar.svg
+
+#- id: wangzhi
+#  name: Wang Zhi, Wren
+#  avatar: ./images/default_avatar.svg

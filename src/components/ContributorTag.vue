@@ -1,9 +1,9 @@
 <template>
   <span>
-  <g-link class="author-link" :to="author.path">
-    <g-image class="author-avatar" :alt="author.name" :src="author.avatar"/>
+  <g-link class="contributor-link" :to="contributor.path">
+    <g-image class="contributor-avatar" :alt="contributor.name" :src="contributor.avatar"/>
   </g-link>
-  <g-link class="author-link" :to="author.path">{{ author.name }}</g-link>
+  <g-link class="contributor-link" :to="contributor.path">{{ contributor.name }}</g-link>
   </span>
 </template>
 
@@ -13,12 +13,12 @@ import { Contributor } from '../types/Contributor';
 
 @Component
 export default class ContributorTag extends Vue {
-  @Prop() author!: Contributor;
+  @Prop() contributor!: Contributor;
 }
 </script>
 
 <style scoped lang="scss">
-.author-avatar {
+.contributor-avatar {
   width: 30px;
   border-radius: 99px;
   vertical-align: middle;
@@ -30,7 +30,7 @@ export default class ContributorTag extends Vue {
     border-width: 0;
   }
 }
-.author-link {
+.contributor-link {
   z-index: 1;
   position: relative;
 }
