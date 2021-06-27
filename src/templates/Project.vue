@@ -5,7 +5,7 @@
         <Carousel :gallery="$page.project.gallery" />
 
         <div class="action-tray">
-          <a class="button" v-if="$page.project.website" :href="$page.project.website">
+          <a class="button" v-if="$page.project.website" :href="$page.project.website" target="_blank">
             <globe-icon size="1x" class="icon"></globe-icon>
             Visit Website
           </a>
@@ -24,7 +24,7 @@
             <span v-for="(name, idx) in $page.project.created.name" :key="name.id">
               <span>{{ name }}</span>
               <span v-if="idx < $page.project.created.name.length-2">, </span>
-              <span v-if="idx == $page.project.created.name.length-2">, and </span>
+              <span v-if="idx === $page.project.created.name.length-2">, and </span>
             </span>
             ({{ $page.project.created.year }})
           </p>
