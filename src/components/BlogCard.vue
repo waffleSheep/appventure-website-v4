@@ -17,7 +17,6 @@
         <TagChip class="tagChip"
                  v-for="tag in sortedTags"
                  :key="tag.id"
-                 @tagClicked="(u) => $emit('tagClicked',u)"
                  :tag="tag"
                  :link-enabled="tagLinkEnabled">
         </TagChip>
@@ -30,16 +29,17 @@
 import { Component, Vue, Prop  } from 'vue-property-decorator';
 import BlogMeta from './BlogMeta.vue';
 import TagChip from './TagChip.vue';
+import { BlogPost } from '../types/BlogPost';
+import { Tag } from '../types/Tag';
 @Component({
   components: { BlogMeta,TagChip },
 })
 export default class BlogCard extends Vue {
-  @Prop() blogPost!: object;
+  @Prop() blogPost!: BlogPost;
   @Prop({default: true}) tagLinkEnabled!: boolean
 
   get sortedTags() : Array<object> {
-    // @ts-ignore
-    return this.blogPost.tags.sort((u: object,v: object) => v.category.localeCompare(u.category));
+    return this.blogPost.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
   }
 }
 </script>

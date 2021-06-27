@@ -10,8 +10,23 @@
         <p v-if="$page.contributor.bio" class="bio">{{ $page.contributor.bio }}</p>
       </div>
       <hr/>
-      <div class="blog-list">
+
+        <div class="timeline">
+          <div
+            class="tab"
+            v-for="type in ['Blog Posts', 'Project']"
+            :key="type"
+            @click="selectedType = type"
+          >
+            {{ type }}
+          </div>
+        </div>
+
+      <div v-if="selectedType === 'Blog Posts'" class="blog-list">
         <h3 class="text-center">Blog posts</h3>
+        <p class="empty-text text-center" v-if="$page.contributor.posts.edges.length === 0">
+          None found
+        </p>
         <transition-group name="fade">
         <BlogCard
           class="blog-entries"
@@ -87,6 +102,7 @@ import { BlogPost } from '../types/BlogPost';
 export default class Contributor extends Vue {
   loadedPosts: BlogPost[] = [];
   currentPage: number = 1;
+  selectedType = 'Blog Posts'
 
   created() {
     // @ts-ignore
@@ -143,8 +159,34 @@ export default class Contributor extends Vue {
     padding: 0 4rem 0;
   }
 }
-.blog-entries {
-  margin: 0 0 2rem;
+.blog-list {
+  .empty-text {
+    font-style: italic;
+    font-weight: lighter;
+  }
+  .timeline {
+    display: flex;
+    justify-content: center;
+
+    .tab {
+      padding: .2rem .4rem;
+      margin: 0 .4rem;
+      border-radius: .4rem;
+
+      &:hover {
+        background-color: #eee;
+        cursor: pointer;
+      }
+
+      &.selected {
+        color: $primary-color;
+        font-weight: bold;
+      }
+    }
+  }
+  .blog-entries {
+    margin: 0 0 2rem;
+  }
 }
 
 </style>

@@ -23,6 +23,6 @@
   name: Kyle Zheng Ching Chan
   avatar: ./images/default_avatar.svg
 
-#- id: wangzhi
-#  name: Wang Zhi, Wren
-#  avatar: ./images/default_avatar.svg
+- id: wangzhi
+  name: Wang Zhi, Wren
+  avatar: ./images/default_avatar.svg

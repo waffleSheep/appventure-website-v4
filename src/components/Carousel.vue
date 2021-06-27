@@ -1,10 +1,10 @@
 <template>
   <div class="medium-container carousel">
     <div class="viewport">
-      <g-image class="image" 
-        v-if="activeImage" 
-        :src="activeImage" 
-        :key="activeImage.id" 
+      <g-image class="image"
+        v-if="activeImage"
+        :src="activeImage"
+        :key="activeImage.id"
         fit="contain"
       />
     </div>
@@ -77,6 +77,8 @@ export default class Carousel extends Vue {
     filter: saturate(0.2);
     opacity: 0.3;
     transition: all 0.3s;
+
+
 
     &:hover {
       filter: saturate(1.0);

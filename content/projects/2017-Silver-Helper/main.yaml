@@ -3,7 +3,7 @@ name: Silver Helper
 thumbnail: ./1.png
 description: Allows caregivers to keep track of the elderly via the various functionalities found within the app, such as location tracking, help calls and medication reminders. Also allows the elderly to use keep track of where they are, send out help signals and meet up with their friends to sing and dance.
 created:
-  name: [royang,kylezheng,wangzhi]
+  contributors: [royang,kylezheng,wangzhi]
   year: 2017
 type: "/AppVenture/android"
 tags: [android]

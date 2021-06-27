@@ -107,7 +107,7 @@
   align-items: stretch;
 
   main {
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
   }
 }
 

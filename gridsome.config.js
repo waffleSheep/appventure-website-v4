@@ -38,7 +38,6 @@ module.exports = {
         typeName: 'Project',
         path: 'content/projects/**/*.yaml',
         refs: {
-          author: 'Contributor',
           tags: 'Tag',
         },
       },

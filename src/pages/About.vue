@@ -12,7 +12,7 @@
           v-for="(profiles, year) in teams"
           :key="year"
           @click="selectedYear = year"
-          :class="[ selectedYear == year ? 'selected' : '' ]"
+          :class="[ selectedYear === year ? 'selected' : '' ]"
         >
           {{ year }}
         </div>
@@ -24,7 +24,7 @@
       >
         <div
           class="team"
-          v-if="selectedYear == year"
+          v-if="selectedYear === year"
         >
           <Profile
             v-for="p in profiles"
