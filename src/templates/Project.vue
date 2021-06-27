@@ -18,14 +18,16 @@
 
       <div class="info">
         <h1 class="text-center">{{ $page.project.name }}</h1>
-        <h5 class="type text-center">{{ $page.project.type }}</h5>
-        <div class="created text-center">
-          <span v-for="(name, idx) in $page.project.created.name" :key="name.id">
-            <span>{{ name }}</span>
-            <span v-if="idx < $page.project.created.name.length-2">, </span>
-            <span v-if="idx == $page.project.created.name.length-2">, and </span>
-          </span>
-          ({{ $page.project.created.year }})
+        <div class="meta">
+          <pre class="type text-center">{{ $page.project.type }}</pre>
+          <p class="authors text-center">
+            <span v-for="(name, idx) in $page.project.created.name" :key="name.id">
+              <span>{{ name }}</span>
+              <span v-if="idx < $page.project.created.name.length-2">, </span>
+              <span v-if="idx == $page.project.created.name.length-2">, and </span>
+            </span>
+            ({{ $page.project.created.year }})
+          </p>
         </div>
         {{ $page.project.description }}
       </div>
@@ -95,10 +97,19 @@ export default class Project extends Vue {
     flex: 1;
     margin: 0 2rem;
 
-    .created {
-      font-style: italic;
+    .meta {
+      margin: 2rem 0;
+
+      .type {
+        margin: 1rem 0;
+        padding: 0;
+      }
+
+      .authors {
+        margin: 1rem 0;
+        font-style: italic;
+      }
     }
   }
-
 }
 </style>

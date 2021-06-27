@@ -1,7 +1,7 @@
 <template>
   <div class="medium-container carousel">
     <div class="viewport">
-      <g-image class="thumbnail" 
+      <g-image class="image" 
         v-if="activeImage" 
         :src="activeImage" 
         :key="activeImage.id" 
@@ -56,7 +56,8 @@ export default class Carousel extends Vue {
   .viewport {
     display: flex;
     flex-flow: column nowrap;
-    .thumbnail {
+
+    .image {
       margin: 2px;
       border-radius: 1rem;
       box-shadow: 1px 1px 1px 1px #eee;
