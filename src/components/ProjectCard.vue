@@ -1,5 +1,9 @@
 <template>
   <div class="medium-container project-card">
+    <g-link
+      class="link"
+      :to="'/projects/' + project.id"
+    />
 
     <g-image class="thumbnail" v-if="project.thumbnail" :src="project.thumbnail" />
     <div class="content">
@@ -37,6 +41,12 @@ div.project-card {
   padding: 0;
   margin-bottom: 2rem;
 
+  background-color: white;
+  transition: all .3s;
+  &:hover {
+    filter: brightness(90%);
+  }
+
   .thumbnail {
     margin: 2px;
     border-radius: 1rem;
@@ -52,11 +62,10 @@ div.project-card {
     }
   }
 
-  background-color: white;
-
-  transition: all .3s;
-  &:hover {
-    filter: brightness(90%);
+  .link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 }
 

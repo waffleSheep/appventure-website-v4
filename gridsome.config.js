@@ -48,6 +48,7 @@ module.exports = {
   templates: {
     BlogPost: '/blog/:year/:month/:day/:slug',
     Contributor: '/contributor/:id',
+    Project: '/projects/:id',
   },
   chainWebpack (config) {
     // Load variables for all vue-files
