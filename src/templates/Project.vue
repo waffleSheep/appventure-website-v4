@@ -2,16 +2,18 @@
   <Layout>
     <main class="project-showcase">
       <div class="demo">
-        <div class="gallery">
-          <g-image class="thumbnail" v-if="activeImage" :src="activeImage" :key="activeImage.id" fit="contain"/>
-          <div class="tray">
-            <div class="button" @click="prev()">Prev</div>
-            <div class="button" @click="next()">Next</div>
-          </div>
-        </div>
+        <Carousel :gallery="$page.project.gallery" />
 
-        <a class="button" v-if="$page.project.website" :href="$page.project.website">Visit Website</a>
-        <a class="button" v-if="$page.project.attachment" :href="$page.project.attachment.src">Download</a>
+        <div class="action-tray">
+          <a class="button" v-if="$page.project.website" :href="$page.project.website">
+            <globe-icon size="1x" class="icon"></globe-icon>
+            Visit Website
+          </a>
+          <a class="button" v-if="$page.project.attachment" :href="$page.project.attachment.src">
+            <download-icon size="1x" class="icon"></download-icon>
+            Download
+          </a>
+        </div>
       </div>
 
       <div class="info">
@@ -57,28 +59,14 @@ query ($id: ID!){
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import Carousel from '@/components/Carousel.vue';
+import { GlobeIcon, DownloadIcon } from 'vue-feather-icons';
 
 @Component({
-  components: {},
+  // @ts-ignore
+  components: { Carousel, GlobeIcon, DownloadIcon },
 })
 export default class Project extends Vue {
-  activeIdx = 0;
-
-  get activeImage(): any {
-    // @ts-ignore
-    if (!this.$page.project.gallery) return null;
-    // @ts-ignore
-    return this.$page.project.gallery[this.activeIdx];
-  }
-
-  prev() {
-    this.activeIdx = Math.max(0, this.activeIdx - 1);
-  }
-
-  next() {
-    // @ts-ignore
-    this.activeIdx = Math.min(this.$page.project.gallery.length - 1, this.activeIdx + 1);
-  }
 }
 </script>
 
@@ -92,25 +80,20 @@ export default class Project extends Vue {
     display: flex;
     flex-flow: column nowrap;
 
-    .gallery {
+    .action-tray {
       display: flex;
-      flex-flow: column nowrap;
+      flex-flow: row wrap;
 
-      .thumbnail {
-        margin: 2px;
-        border-radius: 1rem;
-        box-shadow: 1px 1px 1px 1px #eee;
-      }
-
-      .tray {
-        display: flex;
-        flex-flow: row wrap;
+      .button {
+        margin: 0 .2rem;
+        border-radius: .4rem;
       }
     }
   }
 
   .info {
     flex: 1;
+    margin: 0 2rem;
 
     .created {
       font-style: italic;
