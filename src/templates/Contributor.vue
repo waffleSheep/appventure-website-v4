@@ -4,9 +4,7 @@
       <div class="contributor-info text-center medium-container">
         <g-image class="author-avatar" :alt="$page.contributor.name" :src="$page.contributor.avatar"/>
         <h1 class="contributor-title">{{$page.contributor.name}}</h1>
-        <h4 class="lede quote" v-if="$page.contributor.quote">
-          <q>{{$page.contributor.quote}}</q>
-        </h4>
+        <Epigraph v-if="$page.contributor.quote" :quote="$page.contributor.quote"/>
         <p v-if="$page.contributor.bio" class="bio">{{ $page.contributor.bio }}</p>
       </div>
       <hr/>
@@ -77,9 +75,11 @@ import { Component, Vue } from 'vue-property-decorator';
 import BlogCard from '../components/BlogCard.vue';
 import { StateChanger } from 'vue-infinite-loading';
 import { BlogPost } from '../types/BlogPost';
+import Epigraph from '../components/Epigraph.vue';
 
 @Component({
   components: {
+    Epigraph,
     BlogCard,
   },
 })
