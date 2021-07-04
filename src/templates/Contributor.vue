@@ -11,19 +11,21 @@
       </div>
       <hr/>
 
+      <div class="contributions">
         <div class="timeline">
           <div
             class="tab"
-            v-for="type in ['Blog Posts', 'Project']"
+            v-for="type in [Contribution.BLOGPOST,Contribution.PROJECT]"
             :key="type"
             @click="selectedType = type"
+            :class="[ selectedType === type ? 'selected' : '' ]"
           >
-            {{ type }}
+            {{ contributionLabel(type) }}
           </div>
         </div>
 
-      <div v-if="selectedType === 'Blog Posts'" class="blog-list">
-        <h3 class="text-center">Blog posts</h3>
+      <div v-if="selectedType === Contribution.BLOGPOST" class="blog-list">
+<!--        <h3 class="text-center">Blog posts</h3>-->
         <p class="empty-text text-center" v-if="$page.contributor.posts.edges.length === 0">
           None found
         </p>
@@ -33,13 +35,18 @@
           :key="blog.node.id"
           :blog-post="blog.node"
         />
-        </transition-group>
-        <ClientOnly>
-          <infinite-loading @infinite="infiniteHandler" spinner="spiral">
-            <div slot="no-more"/>
-            <div slot="no-results"/>
-          </infinite-loading>
-        </ClientOnly>
+      </div>
+        <div v-if="selectedType === Contribution.PROJECT" class="project-list">
+          <p class="empty-text text-center" v-if="$page.contributor.posts.edges.length === 0">
+            None found
+          </p>
+          <ProjectCard
+            class="project-entries"
+            v-for="project in $page.contributor.projects.edges"
+            :key="project.id"
+            :project="project.node"
+            />
+        </div>
       </div>
     </main>
   </Layout>
@@ -104,8 +111,8 @@ query ($id: ID!) {
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import BlogCard from '../components/BlogCard.vue';
-import { StateChanger } from 'vue-infinite-loading';
-import { BlogPost } from '../types/BlogPost';
+import { Contribution } from '../types/Contribution';
+import ProjectCard from '../components/ProjectCard.vue';
 
 @Component({
   components: {
@@ -157,7 +164,7 @@ export default class Contributor extends Vue {
     padding: 0 4rem 0;
   }
 }
-.blog-list {
+.contributions {
   .empty-text {
     font-style: italic;
     font-weight: lighter;
@@ -165,6 +172,7 @@ export default class Contributor extends Vue {
   .timeline {
     display: flex;
     justify-content: center;
+    margin-bottom: 2rem;
 
     .tab {
       padding: .2rem .4rem;
