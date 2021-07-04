@@ -27,12 +27,11 @@
         <p class="empty-text text-center" v-if="$page.contributor.posts.edges.length === 0">
           None found
         </p>
-        <transition-group name="fade">
         <BlogCard
           class="blog-entries"
-          v-for="edge in $page.contributor.posts.edges"
-          :key="edge.node.id"
-          :blog-post="edge.node"
+          v-for="blog in $page.contributor.posts.edges"
+          :key="blog.node.id"
+          :blog-post="blog.node"
         />
         </transition-group>
         <ClientOnly>
@@ -55,10 +54,6 @@ query ($id: ID!) {
     quote
     avatar (width: 124)
     posts:belongsTo(filter: {typeName: {eq: BlogPost}}) {
-      pageInfo {
-        totalPages
-        currentPage
-      }
       edges {
         node {
           ...on BlogPost {
@@ -83,6 +78,25 @@ query ($id: ID!) {
         }
       }
     }
+    projects: belongsTo(filter: {typeName: {eq: Project}}){
+      edges {
+        node {
+          ...on Project {
+            id
+            thumbnail (height: 128, width: 128)
+            name
+            created {
+              name
+              year
+            }
+            maintained {
+              name
+              year
+            }
+          }
+        }
+      }
+    }
   }
 }
 </page-query>
@@ -95,39 +109,23 @@ import { BlogPost } from '../types/BlogPost';
 
 @Component({
   components: {
+    ProjectCard,
     BlogCard,
   },
 })
 
 export default class Contributor extends Vue {
-  loadedPosts: BlogPost[] = [];
-  currentPage: number = 1;
-  selectedType = 'Blog Posts'
+  selectedType = Contribution.BLOGPOST;
+  Contribution = Contribution;
 
-  created() {
-    // @ts-ignore
-    this.loadedPosts.push(...this.$page.contributor.posts.edges);
-  }
-
-  async infiniteHandler($state: StateChanger) : Promise<void> {
-    // @ts-ignore
-    if (this.currentPage + 1 > this.$page.contributor.posts.pageInfo.totalPages) {
-      $state.complete()
-    } else {
-      // @ts-ignore
-      const { data } = await this.$fetch(
-        // @ts-ignore
-        `/contributor/${this.$page.contributor.id}/${this.currentPage + 1}`
-      )
-      if (data.posts.edges.length) {
-        this.currentPage = data.posts.pageInfo.currentPage
-        this.loadedPosts.push(...data.posts.edges)
-        $state.loaded()
-      } else {
-        $state.complete()
-      }
+  contributionLabel(contribution: Contribution) : string {
+    switch(contribution) {
+      case Contribution.BLOGPOST: return "Blog Posts";
+      case Contribution.PROJECT:
+      default: return "Projects";
     }
   }
+
 }
 </script>
 

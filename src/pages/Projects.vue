@@ -6,8 +6,7 @@
           <h1 class="text-center">Projects</h1>
           <p class="lede text-center">Student made projects that improve the quality of life of those in school as well as the community</p>
         </div>
-
-        <ProjectCard 
+        <ProjectCard
           v-for="project in $page.projects.edges"
           :key="project.id"
           :project="project.node"
