@@ -34,6 +34,7 @@ export default class ProjectCard extends Vue {
 <style lang="scss" scoped>
 
 div.project-card {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
 
