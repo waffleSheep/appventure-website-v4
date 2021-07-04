@@ -5,7 +5,16 @@
         v-if="activeImage"
         :src="activeImage"
         :key="activeImage.id"
+        @click="index=activeIdx"
         fit="contain"
+      />
+    </div>
+    <div>
+      <VueGallery
+        class="gallery"
+        :images="images"
+        :index="index"
+        @close="index=null"
       />
     </div>
 
@@ -23,13 +32,22 @@
 <script lang="ts">
 import { Component, Vue, Prop  } from 'vue-property-decorator';
 import { ChevronLeftIcon, ChevronRightIcon } from 'vue-feather-icons';
+import VueGallery from 'vue-gallery';
+
 @Component({
   // @ts-ignore
-  components: { ChevronLeftIcon, ChevronRightIcon },
+  components: { ChevronLeftIcon, ChevronRightIcon, VueGallery },
 })
 export default class Carousel extends Vue {
   @Prop() gallery!: object[];
+  // @ts-ignore
+  images = this.gallery.map(it => it.src);
   activeIdx = 0;
+  index = null;
+
+  created() {
+    console.log(this.gallery);
+  }
 
   get activeImage(): any {
     if (!this.gallery) return null;
@@ -58,6 +76,8 @@ export default class Carousel extends Vue {
     flex-flow: column nowrap;
 
     .image {
+      min-height: 5rem;
+      width: 100%;
       margin: 2px;
       border-radius: 1rem;
       box-shadow: 1px 1px 1px 1px #eee;
@@ -97,7 +117,11 @@ export default class Carousel extends Vue {
     right: 0;
     top: calc(50% - 1rem);
   }
-
+}
+.gallery::v-deep {
+  img.slide-content {
+    background-color: white;
+  }
 }
 
 </style>

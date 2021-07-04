@@ -51,7 +51,7 @@ query ($id: ID!){
       year
     }
     type
-    gallery (height: 200, width: 150)
+    gallery
     website
     attachment
   }
@@ -106,10 +106,13 @@ export default class Project extends Vue {
     .action-tray {
       display: flex;
       flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
 
       .button {
-        margin: 0 .2rem;
+        margin: .4rem .4rem;
         border-radius: .4rem;
+        width: 46%;
 
         // temporary fix avoid accidental select when going through carousel
         -webkit-touch-callout: none;

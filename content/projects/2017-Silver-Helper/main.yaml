@@ -6,6 +6,11 @@ allContributors: [royang,kylezheng,wangzhi]
 created:
   contributors: [royang,kylezheng,wangzhi]
   year: 2017
+maintained:
+  - name: [kylezheng]
+    year: 2022
+  - name: [kylezheng]
+    year: 2023
 type: "/AppVenture/android"
 tags: [android]
 gallery:
