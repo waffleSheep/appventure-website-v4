@@ -28,6 +28,10 @@
             </div>
             <div class="text-center">({{ $page.project.created.year }})</div>
           </div>
+          <div class="achievements" v-if="$page.project.achievements">
+            <h5>Achievements</h5>
+            <ul><li v-for="(a, idx) in $page.project.achievements" :key="a.id">{{ a }}</li></ul>
+          </div>
         </div>
         {{ $page.project.description }}
       </div>
@@ -51,6 +55,7 @@ query ($id: ID!){
       year
     }
     type
+    achievements
     gallery (height: 200, width: 150)
     website
     attachment
@@ -82,6 +87,8 @@ import { Contributor } from '../types/Contributor';
 })
 export default class Project extends Vue {
   get creators() : Contributor[] {
+    // @ts-ignore
+    console.log(this.$page.project.created.contributors);
     // @ts-ignore
     return this.$page.project.created.contributors
       // @ts-ignore
