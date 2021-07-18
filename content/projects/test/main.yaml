@@ -14,7 +14,7 @@ maintained:
     name: [A, B, C]
     year: 2020
 type: "/AppVenture/Internal"
-tags: []
+tags: [android,ctf]
 gallery:
   - ./g_circle.svg
   - ./g_square.svg

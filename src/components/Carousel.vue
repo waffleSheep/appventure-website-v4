@@ -45,10 +45,6 @@ export default class Carousel extends Vue {
   activeIdx = 0;
   index = null;
 
-  created() {
-    console.log(this.gallery);
-  }
-
   get activeImage(): any {
     if (!this.gallery) return null;
     return this.gallery[this.activeIdx];
@@ -76,6 +72,7 @@ export default class Carousel extends Vue {
     flex-flow: column nowrap;
 
     .image {
+      background-color: white;
       min-height: 5rem;
       width: 100%;
       margin: 2px;

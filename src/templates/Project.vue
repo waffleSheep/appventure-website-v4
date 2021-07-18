@@ -14,14 +14,34 @@
             Download
           </a>
         </div>
+        <div class="tags">
+          <label>Tags:</label>
+          <TagChip class="tag-chip"
+                   v-for="tag in sortedTags"
+                   :key="tag.id"
+                   :tag="tag"
+                   :filled="false"
+                   :link-enabled="true">
+          </TagChip>
+        </div>
+        <div class="contributors text-left" v-for="maintainers in maintained">
+          <label>Currently maintained by:</label>
+          <div class="creators" v-for="(contributor, idx) in maintainers.name" :key="contributor.id">
+            <ContributorTag :contributor="contributor" />
+            <span v-if="idx < maintainers.name.length-2">, </span>
+            <span v-if="idx === maintainers.name.length-2">, and </span>
+          </div>
+          <div class="text-center">({{ $page.project.created.year }})</div>
+        </div>
       </div>
 
       <div class="info">
         <h1 class="text-center">{{ $page.project.name }}</h1>
         <div class="meta">
           <pre class="type text-center">{{ $page.project.type }}</pre>
-          <div class="authors text-left">
-            <div v-for="(creator, idx) in creators" :key="creator.id">
+          <div class="contributors text-left">
+            <label>Created by:</label>
+            <div class="creators" v-for="(creator, idx) in creators" :key="creator.id">
               <ContributorTag :contributor="creator" />
               <span v-if="idx < creators.length-2">, </span>
               <span v-if="idx === creators.length-2">, and </span>
@@ -32,6 +52,7 @@
             <h5>Achievements</h5>
             <ul><li v-for="(a, idx) in $page.project.achievements" :key="a.id">{{ a }}</li></ul>
           </div>
+
         </div>
         {{ $page.project.description }}
       </div>
@@ -53,6 +74,11 @@ query ($id: ID!){
     maintained {
       name
       year
+    }
+    tags {
+      id
+      name
+      category
     }
     type
     gallery
@@ -80,10 +106,12 @@ import Carousel from '@/components/Carousel.vue';
 import { GlobeIcon, DownloadIcon } from 'vue-feather-icons';
 import ContributorTag from '../components/ContributorTag.vue';
 import { Contributor } from '../types/Contributor';
+import TagChip from '../components/TagChip.vue';
+import { Tag } from '../types/Tag';
 
 @Component({
   // @ts-ignore
-  components: { ContributorTag, Carousel, GlobeIcon, DownloadIcon },
+  components: { TagChip, ContributorTag, Carousel, GlobeIcon, DownloadIcon },
 })
 export default class Project extends Vue {
   get creators() : Contributor[] {
@@ -96,6 +124,15 @@ export default class Project extends Vue {
         .map((it: any) => it.node)
         .find((it: any) => it.id === contId))
       .filter((it: any) => it);
+  }
+  get sortedTags() : Tag[] {
+    // @ts-ignore
+    return this.$page.project.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
+  }
+
+  get maintained() : object {
+    // @ts-ignore
+    return this.$page.project.maintained;
   }
 }
 </script>
@@ -129,6 +166,9 @@ export default class Project extends Vue {
         user-select: none;
       }
     }
+    .tag-chip {
+      display: inline;
+    }
   }
 
   .info {
@@ -142,8 +182,7 @@ export default class Project extends Vue {
         margin: 1rem 0;
         padding: 0;
       }
-
-      .authors {
+      .contributors {
         margin: 1rem 0;
         font-style: italic;
       }

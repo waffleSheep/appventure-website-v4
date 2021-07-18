@@ -23,7 +23,6 @@ export default class TagChip extends Vue {
 
   onClick() {
     console.log(this.tag.id);
-    this.$emit('tagClicked',this.tag.id)
   }
 
   get cssProps() {

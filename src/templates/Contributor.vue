@@ -37,7 +37,7 @@
         />
       </div>
         <div v-if="selectedType === Contribution.PROJECT" class="project-list">
-          <p class="empty-text text-center" v-if="$page.contributor.posts.edges.length === 0">
+          <p class="empty-text text-center" v-if="$page.contributor.projects.edges.length === 0">
             None found
           </p>
           <ProjectCard
