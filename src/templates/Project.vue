@@ -14,24 +14,27 @@
             Download
           </a>
         </div>
-        <div class="tags">
-          <label>Tags:</label>
+
+        <div v-if="sortedTags.length > 0" class="tags">
+          <h5>Tags:</h5>
           <TagChip class="tag-chip"
                    v-for="tag in sortedTags"
                    :key="tag.id"
                    :tag="tag"
                    :filled="false"
-                   :link-enabled="true">
+                   :link-enabled="true"
+          :contribution-type="Contribution.PROJECT">
           </TagChip>
         </div>
-        <div class="contributors text-left" v-for="maintainers in maintained">
-          <label>Currently maintained by:</label>
-          <div class="creators" v-for="(contributor, idx) in maintainers.name" :key="contributor.id">
-            <ContributorTag :contributor="contributor" />
+        <div v-if="maintained.length > 0" class="maintenance-log contributors text-left" v-for="maintainers in maintained">
+          <h5>Maintenance Log:</h5>
+          <div class="creators" v-for="(contributorName, idx) in maintainers.name" :key="contributorName.id">
+            <ContributorTag :contributor="getContributorById(contributorName)" />
             <span v-if="idx < maintainers.name.length-2">, </span>
             <span v-if="idx === maintainers.name.length-2">, and </span>
           </div>
-          <div class="text-center">({{ $page.project.created.year }})</div>
+          <div class="text-center">({{ maintainers.year }})</div>
+          <hr/>
         </div>
       </div>
 
@@ -39,18 +42,22 @@
         <h1 class="text-center">{{ $page.project.name }}</h1>
         <div class="meta">
           <pre class="type text-center">{{ $page.project.type }}</pre>
+
+          <hr/>
           <div class="contributors text-left">
-            <label>Created by:</label>
+            <h5>Created by:</h5>
             <div class="creators" v-for="(creator, idx) in creators" :key="creator.id">
               <ContributorTag :contributor="creator" />
               <span v-if="idx < creators.length-2">, </span>
               <span v-if="idx === creators.length-2">, and </span>
             </div>
             <div class="text-center">({{ $page.project.created.year }})</div>
+            <hr/>
           </div>
-          <div class="achievements" v-if="$page.project.achievements">
+          <div class="achievements" v-if="$page.project.achievements.length > 0">
             <h5>Achievements</h5>
             <ul><li v-for="(a, idx) in $page.project.achievements" :key="a.id">{{ a }}</li></ul>
+            <hr/>
           </div>
 
         </div>
@@ -108,12 +115,14 @@ import ContributorTag from '../components/ContributorTag.vue';
 import { Contributor } from '../types/Contributor';
 import TagChip from '../components/TagChip.vue';
 import { Tag } from '../types/Tag';
+import { Contribution } from '../types/Contribution';
 
 @Component({
   // @ts-ignore
   components: { TagChip, ContributorTag, Carousel, GlobeIcon, DownloadIcon },
 })
 export default class Project extends Vue {
+  Contribution = Contribution
   get creators() : Contributor[] {
     // @ts-ignore
     console.log(this.$page.project.created.contributors);
@@ -133,6 +142,12 @@ export default class Project extends Vue {
   get maintained() : object {
     // @ts-ignore
     return this.$page.project.maintained;
+  }
+
+  getContributorById(id: string): Contributor {
+    // @ts-ignore
+    const tmp = this.$page.authors.edges.find((u: any) => u.node.id === id)
+    return tmp && tmp.node;
   }
 }
 </script>
@@ -184,7 +199,7 @@ export default class Project extends Vue {
       }
       .contributors {
         margin: 1rem 0;
-        font-style: italic;
+        //font-style: italic;
       }
     }
   }

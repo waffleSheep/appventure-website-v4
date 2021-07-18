@@ -1,5 +1,5 @@
 id: lead-tools
-name: Lead!Tools 
+name: Lead!Tools
 thumbnail: ./maintenance-512.png
 description: |
   A collection of useful tools for student leaders.
@@ -21,10 +21,10 @@ created:
 type: "/Year 3/CS Module"
 tags: [java]
 gallery:
-  - pic1.png
-  - pic2.png
-  - pic3.png
-  - pic4.png
-  - pic5.png
-  - pic6.png
+  - ./pic1.png
+  - ./pic2.png
+  - ./pic3.png
+  - ./pic4.png
+  - ./pic5.png
+  - ./pic6.png
 attachment: ./leadtools.jar

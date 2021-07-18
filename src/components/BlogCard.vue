@@ -38,7 +38,7 @@ export default class BlogCard extends Vue {
   @Prop() blogPost!: BlogPost;
   @Prop({default: true}) tagLinkEnabled!: boolean
 
-  get sortedTags() : Array<object> {
+  get sortedTags() : Tag[] {
     return this.blogPost.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
   }
 }

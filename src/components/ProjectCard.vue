@@ -16,18 +16,35 @@
         </span>
         ({{ project.created.year }})
       </div>
+      <div class="tags">
+        <TagChip class="tagChip"
+                 v-for="tag in sortedTags"
+                 :key="tag.id"
+                 :tag="tag"
+                 :link-enabled="true"
+                 :contribution-type="Contribution.PROJECT"
+                 :filled="false">
+        </TagChip>
+      </div>
     </div>
-
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop  } from 'vue-property-decorator';
+import { Tag } from '../types/Tag';
+import { Project } from '../types/Project';
+import TagChip from './TagChip.vue';
+import { Contribution } from '../types/Contribution';
 @Component({
-  components: {},
+  components: {TagChip},
 })
 export default class ProjectCard extends Vue {
-  @Prop() project!: object;
+  @Prop() project!: Project;
+  Contribution = Contribution
+  get sortedTags() : Tag[] {
+      return this.project.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
+  }
 }
 </script>
 
@@ -41,6 +58,9 @@ div.project-card {
   border-radius: 1rem;
   padding: 0;
   margin-bottom: 2rem;
+
+
+  box-shadow: 1px 1px 1px 1px #eee;
 
   background-color: white;
   transition: all .3s;
@@ -68,6 +88,11 @@ div.project-card {
     width: 100%;
     height: 100%;
   }
+}
+
+.tags {
+  display: flex;
+  justify-content: flex-end;
 }
 
 </style>

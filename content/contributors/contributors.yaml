@@ -48,7 +48,7 @@
   avatar: ./images/default_avatar.svg
 
 - id: xuant
-  name: Teh Xu An 
+  name: Teh Xu An
   avatar: ./images/default_avatar.svg
 
 - id: yeshuy
@@ -68,5 +68,9 @@
   avatar: ./images/default_avatar.svg
 
 - id: bohany
-  name: Yu Bohan 
+  name: Yu Bohan
+  avatar: ./images/default_avatar.svg
+
+- id: lyc
+  name: Li Yue Chen
   avatar: ./images/default_avatar.svg
