@@ -1,0 +1,30 @@
+id: securus
+name: Securus 
+thumbnail: ./password.png
+description: |
+  Securus is an app for everyone to learn how to navigate the internet and cyber world safely.
+
+  Cyber security affects everyone. Your computer, tablet and cellphone contain information that hackers would love to have. Securus is an app for everyone to learn how to navigate the internet and cyber world safely.
+
+  This app consists of a plethora of features:
+
+  - Lessons for both cybersecurity and encryption.
+
+  - A password strength checker and generator.
+
+  - Report suspicious activity or security faults securely.
+
+  - Reminder to constantly be on track of what you are learning
+
+  - And 12 unique achievements for you to earn.
+allContributors: [ethanyap]
+created:
+  contributors: [ethanyap]
+  year: 2019
+type: "/Year 4/CS Module"
+tags: [android]
+gallery:
+  - ./621658893965615209823006296463120118317056n.jpg
+  - ./6538682320577126245383137946313844110917632n.jpg
+  - ./657496317503635920334904520356433685905408n.jpg
+attachment: ./app-debug.apk
