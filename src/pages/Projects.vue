@@ -103,10 +103,9 @@ import Multiselect from 'vue-multiselect';
 import { Tag } from '../types/Tag';
 import { Contributor } from '../types/Contributor';
 import { Project } from '../types/Project';
-import Dropdown from '../components/Dropdown.vue';
 
 @Component({
-  components: { Dropdown, ProjectCard, Multiselect },
+  components: { ProjectCard, Multiselect },
 })
 
 export default class ProjectsPage extends Vue {
