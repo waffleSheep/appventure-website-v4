@@ -3,7 +3,7 @@ title: How to integrate Infinite Loading with Gridsome
 slug: infinite-loading-with-gridsome
 author: [codybarr]
 date: 2019-10-08
-tags: ['infinite loading', 'infinite scroll']
+tags: [ctf]
 excerpt: 'Infinite loading is an alternative strategy for loading additional nodes/content onto a page without the use of traditional pagination. Infinite loading instead loads the next batch of content when a user scrolls to the bottom of a web page.'
 ---
 
