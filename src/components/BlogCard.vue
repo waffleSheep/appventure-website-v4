@@ -1,5 +1,6 @@
 <template>
-  <div class="medium-container blog-card">
+  <div class="medium-container blog-card"
+       :style="cardStyle">
     <g-link
       class="link"
       :to="blogPost.path"
@@ -37,6 +38,29 @@ export default class BlogCard extends Vue {
   @Prop() blogPost!: object;
   @Prop({default: true}) tagLinkEnabled!: boolean
 
+  get cardStyle() : object {
+    // @ts-ignore
+    if (this.blogPost.tags.map(it => it.category).includes('cybersec')){
+      return {
+        backgroundColor:'#41B883FF',
+        backgroundImage: `url(${require('../assets/images/flag.svg')})`,
+      }
+    } else {
+      return {
+        backgroundColor: '#009a90',
+        backgroundImage: `url(${require('../assets/images/nush_logo_asterisk.svg')})`,
+      }
+    }
+
+  }
+  get backgroundColor() : string {
+    // @ts-ignore
+    return
+  }
+  get backgroundImage() : string {
+    // @ts-ignore
+    return
+  }
   get sortedTags() : Array<object> {
     // @ts-ignore
     return this.blogPost.tags.sort((u: object,v: object) => v.category.localeCompare(u.category));
@@ -48,7 +72,7 @@ export default class BlogCard extends Vue {
 
 div.blog-card {
   position: relative;
-  background-color: $primary-color;
+  //background-color: var(--bg-color);
   color: white;
   padding: 0;
   border-radius: 1rem;
