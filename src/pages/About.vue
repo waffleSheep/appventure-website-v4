@@ -6,6 +6,7 @@
       <p>This website showcases students' outstanding CS projects, curated blog articles written by our members, and latest updates of our internal and outreach activities. We aim to recognise the students' efforts and also publicise them to whom may find them useful. Take a look to see what we are doing at NUS High!</p>
 
       <h1>The Team</h1>
+      <p>We started way back in 2017, but only welcomed the first batch of members in 2019 - we're a young interest group!</p>
       <p>In year n+1​​​​​​, our activities are overseen by a executive committee consisting of senior members in the interest group formed in year n​​​​​​​. Nominated members at the end of the fourth year are encouraged to submit their applications to join the team.</p>
       <div class="timeline">
         <div
@@ -180,11 +181,41 @@ export default class AboutPage extends Vue {
           { name: 'Ambrose', description: 'Ambrose started programming when he first went into robotics but went on to learn Python. He started his adventures in building websites and used to run them from a laptop at home, but since then has upgraded. He loves anything computerish. He is also Wayne\'s best friend.' },
         ],
         2018: [
+          { name: 'Ambrose', description: 'Ambrose started programming when he first went into robotics but went on to learn Python. He started his adventures in building websites and used to run them from a laptop at home, but since then has upgraded. He loves anything computerish. He is also Wayne\'s best friend.' },
+          { name: 'Daniel', description: '' },
+          { name: 'Roy', description: '' },
         ],
         2019: [
+          { name: 'Linh', position: 'President', description: '' },
+          { name: 'Roy', position: 'Vice-President', description: '' },
+          { name: 'Xavier', position: 'Infrastructure IC', description: '' },
+          { name: 'Jianxi', position: 'Project IC', description: '' },
+          { name: 'Dave', position: 'Project IC', description: '' },
+          { name: 'Deepak', position: 'Events IC', description: '' },
+          { name: 'Jaime', position: 'Events IC', description: '' },
+          { name: 'Yitian', positon: 'Events IC', description: '' },
+        ],
+        2020: [
+          { name: 'Jian Xi', position: 'President', description: '' },
+          { name: 'Jaime', position: 'Vice-President', description: '' },
+          { name: 'Yitian', description: '' },
+          { name: 'Dave', description: '' },
+          { name: 'Yue Chen', description: '' },
+          { name: 'Wern Jie', description: '' },
+          { name: 'Jun Rong', description: '' },
         ],
         2021: [
+          { name: 'Yue Chen', position: 'President', description: '' },
+          { name: 'Jun Rong', position: 'Vice-President', description: '' },
+          { name: 'Steve', position: 'Project IC', description: '' },
+          { name: 'Javier', position: 'Cybersecurity IC', description: '' },
+          { name: 'Wern Jie', position: 'Outreach IC', description: '' },
+          { name: 'Ranen', position: 'Event IC', description: '' },
+          { name: 'Jed', position: 'Development IC', description: '' },
         ],
+        Teachers: [
+          { name: 'Mrs Phylliscia Lee', position: 'Overall TIC', description: '' },
+        ]
       },
     };
   }
