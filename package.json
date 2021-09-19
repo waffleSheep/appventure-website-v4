@@ -19,6 +19,7 @@
   "dependencies": {
     "gridsome": "^0.7.23",
     "infinite-loading": "^0.2.8",
+    "sass": "^1.41.1",
     "vue-infinite-loading": "^2.4.5",
     "vue-multiselect": "^2.1.6",
     "vue-property-decorator": "^8.2.0"
@@ -41,7 +42,6 @@
     "husky": "^6.0.0",
     "js-yaml": "^4.1.0",
     "lint-staged": "^8.2.0",
-    "node-sass": "^5.0.0",
     "sass-loader": "10.1.1",
     "style-resources-loader": "^1.4.1",
     "ts-loader": "^6.0.0",
