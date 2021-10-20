@@ -14,3 +14,63 @@
   name: Cody Barr
   avatar: ./images/default_avatar.svg
   bio: I enjoy long walks off something something
+
+- id: royang
+  name: Roy Ang Kang Rong
+  avatar: ./images/default_avatar.svg
+
+- id: kylezheng
+  name: Kyle Zheng Ching Chan
+  avatar: ./images/default_avatar.svg
+
+- id: wangzhi
+  name: Wang Zhi, Wren
+  avatar: ./images/default_avatar.svg
+
+- id: yetongt
+  name: Tang Yetong
+  avatar: ./images/default_avatar.svg
+
+- id: zaynes
+  name: Zayne Siew
+  avatar: ./images/default_avatar.svg
+
+- id: mathanc
+  name: Chidambaranathan Mathan
+  avatar: ./images/default_avatar.svg
+
+- id: jamesc
+  name: James Chin Jia Jun
+  avatar: ./images/default_avatar.svg
+
+- id: ihurt
+  name: Tan I-hur
+  avatar: ./images/default_avatar.svg
+
+- id: xuant
+  name: Teh Xu An
+  avatar: ./images/default_avatar.svg
+
+- id: yeshuy
+  name: Ye Yushi
+  avatar: ./images/default_avatar.svg
+
+- id: ethanyap
+  name: Ethan Yap
+  avatar: ./images/default_avatar.svg
+
+- id: jianxic
+  name: Chen Jianxi
+  avatar: ./images/default_avatar.svg
+
+- id: yujinl
+  name: Li Yujin
+  avatar: ./images/default_avatar.svg
+
+- id: bohany
+  name: Yu Bohan
+  avatar: ./images/default_avatar.svg
+
+- id: lyc
+  name: Li Yue Chen
+  avatar: ./images/default_avatar.svg

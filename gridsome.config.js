@@ -31,10 +31,24 @@ module.exports = {
         }
       },
     },
+
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Project',
+        path: 'content/projects/**/*.yaml',
+        refs: {
+          tags: 'Tag',
+          allContributors: 'Contributor',
+        },
+      },
+    },
+
   ],
   templates: {
     BlogPost: '/blog/:year/:month/:day/:slug',
     Contributor: '/contributor/:id',
+    Project: '/projects/:id',
   },
   chainWebpack (config) {
     // Load variables for all vue-files

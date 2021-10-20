@@ -8,22 +8,43 @@
         <p v-if="$page.contributor.bio" class="bio">{{ $page.contributor.bio }}</p>
       </div>
       <hr/>
-      <div class="blog-list">
-        <h3 class="text-center">Blog posts</h3>
-        <transition-group name="fade">
+
+      <div class="contributions">
+        <div class="timeline">
+          <div
+            class="tab"
+            v-for="type in [Contribution.BLOGPOST,Contribution.PROJECT]"
+            :key="type"
+            @click="selectedType = type"
+            :class="[ selectedType === type ? 'selected' : '' ]"
+          >
+            {{ contributionLabel(type) }}
+          </div>
+        </div>
+
+      <div v-if="selectedType === Contribution.BLOGPOST" class="blog-list">
+<!--        <h3 class="text-center">Blog posts</h3>-->
+        <p class="empty-text text-center" v-if="$page.contributor.posts.edges.length === 0">
+          None found
+        </p>
         <BlogCard
           class="blog-entries"
-          v-for="edge in $page.contributor.posts.edges"
-          :key="edge.node.id"
-          :blog-post="edge.node"
+          v-for="blog in $page.contributor.posts.edges"
+          :key="blog.node.id"
+          :blog-post="blog.node"
         />
-        </transition-group>
-        <ClientOnly>
-          <infinite-loading @infinite="infiniteHandler" spinner="spiral">
-            <div slot="no-more"/>
-            <div slot="no-results"/>
-          </infinite-loading>
-        </ClientOnly>
+      </div>
+        <div v-if="selectedType === Contribution.PROJECT" class="project-list">
+          <p class="empty-text text-center" v-if="$page.contributor.projects.edges.length === 0">
+            None found
+          </p>
+          <ProjectCard
+            class="project-entries"
+            v-for="project in $page.contributor.projects.edges"
+            :key="project.id"
+            :project="project.node"
+            />
+        </div>
       </div>
     </main>
   </Layout>
@@ -38,10 +59,6 @@ query ($id: ID!) {
     quote
     avatar (width: 124)
     posts:belongsTo(filter: {typeName: {eq: BlogPost}}) {
-      pageInfo {
-        totalPages
-        currentPage
-      }
       edges {
         node {
           ...on BlogPost {
@@ -66,6 +83,25 @@ query ($id: ID!) {
         }
       }
     }
+    projects: belongsTo(filter: {typeName: {eq: Project}}){
+      edges {
+        node {
+          ...on Project {
+            id
+            thumbnail (height: 128, width: 128)
+            name
+            created {
+              name
+              year
+            }
+            maintained {
+              name
+              year
+            }
+          }
+        }
+      }
+    }
   }
 }
 </page-query>
@@ -73,45 +109,28 @@ query ($id: ID!) {
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import BlogCard from '../components/BlogCard.vue';
-import { StateChanger } from 'vue-infinite-loading';
-import { BlogPost } from '../types/BlogPost';
-import Epigraph from '../components/Epigraph.vue';
+import { Contribution } from '../types/Contribution';
+import ProjectCard from '../components/ProjectCard.vue';
 
 @Component({
   components: {
-    Epigraph,
+    ProjectCard,
     BlogCard,
   },
 })
 
 export default class Contributor extends Vue {
-  loadedPosts: BlogPost[] = [];
-  currentPage: number = 1;
+  selectedType = Contribution.BLOGPOST;
+  Contribution = Contribution;
 
-  created() {
-    // @ts-ignore
-    this.loadedPosts.push(...this.$page.contributor.posts.edges);
-  }
-
-  async infiniteHandler($state: StateChanger) : Promise<void> {
-    // @ts-ignore
-    if (this.currentPage + 1 > this.$page.contributor.posts.pageInfo.totalPages) {
-      $state.complete()
-    } else {
-      // @ts-ignore
-      const { data } = await this.$fetch(
-        // @ts-ignore
-        `/contributor/${this.$page.contributor.id}/${this.currentPage + 1}`
-      )
-      if (data.posts.edges.length) {
-        this.currentPage = data.posts.pageInfo.currentPage
-        this.loadedPosts.push(...data.posts.edges)
-        $state.loaded()
-      } else {
-        $state.complete()
-      }
+  contributionLabel(contribution: Contribution) : string {
+    switch(contribution) {
+      case Contribution.BLOGPOST: return "Blog Posts";
+      case Contribution.PROJECT:
+      default: return "Projects";
     }
   }
+
 }
 </script>
 
@@ -143,8 +162,35 @@ export default class Contributor extends Vue {
     padding: 0 4rem 0;
   }
 }
-.blog-entries {
-  margin: 0 0 2rem;
+.contributions {
+  .empty-text {
+    font-style: italic;
+    font-weight: lighter;
+  }
+  .timeline {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    .tab {
+      padding: .2rem .4rem;
+      margin: 0 .4rem;
+      border-radius: .4rem;
+
+      &:hover {
+        background-color: #eee;
+        cursor: pointer;
+      }
+
+      &.selected {
+        color: $primary-color;
+        font-weight: bold;
+      }
+    }
+  }
+  .blog-entries {
+    margin: 0 0 2rem;
+  }
 }
 
 </style>

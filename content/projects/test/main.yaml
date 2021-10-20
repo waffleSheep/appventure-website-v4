@@ -1,0 +1,24 @@
+id: test
+name: Testing Project
+thumbnail: ./logo.svg
+description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel tortor purus. Aliquam ornare interdum augue nec sagittis. Aliquam erat volutpat. Aenean sodales sed ipsum tristique molestie. Praesent in leo a ligula mollis suscipit. Ut efficitur ante vitae elementum hendrerit. Maecenas sed malesuada dolor, ut sollicitudin magna. Curabitur pellentesque ipsum massa, nec ullamcorper arcu facilisis eget. Sed id diam ut tellus faucibus congue. Curabitur laoreet tellus justo, nec maximus metus finibus quis. Quisque vehicula eget sapien nec mattis. Vestibulum aliquet sem eget facilisis consequat. Aenean blandit venenatis ex in tincidunt. Quisque eget fermentum neque, at posuere lorem.
+allContributors: [A, B, C, D]
+created:
+  name: [A, B, C]
+  year: 2020
+maintained:
+  -
+    name: [D]
+    year: 2021
+  -
+    name: [A, B, C]
+    year: 2020
+type: "/AppVenture/Internal"
+tags: [android,ctf]
+gallery:
+  - ./g_circle.svg
+  - ./g_square.svg
+  - ./g_hexagon.svg
+  - ./g_spiral.svg
+website: https://www.google.com
+attachment: ./app.zip

@@ -1,0 +1,30 @@
+id: lead-tools
+name: Lead!Tools
+thumbnail: ./maintenance-512.png
+description: |
+  A collection of useful tools for student leaders.
+
+  This project aims to simplify the planning process of events (e.g. School Events, Orientation, Student Council Initiatives) and provide a collection of useful tools for student leaders of various student bodies (e.g. Council, House, CCA, Interest Groups). It includes integration with Office365 using the Microsoft Graph API for the storage of data to facilitate collaboration and provide a personalised experience. Furthermore, it is designed to be fully extensible and easy to add additional tools with a modular implementation.
+
+  Features
+  - Dashboard with tool widgets
+  - Collection of productivity tools
+    - Simple Calendar
+          - Manpower Allocations
+          - Inventory Manager
+  - Auto updater
+
+allContributors: [lyc]
+created:
+  contributors: [lyc]
+  year: 2018
+type: "/Year 3/CS Module"
+tags: [java]
+gallery:
+  - ./pic1.png
+  - ./pic2.png
+  - ./pic3.png
+  - ./pic4.png
+  - ./pic5.png
+  - ./pic6.png
+attachment: ./leadtools.jar
