@@ -21,18 +21,6 @@
         >
       </div>
 
-      <div class="banner ctf-banner medium-container">
-        <div class="info">
-          <h3>Looking for some CTF action? Join us at ctf.nush.app</h3>
-          <h4>Current event: MiniCTF #15</h4>
-          <a
-            class="icon-button la la-history"
-          />
-          <a
-            class="icon-button la la-question"
-          />
-        </div>
-      </div>
     </main>
   </Layout>
 </template>
