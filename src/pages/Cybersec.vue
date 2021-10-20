@@ -15,20 +15,45 @@
           <h3>Looking for a some CTF action? Join us at ctf.nush.app</h3>
           <h4>Current event: MiniCTF #15</h4>
           <a
-            class="icon-button la la-history"
+            class="icon-button la la-link"
+            href="https://ctf.nush.app"
           />
+          <!-- TODO: Getting current CTF to be automated -->
           <a
-            class="icon-button la la-question"
+            class="icon-button la la-file-alt"
+            href="http://localhost:8080/blog/2019/10/08/minictf000/"
           />
         </div>
       </div>
       </a>
       </div>
       <hr/>
-      <div>
+      <div class="cybersec-section">
+        <div
+          class="tab"
+          v-for="section in ['Write-ups','Blog']"
+          :key="section"
+          @click="selectedSection = section"
+          :class="[ selectedSection === section ? 'selected' : '' ]"
+        >
+          {{ section }}
+        </div>
+      </div>
+
+      <div v-if="selectedSection === 'Write-ups'" >
+        <h2>Write-ups</h2>
+        <BlogCard
+          class="entries"
+          v-for="post of cybersecWriteups"
+          :key="post.id"
+          :blog-post="post"
+          :tag-link-enabled="false"
+        />
+      </div>
+      <div v-else>
         <h2>Blog posts</h2>
         <BlogCard
-          class="blog-entries"
+          class="entries"
           v-for="post of cybersecBlogPosts"
           :key="post.id"
           :blog-post="post"
@@ -72,7 +97,6 @@ query CybersecPage {
 import { Component, Vue } from 'vue-property-decorator';
 import { BlogPost } from '../types/BlogPost';
 import BlogCard from '../components/BlogCard.vue';
-import Multiselect from 'vue-multiselect';
 
 @Component({
   components: {
@@ -80,12 +104,20 @@ import Multiselect from 'vue-multiselect';
   },
 })
 export default class CybersecPage extends Vue {
+  selectedSection = 'Write-ups';
   get cybersecBlogPosts(): BlogPost[] {
-
     // @ts-ignore
     console.log(this.$page.posts.edges.map(it => it.node))
     // @ts-ignore
-      return this.$page.posts.edges.map(it => it.node).filter(it => it.tags.map(it => it.category).includes('cybersec'));
+      return this.$page.posts.edges.map(it => it.node).filter(it => it.tags.map(it => it.category).includes('cybersec'))
+        // @ts-ignore
+          .filter(it => !it.tags.map(it => it.id).includes('writeup'));
+  }
+  get cybersecWriteups(): BlogPost[] {
+    // @ts-ignore
+    console.log(this.$page.posts.edges.map(it => it.node))
+    // @ts-ignore
+    return this.$page.posts.edges.map(it => it.node).filter(it => it.tags.map(it => it.id).includes('writeup'));
   }
 }
 </script>
@@ -117,6 +149,24 @@ div.banner {
     h3,h4 { color: #fff; }
   }
 }
+button.round-button {
+  text-decoration: none;
+
+  border: .2rem solid #fff;
+
+  padding: .2rem;
+
+  margin-right: .8rem;
+
+  background-color: #fff;
+  color: $ctf;
+  transition: all ease-in-out .2s;
+
+  &:hover {
+    background-color: $ctf;
+    color: #fff;
+  }
+}
 a.icon-button {
   text-decoration: none;
   font-size: 2rem;
@@ -136,6 +186,29 @@ a.icon-button {
     background-color: $ctf;
     color: #fff;
   }
+}
+.cybersec-section {
+  display: flex;
+  justify-content: center;
+
+  .tab {
+    padding: .2rem .4rem;
+    margin: 0 .4rem;
+    border-radius: .4rem;
+
+    &:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+    &.selected {
+      color: $primary-color;
+      font-weight: bold;
+    }
+  }
+}
+.entries {
+  margin: 0 0 2rem;
 }
 
 </style>

@@ -6,13 +6,11 @@
 - id: ctf
   name: cybersecurity/CTF
   description: Description for cybersecurity & CTF
-  type: cs
   category: cybersec
 
 - id: web
   name: web-development
   description: Description for web-development
-  type: cs
   category: cs
 
 - id: android
@@ -74,3 +72,8 @@
   name: event
   description: Description for event
   category: internal
+
+- id: writeup
+  name: Write-up
+  description: Writeup for past CTFs
+  category: cybersec
