@@ -7,7 +7,7 @@
   name: cybersecurity/CTF
   description: Description for cybersecurity & CTF
   type: cs
-  category: cs
+  category: cybersec
 
 - id: web
   name: web-development

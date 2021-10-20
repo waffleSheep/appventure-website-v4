@@ -39,6 +39,10 @@ export default class BlogCard extends Vue {
   @Prop() blogPost!: BlogPost;
   @Prop({default: true}) tagLinkEnabled!: boolean
 
+<<<<<<< HEAD
+  get sortedTags() : Tag[] {
+    return this.blogPost.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
+=======
   get cardStyle() : object {
     // @ts-ignore
     if (this.blogPost.tags.map(it => it.category).includes('cybersec')){
@@ -65,6 +69,7 @@ export default class BlogCard extends Vue {
   get sortedTags() : Array<object> {
     // @ts-ignore
     return this.blogPost.tags.sort((u: object,v: object) => v.category.localeCompare(u.category));
+>>>>>>> cybersec-page
   }
 }
 </script>
