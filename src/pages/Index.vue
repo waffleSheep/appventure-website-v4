@@ -26,10 +26,13 @@
           <h3>Looking for some CTF action? Join us at ctf.nush.app</h3>
           <h4>Current event: MiniCTF #15</h4>
           <a
-            class="icon-button la la-history"
+            class="icon-button-alt la la-link"
+            href="https://ctf.nush.app"
           />
+          <!-- TODO: Getting current CTF to be automated -->
           <a
-            class="icon-button la la-question"
+            class="icon-button-alt la la-file-alt"
+            href="http://localhost:8080/blog/2019/10/08/minictf000/"
           />
         </div>
       </div>
@@ -81,6 +84,26 @@ a.icon-button {
 
   &:hover {
     background-color: $primary-color;
+    color: #fff;
+  }
+}
+a.icon-button-alt {
+  text-decoration: none;
+  font-size: 2rem;
+
+  border: .2rem solid #fff;
+  border-radius: 50%;
+
+  padding: .2rem;
+
+  margin-right: .8rem;
+
+  background-color: #fff;
+  color: $ctf;
+  transition: all ease-in-out .2s;
+
+  &:hover {
+    background-color: $ctf;
     color: #fff;
   }
 }
