@@ -30,9 +30,6 @@ export default class TagChip extends Vue {
     }
   }
 
-  onClick() {
-    console.log(this.tag.id);
-  }
 
   get cssProps() {
     if (this.filled) {
