@@ -56,7 +56,7 @@
           </div>
           <div class="achievements" v-if="$page.project.achievements.length > 0">
             <h5>Achievements</h5>
-            <ul><li v-for="(a, idx) in $page.project.achievements" :key="a.id">{{ a }}</li></ul>
+            <ul><li v-for="(a, _) in $page.project.achievements" :key="a.id">{{ a }}</li></ul>
             <hr/>
           </div>
 
@@ -124,8 +124,6 @@ import { Contribution } from '../types/Contribution';
 export default class Project extends Vue {
   Contribution = Contribution
   get creators() : Contributor[] {
-    // @ts-ignore
-    console.log(this.$page.project.created.contributors);
     // @ts-ignore
     return this.$page.project.created.contributors
       // @ts-ignore

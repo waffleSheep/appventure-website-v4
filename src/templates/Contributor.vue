@@ -98,6 +98,11 @@ query ($id: ID!) {
               name
               year
             }
+            tags {
+              id
+              name
+              category
+            }
           }
         }
       }
