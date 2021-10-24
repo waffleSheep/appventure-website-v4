@@ -8,6 +8,7 @@
     >
     <div class="text">
       <h3>{{ name }}</h3>
+      <h5>{{ position }}</h5>
       <p>{{ description }}</p>
     </div>
   </div>
@@ -33,6 +34,14 @@
     h3 {
       margin: 0;
     }
+
+    h5 {
+      font-style: italic;
+      margin-top: 4px;
+      margin-bottom: 8px;
+      color: #ccc;
+      font-size: 1rem;
+    }
   }
 }
 </style>
@@ -43,6 +52,10 @@ import { Component, Vue } from 'vue-property-decorator';
 const ProfileProps = Vue.extend({
   props: {
     name: {
+      default: '',
+      type: String,
+    },
+    position: {
       default: '',
       type: String,
     },
@@ -61,7 +74,11 @@ export default class Profile extends ProfileProps {
       return 'test';
     }
     const fileName = this.name.toLowerCase().replace(' ', '_');
-    return require(`@/assets/images/profiles/${fileName}.jpg`); // the module request
+    try {
+      return require(`@/assets/images/profiles/${fileName}.jpg`); // the module request
+    } catch {
+      return require(`@/assets/images/placeholder.png`); // the module request
+    }
   }
 }
 </script>
