@@ -26,8 +26,8 @@
           :contribution-type="Contribution.PROJECT">
           </TagChip>
         </div>
+        <h5>Maintenance Log:</h5>
         <div v-if="maintained.length > 0" class="maintenance-log contributors text-left" v-for="maintainers in maintained">
-          <h5>Maintenance Log:</h5>
           <div class="creators" v-for="(contributorName, idx) in maintainers.name" :key="contributorName.id">
             <ContributorTag :contributor="getContributorById(contributorName)" />
             <span v-if="idx < maintainers.name.length-2">, </span>
