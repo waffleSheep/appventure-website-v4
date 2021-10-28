@@ -22,7 +22,7 @@ export default class ContributorTag extends Vue {
   width: 30px;
   border-radius: 99px;
   vertical-align: middle;
-  margin: 0 6px;
+  margin: 0 2px;
 
   border: solid 3px transparent;
   transition: border-width 0.1s;

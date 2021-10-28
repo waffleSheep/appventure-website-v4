@@ -26,8 +26,9 @@
           :contribution-type="Contribution.PROJECT">
           </TagChip>
         </div>
+
+        <h5 v-if="maintained.length > 0">Maintenance Log:</h5>
         <div v-if="maintained.length > 0" class="maintenance-log contributors text-left" v-for="maintainers in maintained">
-          <h5>Maintenance Log:</h5>
           <div class="creators" v-for="(contributorName, idx) in maintainers.name" :key="contributorName.id">
             <ContributorTag :contributor="getContributorById(contributorName)" />
             <span v-if="idx < maintainers.name.length-2">, </span>
@@ -74,8 +75,14 @@ query ($id: ID!){
     id
     name
     description
+    allContributors {
+      id
+      name
+      path
+      avatar
+    }
     created {
-      contributors
+      name
       year
     }
     maintained {
@@ -125,7 +132,7 @@ export default class Project extends Vue {
   Contribution = Contribution
   get creators() : Contributor[] {
     // @ts-ignore
-    return this.$page.project.created.contributors
+    return this.$page.project.created.name
       // @ts-ignore
       .map((contId: string) => this.$page.authors.edges
         .map((it: any) => it.node)
