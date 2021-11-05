@@ -74,3 +74,38 @@
 - id: lyc
   name: Li Yue Chen
   avatar: ./images/default_avatar.svg
+
+- id: leongys
+  name: Leong Yu Siang
+  avatar: ./images/default_avatar.svg
+
+- id: zhaoyun
+  name: Zhao Yun
+  avatar: ./images/default_avatar.svg
+
+- id: teewayne
+  name: Tee Weile Wayne
+  avatar: ./images/default_avatar.svg
+
+- id: jingxuan
+  name: Tay Jing Xuan
+  avatar: ./images/default_avatar.svg
+
+- id: ambrose
+  name: Chua Chi Meng, Ambrose
+  avatar: ./images/default_avatar.svg
+
+- id: sanashwin
+  name: Sanil Kumar Ashwin
+  avatar: ./images/default_avatar.svg
+
+- id: danlimhai
+  name: Daniel Lim Hai
+  avatar: ./images/default_avatar.svg
+
+- id: junron
+  name: Lam Jun Rong
+  avatar: ./images/default_avatar.svg
+
+
+

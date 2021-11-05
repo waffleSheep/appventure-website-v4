@@ -1,0 +1,12 @@
+id: exam-display
+name: Exam Display
+description: A display for use during tests and exams. Includes a clock, exam information, and tracker for the number of students outside.
+allContributors: [leongys,zhaoyun]
+created:
+  name: [leongys]
+maintained:
+  - name: [zhaoyun]
+    year: 2021
+tags: [desktop]
+gallery:
+  - ./exam-display-1.jpeg

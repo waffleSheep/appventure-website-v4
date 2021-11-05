@@ -10,8 +10,8 @@
       <h5 class="name">{{ project.name }}</h5>
       <div class="created">
         <span v-for="(id, idx) in project.created.name" :key="id.id">
-          {{id2Contributor(id).name }}<span v-if="idx < project.allContributors.length-2">, </span>
-          <span v-if="idx === project.allContributors.length-2">, and </span>
+          {{id2Contributor(id).name }}<span v-if="idx < project.created.name.length-2">, </span>
+          <span v-if="idx === project.created.name.length-2">, and </span>
         </span>
 <!--        ({{ project.created.year }})-->
       </div>
@@ -47,9 +47,8 @@ import { Tag } from '../types/Tag';
 import { Project } from '../types/Project';
 import TagChip from './TagChip.vue';
 import { Contribution } from '../types/Contribution';
-import ContributorTag from './ContributorTag.vue';
 @Component({
-  components: { ContributorTag, TagChip},
+  components: { TagChip},
 })
 export default class ProjectCard extends Vue {
   @Prop() project!: Project;

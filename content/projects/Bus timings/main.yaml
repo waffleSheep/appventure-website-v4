@@ -1,0 +1,6 @@
+id: bus-timings
+name: Bus Timings Display
+description: The nush bus timings webpage is displayed on TV screens around the school to indicate bus arrival times. The data is retrieved real-time from the LTA API and shows arrival times of up to the next 3 buses in the 4 bus stops around the school. It also uses colour coding to display how occupied each bus is.
+allContributors: [jingxuan,teewayne]
+created:
+  name: [jingxuan,teewayne]

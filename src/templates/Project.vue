@@ -2,7 +2,7 @@
   <Layout>
     <main class="project-showcase">
       <div class="demo">
-        <Carousel :gallery="$page.project.gallery" />
+        <Carousel :gallery="$page.project.gallery" v-if="$page.project.gallery.length > 0"/>
 
         <div class="action-tray">
           <a class="button" v-if="$page.project.website" :href="$page.project.website" target="_blank">
@@ -52,7 +52,7 @@
               <span v-if="idx < creators.length-2">, </span>
               <span v-if="idx === creators.length-2">, and </span>
             </div>
-            <div class="text-center">({{ $page.project.created.year }})</div>
+            <div class="text-center" v-if="$page.project.created.year">({{ $page.project.created.year }})</div>
             <hr/>
           </div>
           <div class="achievements" v-if="$page.project.achievements.length > 0">
