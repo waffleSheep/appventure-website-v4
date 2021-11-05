@@ -88,6 +88,10 @@ query ($id: ID!) {
         node {
           ...on Project {
             id
+            allContributors {
+              id
+              name
+            }
             thumbnail (height: 128, width: 128)
             name
             created {

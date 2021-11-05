@@ -9,12 +9,11 @@
     <div class="content">
       <h5 class="name">{{ project.name }}</h5>
       <div class="created">
-        <span v-for="(name, idx) in project.created.name" :key="name.id">
-          <span>{{ name }}</span>
-          <span v-if="idx < project.created.name.length-2">, </span>
-          <span v-if="idx == project.created.name.length-2">, and </span>
+        <span v-for="(id, idx) in project.created.name" :key="id.id">
+          {{id2Contributor(id).name }}<span v-if="idx < project.allContributors.length-2">, </span>
+          <span v-if="idx === project.allContributors.length-2">, and </span>
         </span>
-        ({{ project.created.year }})
+<!--        ({{ project.created.year }})-->
       </div>
       <div class="tags">
         <TagChip class="tagChip"
@@ -29,6 +28,18 @@
     </div>
   </div>
 </template>
+<static-query>
+query {
+  contributors: allContributor {
+    edges {
+      node{
+        id
+        name
+      }
+    }
+  }
+}
+</static-query>
 
 <script lang="ts">
 import { Component, Vue, Prop  } from 'vue-property-decorator';
@@ -36,14 +47,19 @@ import { Tag } from '../types/Tag';
 import { Project } from '../types/Project';
 import TagChip from './TagChip.vue';
 import { Contribution } from '../types/Contribution';
+import ContributorTag from './ContributorTag.vue';
 @Component({
-  components: {TagChip},
+  components: { ContributorTag, TagChip},
 })
 export default class ProjectCard extends Vue {
   @Prop() project!: Project;
   Contribution = Contribution
   get sortedTags() : Tag[] {
       return this.project.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
+  }
+  id2Contributor(id: string) : string {
+    // @ts-ignore
+    return this.$static.contributors.edges.map(e => e.node).find(n => n.id === id);
   }
 }
 </script>

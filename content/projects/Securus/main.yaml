@@ -1,5 +1,5 @@
 id: securus
-name: Securus 
+name: Securus
 thumbnail: ./password.png
 description: |
   Securus is an app for everyone to learn how to navigate the internet and cyber world safely.
@@ -19,7 +19,7 @@ description: |
   - And 12 unique achievements for you to earn.
 allContributors: [ethanyap]
 created:
-  contributors: [ethanyap]
+  name: [ethanyap]
   year: 2019
 type: "/Year 4/CS Module"
 tags: [android]
