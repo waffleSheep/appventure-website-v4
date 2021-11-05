@@ -118,7 +118,16 @@ export default class ProjectsPage extends Vue {
   loadedProjects: Project[] = [];
 
   get filteredPosts() {
-    return this.loadedProjects.filter(project => this.filterPost(project));
+    // @ts-ignore
+    return this.loadedProjects.filter(project => this.filterPost(project)).sort((a,b) => {
+      // @ts-ignore
+      if (a.created.year === null) return 1;
+      // @ts-ignore
+      if (b.created.year === null) return -1;
+      // @ts-ignore
+      return b.created.year - a.created.year
+      }
+    );
   }
 
   addTag(tag: string) {
@@ -136,7 +145,6 @@ export default class ProjectsPage extends Vue {
   created() {
     if(this.$route.query.id)
       this.pushTag(this.$route.query.id as string);
-
     // @ts-ignore
     this.loadedProjects.push(...this.$page.projects.edges.map(n => n.node));
     this.options = [
@@ -153,7 +161,7 @@ export default class ProjectsPage extends Vue {
     ];
   }
   filterPost(project: Project) : boolean {
-    return this.searchValue.every((tag: any) =>{
+    return this.searchValue.length === 0 || this.searchValue.every((tag: any) =>{
       return project.tags.find((o: Tag) => o.id === tag.id)
         || project.allContributors.find((o: Contributor) => o.id === tag.id)
         || project.allContributors.find((o: Contributor) => o.name.includes(tag.name))

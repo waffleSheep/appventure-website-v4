@@ -1,0 +1,13 @@
+id: commongoods
+name: commongoods
+thumbnail: ./cg1.png
+description: Running on the goodwill of the community, commongoods allows users to share non-essential items such as textbooks with each other. This is achieved by serving as a sharing platform to connect users with an item to those who need it. This will hopefully reduce wastage and foster the spirit of sharing, bringing the community together.
+allContributors: [ambrose,teewayne,danlimhai,sanashwin]
+created:
+  name: [ambrose,teewayne,danlimhai,sanashwin]
+gallery:
+  - ./cg1.png
+  - ./cg2.png
+  - ./cg3.png
+  - ./cg4.png
+  - ./cg5.png

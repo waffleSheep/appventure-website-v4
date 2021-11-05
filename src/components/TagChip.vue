@@ -1,5 +1,5 @@
 <template>
-  <g-link class="round-button chip route" :style="cssProps" :to="routerLink" @click="onClick">{{ tag.name }}</g-link>
+  <g-link class="round-button chip route" :style="cssProps" :to="routerLink">{{ tag.name }}</g-link>
 </template>
 
 <script lang="ts">

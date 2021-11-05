@@ -20,49 +20,9 @@
   description: Description for web-development
   category: cs
 
-- id: eso
-  name: esoteric
-  description: Description for esoteric
-  category: cs
-
-- id: toc
-  name: theory-of-computation
-  description: Description for theory of computation
-  category: cs
-
-- id: numeric
-  name: numerical-methods
-  description: Description for numerical methods
-  category: cs
-
-- id: optimisation
-  name: optimisation
-  description: Description for optimisation
-  category: cs
-
-- id: unix
-  name: unix
-  description: Description for unix systems
-  category: cs
-
-- id: infra
-  name: infrastructure
-  description: Description for infrastructure
-  category: cs
-
-- id: backend
-  name: backend
-  description: Description for backend
-  category: cs
-
-- id: frontend
-  name: frontend
-  description: Description for frontend
-  category: cs
-
-- id: crypto
-  name: cryptography
-  description: Description for cryptography
+- id: desktop
+  name: Desktop
+  description: Description for Desktop apps
   category: cs
 
 - id: outreach

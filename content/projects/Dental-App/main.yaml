@@ -2,10 +2,9 @@ id: dental-app
 name: Dental App
 thumbnail: ./unnamed.png
 description: An app designed and developed by students from NUS High School of Mathematics and Science under the guidance of advisors from NUS Dentistry for the purposes of keeping track of people's (primarily children's) dental health on a regular basis.
-allContributors: []
+allContributors: [yetongt, zaynes, mathanc]
 created:
   name: [yetongt, zaynes, mathanc]
-  year: -1
 type: "/Year 6/By Request"
 tags: [android]
 gallery:
