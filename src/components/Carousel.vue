@@ -9,18 +9,20 @@
         fit="contain"
       />
     </div>
-    <div>
-      <VueGallery
-        class="gallery"
-        :images="images"
-        :index="index"
-        @close="index=null"
-      />
-    </div>
+<!--    <div>-->
+<!--      <client-only>-->
+<!--      <VueGallery-->
+<!--        class="gallery"-->
+<!--        :images="images"-->
+<!--        :index="index"-->
+<!--        @close="index=0"-->
+<!--      />-->
+<!--      </client-only>-->
+<!--    </div>-->
 
-    <div class="navigation">
+    <div class="navigation" v-if="gallery && gallery.length > 1">
       <div class="prev button" @click="prev()">
-        <chevron-left-icon size="1.5x"></chevron-left-icon>
+        <chevron-left-icon size="1.5x" ></chevron-left-icon>
       </div>
       <div class="next button" @click="next()">
         <chevron-right-icon size="1.5x"></chevron-right-icon>
@@ -32,16 +34,16 @@
 <script lang="ts">
 import { Component, Vue, Prop  } from 'vue-property-decorator';
 import { ChevronLeftIcon, ChevronRightIcon } from 'vue-feather-icons';
-import VueGallery from 'vue-gallery';
+// import VueGallery from 'vue-gallery';
 
 @Component({
   // @ts-ignore
-  components: { ChevronLeftIcon, ChevronRightIcon, VueGallery },
+  components: { ChevronLeftIcon, ChevronRightIcon  },
 })
 export default class Carousel extends Vue {
   @Prop() gallery!: object[];
   // @ts-ignore
-  images = this.gallery.map(it => it.src);
+  // images = this.gallery.map(it => it.src);
   activeIdx = 0;
   index = null;
 
@@ -51,11 +53,11 @@ export default class Carousel extends Vue {
   }
 
   prev() {
-    this.activeIdx = Math.max(0, this.activeIdx - 1);
+    this.activeIdx = this.activeIdx -1 === 0 ? this.gallery.length -1 : this.activeIdx-1;
   }
 
   next() {
-    this.activeIdx = Math.min(this.gallery.length - 1, this.activeIdx + 1);
+    this.activeIdx = this.activeIdx+1 === this.gallery.length ? 0 : this.activeIdx + 1;
   }
 }
 </script>
