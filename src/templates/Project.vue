@@ -2,7 +2,7 @@
   <Layout>
     <main class="project-showcase">
       <div class="demo">
-        <Carousel :gallery="$page.project.gallery" v-if="$page.project.gallery.length > 0"/>
+        <Carousel :gallery="$page.project.gallery" v-if="$page.project.gallery"/>
 
         <div class="action-tray">
           <a class="button" v-if="$page.project.website" :href="$page.project.website" target="_blank">
@@ -15,7 +15,7 @@
           </a>
         </div>
 
-        <div v-if="sortedTags.length > 0" class="tags">
+        <div v-if="sortedTags.length" class="tags">
           <h5>Tags:</h5>
           <TagChip class="tag-chip"
                    v-for="tag in sortedTags"
@@ -27,8 +27,8 @@
           </TagChip>
         </div>
 
-        <h5 v-if="maintained.length > 0">Maintenance Log:</h5>
-        <div v-if="maintained.length > 0" class="maintenance-log contributors text-left" v-for="maintainers in maintained">
+        <h5 v-if="maintained && maintained.length">Maintenance Log:</h5>
+        <div v-if="maintained" class="maintenance-log contributors text-left" v-for="maintainers in maintained">
           <div class="creators" v-for="(contributorName, idx) in maintainers.name" :key="contributorName.id">
             <ContributorTag :contributor="getContributorById(contributorName)" />
             <span v-if="idx < maintainers.name.length-2">, </span>
@@ -55,7 +55,7 @@
             <div class="text-center" v-if="$page.project.created.year">({{ $page.project.created.year }})</div>
             <hr/>
           </div>
-          <div class="achievements" v-if="$page.project.achievements.length > 0">
+          <div class="achievements" v-if="$page.project.achievements && $page.project.achievements.length">
             <h5>Achievements</h5>
             <ul><li v-for="(a, _) in $page.project.achievements" :key="a.id">{{ a }}</li></ul>
             <hr/>
