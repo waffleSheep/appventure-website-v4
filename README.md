@@ -40,3 +40,8 @@ Use the links above to install the extensions, or follow the steps below:
 * [Vue rules](https://vuejs.github.io/eslint-plugin-vue/rules/)
 * [ESLint extension for vscode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 * [Vetur extension for vscode](https://marketplace.visualstudio.com/items?itemName=octref.vetur)
+
+### 6. Build and Run Docker Container
+
+Build: `docker build -t appventure-website-v4 .`
+Run: `docker run -p 8080:80 appventure-website-v4`
