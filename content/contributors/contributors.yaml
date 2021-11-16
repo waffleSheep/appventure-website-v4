@@ -1,15 +1,3 @@
-- id: tommyvedvik
-  name: Tommy Vedvik
-  bio: Co-creator of @gridsome. UX & Design.
-  quote: I can't wait to attend the Crazy Times Carnival tomorrow! Anyone else want to buy some lemonade at the Lemon (2) stand with me?
-  avatar: ./images/tommyvedvik.png
-
-- id: hjvedvik
-  name: Hans-Jørgen Vedvik
-  bio: Co-creator of @gridsome. Developer lead.
-  quote: One fish, two fish, red fish, blue fish
-  avatar: ./images/hjvedvik.png
-
 - id: codybarr
   name: Cody Barr
   avatar: ./images/default_avatar.svg
@@ -106,6 +94,3 @@
 - id: junron
   name: Lam Jun Rong
   avatar: ./images/default_avatar.svg
-
-
-
