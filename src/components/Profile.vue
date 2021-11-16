@@ -5,6 +5,7 @@
       :alt="name"
       :src="avatar"
       class="picture"
+      v-if="avatar"
     >
     <div class="text">
       <h3>{{ name }}</h3>
@@ -68,16 +69,12 @@ const ProfileProps = Vue.extend({
 
 @Component
 export default class Profile extends ProfileProps {
-
   get avatar() {
-    if (!this.name) {
-      return 'test';
-    }
     const fileName = this.name.toLowerCase().replace(' ', '_');
     try {
-      return require(`@/assets/images/profiles/${fileName}.jpg`); // the module request
+      return require(`@/assets/images/profiles/${fileName}.jpg`);
     } catch {
-      return require(`@/assets/images/placeholder.png`); // the module request
+      return undefined;
     }
   }
 }

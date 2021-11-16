@@ -7,14 +7,14 @@
 
       <h1>The Team</h1>
       <p>We started way back in 2017, but only welcomed the first batch of members in 2019 - we're a young interest group!</p>
-      <p>In year n+1​​​​​​, our activities are overseen by a executive committee consisting of senior members in the interest group formed in year n​​​​​​​. Nominated members at the end of the fourth year are encouraged to submit their applications to join the team.</p>
+      <p>In year n+1, our activities are overseen by a executive committee consisting of senior members in the interest group formed in year n. Nominated members at the end of the fourth year are encouraged to submit their applications to join the team.</p>
       <div class="timeline">
         <div
           class="tab"
           v-for="(profiles, year) in teams"
           :key="year"
           @click="selectedYear = year"
-          :class="[ selectedYear === year ? 'selected' : '' ]"
+          :class="[ selectedYear == year ? 'selected' : '' ]"
         >
           {{ year }}
         </div>
@@ -26,7 +26,7 @@
       >
         <div
           class="team"
-          v-if="selectedYear === year"
+          v-if="selectedYear == year"
         >
           <Profile
             v-for="p in profiles"
@@ -38,8 +38,13 @@
 
       <h1>How's it like in AppVenture?</h1>
       <p>As a member, you will have the option to join the Project or Cybersecurity division (or both).</p>
-      <div class="accordion" @click="toggle($event)">
-        <div class="title">What are the requirements?</div>
+      <div
+        class="accordion"
+        @click="toggle($event)"
+      >
+        <div class="title">
+          What are the requirements?
+        </div>
         <div class="content">
           <p><strong>Project division</strong>: members are expected to complete <strong>at least one project</strong> and present them at our annual project fair.</p>
           <p><strong>Cybersecurity division</strong>: members are expected to compete in <strong>at least one internal or external CTFs</strong>.</p>
@@ -47,8 +52,13 @@
       </div>
       <p>While we have expectations for our members, please don't feel intimidated or limited by them. These guidelines are in place to help both you and us evaluate if we are the right interest group for you. We believe these are easy to achieve as long as you choose to participate in whatever you love to do here.</p>
       <p>You can also look forward to joining us on exclusive learning journeys and sharings conducted by your schoolmates and alumni. Every month, we will also have mini online gatherings where you can share about your latest projects, discuss CS news, and learn from one another while you forge strong inter-level connections with like-minded people. Biannually, we will also hold workshops conducted by interested members and general meetings for networking and sharing of updates.</p>
-      <div class="accordion" @click="toggle($event)">
-        <div class="title">Are these activities compulsory?</div>
+      <div
+        class="accordion"
+        @click="toggle($event)"
+      >
+        <div class="title">
+          Are these activities compulsory?
+        </div>
         <div class="content">
           <p>Apart from the general meetings, no, these activities are <strong>not compulsory</strong>. So don't fret if you are unable to join us every now and then (although we certainly hope you do!), but you should try to participate in them to gain the most out of the interest group.</p>
         </div>
@@ -59,15 +69,22 @@
       <p>AppVenture is all about technical skills, leadership and community service. If you're a current NUS High student who shares our love for Computer Science and belief improving lives using technology, keep an eye out for our yearly recruitment! Even if you do not take Computer Science modules, do apply if you're interested and we will review your application on case-by-case basis. 🙂</p>
 
       <div style="display: flex; justify-content: center">
-        <a class="application-btn enabled" v-if="applicationLink" href="applicationLink">Apply now!</a>
-        <a class="application-btn disabled" v-else href="#">Applications are closed</a>
+        <a
+          class="application-btn enabled"
+          v-if="applicationLink"
+          href="applicationLink"
+        >Apply now!</a>
+        <a
+          class="application-btn disabled"
+          v-else
+          href="#"
+        >Applications are closed</a>
       </div>
 
       <h1>Credits</h1>
       <p>The earliest version of this site was hand-crafted by <a href="https://ambrose.makerforce.io/">Ambrose</a> (Class of 2018) and Wayne (Class of 2017).</p>
       <p>The next iteration was a rewrite in javascript by Xavier (Class of 2019).</p>
       <p>This version, heavily based on earlier works, is designed and maintained by Yue Chen (Class of 2021) and Kannan Vishal (Class of 2023).</p>
-
     </main>
   </Layout>
 </template>
@@ -215,7 +232,7 @@ export default class AboutPage extends Vue {
         ],
         Teachers: [
           { name: 'Mrs Phylliscia Lee', position: 'Overall TIC', description: '' },
-        ]
+        ],
       },
     };
   }
