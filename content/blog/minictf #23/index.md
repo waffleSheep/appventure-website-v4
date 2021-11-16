@@ -4,6 +4,7 @@ slug: minictf000
 author: [codybarr]
 date: 2019-10-08
 tags: [writeup,ctf]
+poster: [codybarr]
 excerpt: 'Infinite loading is an alternative strategy for loading additional nodes/content onto a page without the use of traditional pagination. Infinite loading instead loads the next batch of content when a user scrolls to the bottom of a web page.'
 ---
 

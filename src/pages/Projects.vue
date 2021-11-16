@@ -3,44 +3,21 @@
     <main class="project">
       <div class="project-list">
         <div class="preamble medium-container">
-          <h1 class="text-center">Projects</h1>
-          <p class="lede text-center">Student made projects that improve the quality of life of those in school as well as the community</p>
-        <multiselect class="search-bar"
-                     v-model="searchValue"
-                     placeholder="Add search filter"
-                     label="name"
-                     track-by="id"
-                     :closeOnSelect="false"
-                     :options="options"
-                     :multiple="true"
-                     :taggable="true"
-                     :maxHeight="240"
-                     group-label="type"
-                     group-values="entries"
-                     @tag="addTag"
-        />
-<!--        <div class="filter-bar">-->
-<!--          <multiselect class="platform-filter"-->
-<!--                       v-model="searchValue"-->
-<!--                       placeholder="Platform"-->
-<!--                       label="name"-->
-<!--                       track-by="id"-->
-<!--                       :selectLabel="' '"-->
-<!--                       :closeOnSelect="false"-->
-<!--                       :options="platformOptions"-->
-<!--                       :multiple="true"-->
-<!--                       :searchable="false"-->
-
-<!--          />-->
-<!--        </div>-->
+          <h1 class="text-center">
+            Projects
+          </h1>
+          <p class="lede text-center">
+            Student made projects that improve the quality of life of those in school as well as the community
+          </p>
+          <input class="search-bar" placeholder="Search projects..." v-model="searchValue"></input>
+          <p>{{ searchIndicator }}</p>
         </div>
-        <hr style="margin-bottom: 2rem"/>
+        <hr style="margin-bottom: 2rem">
         <ProjectCard
-          v-for="project in filteredPosts"
+          v-for="project in filteredProjects"
           :key="project.id"
           :project="project"
         />
-
       </div>
     </main>
   </Layout>
@@ -97,84 +74,70 @@ query ProjectPage {
 </page-query>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import ProjectCard from '@/components/ProjectCard.vue';
 import Multiselect from 'vue-multiselect';
-import { Tag } from '../types/Tag';
-import { Contributor } from '../types/Contributor';
 import { Project } from '../types/Project';
+import Fuse from 'fuse.js';
+
+import { debounce } from 'lodash';
 
 @Component({
   components: { ProjectCard, Multiselect },
 })
 
 export default class ProjectsPage extends Vue {
-  searchValue: object[] = [];
-  // platformOptions = [{
-  //   name: 'android',
-  //   id: 'android'
-  // }]
-  options: object[] = [];
   loadedProjects: Project[] = [];
 
-  get filteredPosts() {
-    // @ts-ignore
-    return this.loadedProjects.filter(project => this.filterPost(project)).sort((a,b) => {
-      // @ts-ignore
-      if (a.created.year === null) return 1;
-      // @ts-ignore
-      if (b.created.year === null) return -1;
-      // @ts-ignore
-      return b.created.year - a.created.year
-      }
-    );
+  searchValue: string = "";
+  searchValueIsDirty: boolean = false;
+  isCalculating: boolean = false;
+
+  searcher: Fuse<Project> | undefined;
+  filteredProjects: Project[] = [];
+  filterProjects: CallableFunction = () => {}; // need to assign in created
+
+  get searchIndicator() {
+    if (this.isCalculating) {
+      return '⟳ Searching';
+    } else if (this.searchValueIsDirty) {
+      return '... Typing';
+    } else {
+      return `✓ ${this.filteredProjects.length} result(s) found`;
+    }
   }
 
-  addTag(tag: string) {
-    const obj = {name: tag.trim(), id: tag.trim()};
-    this.searchValue.push(obj);
-  }
-
-  pushTag(tagId: string){
-    // @ts-ignore
-    const res = this.$page.tags.edges.find((n: any) => n.node.id === tagId)
-    if(res)
-      this.searchValue.push(res.node);
+  @Watch("searchValue")
+  watchSearchValue() {
+    this.searchValueIsDirty = true;
+    this.filterProjects();
   }
 
   created() {
     if(this.$route.query.id)
-      this.pushTag(this.$route.query.id as string);
+      this.searchValue = this.$route.query.id as string;
     // @ts-ignore
-    this.loadedProjects.push(...this.$page.projects.edges.map(n => n.node));
-    this.options = [
-      {
-        type: 'Common tags',
-        // @ts-ignore
-        entries: this.$page.tags.edges.map((u: any) => u.node),
-      },
-      {
-        type: 'Authors',
-        // @ts-ignore
-        entries: this.$page.authors.edges.map((u: any) => u.node),
-      }
-    ];
-  }
-  filterPost(project: Project) : boolean {
-    return this.searchValue.length === 0 || this.searchValue.every((tag: any) =>{
-      return project.tags.find((o: Tag) => o.id === tag.id)
-        || project.allContributors.find((o: Contributor) => o.id === tag.id)
-        || project.allContributors.find((o: Contributor) => o.name.includes(tag.name))
-        || project.name.toLowerCase()
-          .concat(" \t " + project.description.toLowerCase())
-          .includes(tag.name.toLowerCase());
+    this.loadedProjects.push(...this.$page.projects.edges.map((n) => n.node));
+    this.searcher = new Fuse<Project>(this.loadedProjects, {
+      threshold: 0.2,
+      keys: ['name', 'allContributors.name', 'tags.name'],
     });
-  }
 
+    this.filteredProjects = this.loadedProjects;
+    this.filterProjects = debounce(() => {
+      if (!this.searcher) return;
+      this.isCalculating = true;
+      this.filteredProjects = this.searchValue.length
+        ? this.searcher.search(this.searchValue).map((r) => r.item) 
+        : this.loadedProjects;
+
+      this.isCalculating = false;
+      this.searchValueIsDirty = false;
+    }, 100);
+  }
 }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"/>
 <style scoped lang="scss">
 .preamble {
   .search-bar {
@@ -183,37 +146,8 @@ export default class ProjectsPage extends Vue {
     width: 105%;
     margin-left: -2%;
     margin-bottom: 1rem;
-  }
-  //.filter-bar {
-  //  display: flex;
-  //  justify-content: flex-end;
-  //  margin-top: 1rem;
-  //  margin-bottom: 1rem;
-  //  .platform-filter {
-  //    width: 10rem;
-  //  }
-  //}
-}
-::v-deep {
-  .multiselect__input {
-    border: none;
-    box-shadow: none;
-  }
 
-  .multiselect__tag {
-    //background: $secondary-color;
-    font-weight: bold;
+    padding: 2px 8px;
   }
-
-  //  .multiselect__option--highlight {
-  //    background: $secondary-color;
-  //  }
-  //  .multiselect__option--highlight:after {
-  //    background: $secondary-color;
-  //  }
-  //  .multiselect__spinner:after, .multiselect__spinner:before{
-  //    background: $secondary-color;
-  //  }
 }
 </style>
-
