@@ -1,23 +1,36 @@
 <template>
   <Layout>
     <main class="home">
-      <div class="banner home-banner medium-container">
-        <div class="info">
-          <h3>An adventure into the work of our CS students</h3>
+      <div
+        class="iframe-container"
+        ref="vpContainer"
+        @click="hideVideo"
+      >
+        <iframe
+          ref="vp"
+          width="560"
+          height="315"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
 
-          <a
-            class="icon-button lab la-instagram"
-            href="https://www.instagram.com/appventure_nush/"
-          />
-          <a
-            class="icon-button lab la-youtube"
-            href="https://www.youtube.com/channel/UCBLSYkLt1hFDL7RL8rEeU0w/"
-          />
+      <div
+        id="home-banner"
+        class="banner medium-container"
+        @click="playVideo"
+      >
+        <div class="info">
+          <h1>AppVenture</h1>
+          <h3>An adventure into the work of our CS students</h3>
         </div>
         <img
-          alt="AppVenture logo"
+          id="nush-animation"
+          alt="NUSH Animation"
           src="@/assets/images/nush_animation.svg"
-          height="256"
         >
       </div>
 
@@ -41,6 +54,34 @@
 </template>
 
 <style lang="scss" scoped>
+.iframe-container {
+  display: none;
+
+  position: fixed;
+  top: 0; left: 0;
+  height: 100%; width: 100%;
+  background-color: rgba(0,0,0,0);
+
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+}
+
+.iframe-container.playing {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0,0,0,0.7);
+  z-index: 100;
+
+  &::after {
+    color: #fff;
+    margin-top: 8px;
+    content: "Click anywhere to exit";
+  }
+}
+
 div.banner {
   border-radius: 1rem;
   color: #fff;
@@ -56,12 +97,54 @@ div.banner {
   .info {
     flex: 1;
 
-    h3,h4 { color: #fff; }
+    h1, h3, h4 { color: #fff; }
   }
 }
-.home-banner {
+
+#home-banner {
   background-color: $primary-color;
+  position: relative;
+
+  &::after {
+    content: '\A';
+    position: absolute;
+    width: 100%; height:100%;
+    top:0; left:0;
+    border-radius: 1rem;
+
+    font-size: 2rem;
+
+    background:rgba(0,0,0,0.6);
+    opacity: 0;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+  }
+
+  &:hover::after {
+    cursor: pointer;
+    opacity: 1;
+    content: "Watch the trailer";
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info h1 {
+    background-color: #fff;
+    color: $primary-color;
+    text-align: center;
+    padding: 6px 8px;
+    width: auto;
+    border-radius: 8px;
+    font-weight: 600;
+  }
 }
+
+#nush-animation {
+  width: 60%;
+}
+
 .ctf-banner {
   width: 58%;
   background-color: $ctf;
@@ -114,5 +197,19 @@ a.icon-button-alt {
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class HomePage extends Vue {}
+export default class HomePage extends Vue {
+  hideVideo() {
+    const vpContainer = this.$refs.vpContainer as HTMLElement;
+    vpContainer.classList.remove('playing');
+    const vp = this.$refs.vp as HTMLIFrameElement;
+    vp.src = "";
+  }
+
+  playVideo() {
+    const vpContainer = this.$refs.vpContainer as HTMLElement;
+    vpContainer.classList.add('playing');
+    const vp = this.$refs.vp as HTMLIFrameElement;
+    vp.src = "https://www.youtube.com/embed/2XkQUIhuKnY?autoplay=1";
+  }
+}
 </script>
