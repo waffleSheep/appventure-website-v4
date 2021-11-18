@@ -16,12 +16,11 @@
       </div>
       <div class="tags">
         <TagChip class="tagChip"
-                 v-for="tag in sortedTags"
+                 v-for="tag in project.tags"
                  :key="tag.id"
                  :tag="tag"
-                 :link-enabled="true"
-                 :contribution-type="Contribution.PROJECT"
-                 :filled="false">
+                 :filled="false"
+                 :link-enabled="false">
         </TagChip>
       </div>
     </div>
@@ -43,9 +42,6 @@ import { Contribution } from '../types/Contribution';
 export default class ProjectCard extends Vue {
   @Prop() project!: Project;
   Contribution = Contribution
-  get sortedTags() : Tag[] {
-      return this.project.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
-  }
 }
 </script>
 

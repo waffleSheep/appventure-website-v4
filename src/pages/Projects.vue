@@ -65,7 +65,7 @@ fragment projectFields on Project {
   maintained {
     ...contributionFields
   }
-  tags {
+  tags (sortBy: "category", order: ASC) {
     id
     name
     category
