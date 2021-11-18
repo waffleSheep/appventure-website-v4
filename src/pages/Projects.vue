@@ -164,7 +164,7 @@ export default class ProjectsPage extends Vue {
   }
 
   created() {
-    if(this.$route.query.search)
+    if (this.$route.query.search)
       this.searchValue = this.$route.query.search as string;
     this.allProjects = {
       // @ts-ignore

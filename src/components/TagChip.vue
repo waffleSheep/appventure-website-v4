@@ -4,32 +4,14 @@
 
 <script lang="ts">
 import { Vue, Prop, Component } from 'vue-property-decorator';
-import { Contribution } from '../types/Contribution';
-
-interface Tag {category: String,name: String, id: String}
+import { Tag } from '@/types/Tag';
 
 @Component
 export default class TagChip extends Vue {
   @Prop() tag!: Tag;
   @Prop({default: true}) filled!: boolean;
   @Prop({default: true}) linkEnabled!: boolean;
-  @Prop({default: Contribution.BLOGPOST}) contributionType!: Contribution;
-
-  get routerLink() {
-    if (this.contributionType === Contribution.PROJECT) {
-        if (this.$route.path === '/projects') {
-          return null;
-        } else {
-          return {path: '/projects', query: {id: this.tag.id }}
-        }
-    }
-    if(this.$route.path === '/blog'){
-      return null;
-    } else {
-      return {path: '/blog', query: {id: this.tag.id}}
-    }
-  }
-
+  @Prop() routerLink?: object;
 
   get cssProps() {
     if (this.filled) {
