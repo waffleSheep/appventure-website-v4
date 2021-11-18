@@ -3,37 +3,29 @@
     <main class="blog">
       <div class="blog-list">
         <div class="preamble medium-container">
-        <h1 class="text-center">Blog posts</h1>
-        <p class="lede text-center">Featuring student-written articles on programming and internal events</p>
-        <multiselect class="search-bar"
-                     v-model="searchValue"
-                     placeholder="Add search filter"
-                     label="name"
-                     track-by="id"
-                     :closeOnSelect="false"
-                     :options="options"
-                     :multiple="true"
-                     :taggable="true"
-                     :maxHeight="200"
-                     group-label="type"
-                     group-values="entries"
-                     @tag="addTag"
-        />
+          <h1 class="text-center">
+            Blog posts
+          </h1>
+          <p class="lede text-center">
+            Featuring student-written articles on programming and internal events
+          </p>
         </div>
-        <hr/>
+        <hr>
         <transition-group name="fade">
           <BlogCard
             class="blog-entries"
-            v-for="post of filteredPosts"
+            v-for="post in filteredPosts"
             :key="post.id"
             :blog-post="post"
-            :tag-link-enabled="false"
           />
         </transition-group>
         <ClientOnly>
-          <infinite-loading @infinite="infiniteHandler" spinner="spiral">
-            <div slot="no-more"/>
-            <div slot="no-results"/>
+          <infinite-loading
+            @infinite="infiniteHandler"
+            spinner="spiral"
+          >
+            <div slot="no-more" />
+            <div slot="no-results" />
           </infinite-loading>
         </ClientOnly>
       </div>
@@ -42,23 +34,7 @@
 </template>
 
 <page-query>
-query BlogPage($page: Int){
-  tags: allTag(sortBy: "name", order: DESC) {
-    edges {
-      node {
-        id
-        name
-      }
-    }
-  }
-  authors: allContributor(sortBy: "name",order: DESC) {
-    edges {
-      node {
-        id
-        name
-      }
-    }
-  }
+query BlogPage($page: Int) {
   posts: allBlogPost(perPage: 10,page: $page) @paginate {
     pageInfo {
       totalPages
@@ -71,15 +47,13 @@ query BlogPage($page: Int){
         path
         date (format: "D. MMMM YYYY")
         excerpt
-        poster
-        content
         author {
           id
           name
           path
           avatar (width: 30)
         }
-        tags {
+        tags (sortBy: "category", order: ASC) {
           id
           name
           category
@@ -92,73 +66,34 @@ query BlogPage($page: Int){
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import BlogCard from '../components/BlogCard.vue';
+import BlogCard from '@/components/BlogCard.vue';
 import { StateChanger } from 'vue-infinite-loading';
-import Multiselect from 'vue-multiselect';
 import { BlogPost } from '../types/BlogPost';
-import { Tag } from '../types/Tag';
-import { Contributor } from '../types/Contributor';
 
 @Component({
   components: {
-    BlogCard, Multiselect
+    BlogCard,
   },
 })
 
 export default class BlogPage extends Vue {
   private loadedPosts: BlogPost[] = [];
   currentPage: number = 1;
-  searchValue: object[] = [];
-  options: object[] = [];
 
   get filteredPosts() {
-    return this.loadedPosts.filter(post => this.filterPost(post));
-  }
-
-  addTag(tag: string) {
-    const obj = {name: tag.trim(), id: tag.trim()};
-    this.searchValue.push(obj);
-  }
-
-  pushTag(tagId: string){
-    // @ts-ignore
-    const res = this.$page.tags.edges.find((n: any) => n.node.id === tagId)
-    if(res)
-      this.searchValue.push(res.node);
+    return this.loadedPosts.filter((post) => this.filterPost(post));
   }
 
   created() {
-    if(this.$route.query.id)
-      this.pushTag(this.$route.query.id as string);
-
     // @ts-ignore
-    this.loadedPosts.push(...this.$page.posts.edges.map(n => n.node));
-    this.options = [
-      {
-        type: 'Common tags',
-        // @ts-ignore
-        entries: this.$page.tags.edges.map((u: any) => u.node),
-      },
-      {
-        type: 'Authors',
-        // @ts-ignore
-        entries: this.$page.authors.edges.map((u: any) => u.node),
-      }
-    ];
+    this.loadedPosts = this.$page.posts.edges.map((n) => n.node);
   }
 
-  filterPost(blogPost: BlogPost) : boolean {
-    return this.searchValue.every((tag: any) =>{
-      return blogPost.tags.find((o: Tag) => o.id === tag.id)
-        || blogPost.author.find((o: Contributor) => o.id === tag.id)
-        || blogPost.author.find((o: Contributor) => o.name.includes(tag.name))
-        || blogPost.title.toLowerCase()
-          .concat(" \t " + blogPost.excerpt.toLowerCase())
-          .includes(tag.name.toLowerCase());
-    });
+  filterPost(blogPost: BlogPost): boolean {
+    return true;
   }
 
-  async infiniteHandler($state: StateChanger) : Promise<void> {
+  async infiniteHandler($state: StateChanger): Promise<void> {
     // @ts-ignore
     if (this.currentPage + 1 > this.$page.posts.pageInfo.totalPages) {
       $state.complete();
@@ -166,7 +101,7 @@ export default class BlogPage extends Vue {
       // @ts-ignore
       const { data } = await $fetch(
         `/blog/${this.currentPage + 1}`
-      )
+      );
       if (data.posts.edges.length) {
         this.currentPage = data.posts.pageInfo.currentPage;
         this.loadedPosts.push(...data.posts.edges);

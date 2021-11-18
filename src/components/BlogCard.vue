@@ -6,7 +6,6 @@
       :to="blogPost.path"
     />
     <div class="info">
-      <g-image v-if="blogPost.poster" class="blog-poster" :src="blogPost.poster"/>
       <h3 class="title">
         {{ blogPost.title }}
       </h3>
@@ -19,37 +18,34 @@
                  v-for="tag in sortedTags"
                  :key="tag.id"
                  :tag="tag"
-                 :link-enabled="tagLinkEnabled">
-        </TagChip>
+                 :link-enabled="false"
+                 />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop  } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import BlogMeta from './BlogMeta.vue';
 import TagChip from './TagChip.vue';
-import { BlogPost } from '../types/BlogPost';
-import { Tag } from '../types/Tag';
+import { BlogPost } from '@/types/BlogPost';
 @Component({
-  components: { BlogMeta,TagChip },
+  components: { BlogMeta, TagChip },
 })
 export default class BlogCard extends Vue {
   @Prop() blogPost!: BlogPost;
-  @Prop({default: true}) tagLinkEnabled!: boolean
 
-  get cardStyle() : object {
-    // @ts-ignore
+  get cardStyle(): object {
     if (this.blogPost.tags.map(it => it.category).includes('cybersec')){
       return {
-        backgroundColor:'#41B883FF',
-        backgroundImage: `url(${require('../assets/images/flag.svg')})`,
+        backgroundColor:'#41B883',
+        backgroundImage: `url(${require('@/assets/images/flag.svg')})`,
       }
     } else {
       return {
         backgroundColor: '#009a90',
-        backgroundImage: `url(${require('../assets/images/nush_logo_asterisk.svg')})`,
+        backgroundImage: `url(${require('@/assets/images/nush_logo_asterisk.svg')})`,
       }
     }
 
@@ -118,6 +114,4 @@ div.blog-card {
 ::v-deep a {
   color: white;
 }
-
-
 </style>

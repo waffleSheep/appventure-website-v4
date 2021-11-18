@@ -17,8 +17,6 @@ module.exports = function (api) {
       }
     `)
 
-    //store.getCollection("Project").addReference("creators", "Contributor");
-
     // contributors
     const authorsPath = path.join(__dirname, 'content/contributors/contributors.yaml');
     const authorsRaw = await fs.readFile(authorsPath, 'utf8');
@@ -47,6 +45,5 @@ module.exports = function (api) {
         ...fields
       });
     });
-
   });
 };

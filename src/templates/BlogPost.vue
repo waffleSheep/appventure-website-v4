@@ -2,23 +2,45 @@
   <Layout>
     <main class="blog-post">
       <div class="blog-header">
-        <g-image class="blog-poster" poster v-if="$page.post.poster" quality="1" :src="$page.post.poster"/>
-        <h1 class="text-center">{{ $page.post.title }}</h1>
-        <BlogMeta class=text-center :post="$page.post"/>
+        <g-image
+          class="blog-poster"
+          poster
+          v-if="$page.post.poster"
+          quality="1"
+          :src="$page.post.poster"
+        />
+        <h1 class="text-center">
+          {{ $page.post.title }}
+        </h1>
+        <BlogMeta
+          class="text-center"
+          :post="$page.post"
+        />
         <div class="tagChips flex-row justify-center">
-        <TagChip class="tagChip"
-                 v-for="tag in sortedTags"
-                 :key="tag.id"
-                 :tag="tag"
-                 :filled="false">
-        </TagChip>
+          <TagChip
+            class="tagChip"
+            v-for="tag in sortedTags"
+            :key="tag.id"
+            :tag="tag"
+            :filled="false"
+            :link-enabled="true"
+            :router-link="{ path: '/blog', query: {search: tag.id} }"
+          />
         </div>
       </div>
-      <hr class="title-rule"/>
+      <hr class="title-rule">
       <div class="blog-body">
-        <p class="lede" v-html="$page.post.excerpt"/>
-        <div class="content" v-html="$page.post.content"/>
-        <div><img class="end-mark text-center" src="@/assets/images/appventure_logo_nobg.svg" alt="end-mark"/></div>
+        <div
+          class="content"
+          v-html="$page.post.content"
+        />
+        <div>
+          <img
+            class="end-mark text-center"
+            src="@/assets/images/appventure_logo_nobg.svg"
+            alt="end-mark"
+          >
+        </div>
       </div>
     </main>
   </Layout>
@@ -29,7 +51,6 @@ query ($id: ID!){
   post: blogPost (id: $id) {
     title
     date (format: "D. MMMM YYYY")
-    poster
     author {
       name
       path
@@ -56,7 +77,7 @@ import { Tag } from '../types/Tag';
   components: { BlogMeta, TagChip },
 })
 export default class BlogPost extends Vue {
-  get sortedTags() : Tag[] {
+  get sortedTags(): Tag[] {
     // @ts-ignore
     return this.$page.post.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
   }
@@ -85,8 +106,9 @@ export default class BlogPost extends Vue {
   margin-top: 3em;
   width: 2.5em;
 }
+
 .title-rule {
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .blog-header {

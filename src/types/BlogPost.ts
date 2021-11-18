@@ -2,14 +2,14 @@ import { Tag } from './Tag';
 import { Contributor } from './Contributor';
 
 interface BlogPost {
-  author: Contributor[],
-  content: string,
-  date: Date,
-  excerpt: string,
-  id: string,
-  path: string,
-  poster: any,
-  title: string,
-  tags: Tag[]
+  id: string;
+  path: string;
+  title: string;
+  date: Date;
+  author: Contributor[];
+  tags: Tag[];
+  excerpt: string;
+  content: string;
 }
-export {BlogPost};
+
+export { BlogPost };
