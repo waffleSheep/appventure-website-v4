@@ -20,7 +20,7 @@
 
       <div
         id="home-banner"
-        class="banner medium-container"
+        class="banner medium-container lab"
         @click="playVideo"
       >
         <div class="info">
@@ -34,24 +34,87 @@
         >
       </div>
 
-      <div class="banner ctf-banner medium-container">
-        <div class="info">
-          <h3>Looking for some CTF action? Join us at ctf.nush.app</h3>
-          <h4>Current event: MiniCTF #15</h4>
-          <a
-            class="icon-button-alt la la-link"
-            href="https://ctf.nush.app"
-          />
-          <!-- TODO: Getting current CTF to be automated -->
-          <a
-            class="icon-button-alt la la-file-alt"
-            href="http://localhost:8080/blog/2019/10/08/minictf000/"
-          />
+      <div
+        id="featured-projects"
+      >
+        <h1 style="text-align: center; margin-top: 128px">Featured</h1>
+        <div class="project-card" v-for="project in featuredProjects" :key="project.id">
+          <g-image class="thumbnail" v-if="project.thumbnail" :src="project.thumbnail" />
+          <div class="content">
+            <h2 class="name">{{ project.name }}</h2>
+            <p class="created">
+              <span v-for="(c, idx) in project.created.contributors" :key="c.id">
+                {{c.name}}<span v-if="idx < project.created.contributors.length-2">, </span>
+                <span v-if="idx === project.created.contributors.length-2">, and </span>
+              </span>
+            </p>
+            <p class="achievements">
+              <span v-for="(a, idx) in project.achievements" :key="a.id">
+                {{a}}
+                <span v-if="idx !== project.achievements.length-1" style="margin: auto 4px">·</span>
+              </span>
+            </p>
+            <g-link
+              class="link"
+              :to="'/projects/' + project.id"
+            >
+              Read more...
+            </g-link>
+          </div>
         </div>
       </div>
     </main>
   </Layout>
 </template>
+
+<page-query>
+query Featured {
+  projects: allProject(filter: { featured: { eq: true } }){
+    edges {
+      node {
+        id
+        thumbnail (height: 256, width: 256)
+        name
+        created {
+          contributors {
+            name
+          }
+        }
+        achievements
+      }
+    }
+  }
+}
+</page-query>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import { Project } from '@/types/Project';
+
+@Component
+export default class HomePage extends Vue {
+  featuredProjects: Project[] = [];
+
+  created() {
+    // @ts-ignore
+    this.featuredProjects = this.$page.projects.edges.map((p) => p.node);
+  }
+
+  hideVideo() {
+    const vpContainer = this.$refs.vpContainer as HTMLElement;
+    vpContainer.classList.remove('playing');
+    const vp = this.$refs.vp as HTMLIFrameElement;
+    vp.src = "";
+  }
+
+  playVideo() {
+    const vpContainer = this.$refs.vpContainer as HTMLElement;
+    vpContainer.classList.add('playing');
+    const vp = this.$refs.vp as HTMLIFrameElement;
+    vp.src = "https://www.youtube.com/embed/2XkQUIhuKnY?autoplay=1";
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .iframe-container {
@@ -89,7 +152,7 @@ div.banner {
   box-shadow: 0 5px 9px 2px rgba(177, 184, 183, 0.93);
 
   padding: 1rem 2rem;
-  margin: 1.5rem;
+  margin: 1.5rem 0;
 
   display: flex;
   flex-flow: row wrap;
@@ -112,7 +175,7 @@ div.banner {
     top:0; left:0;
     border-radius: 1rem;
 
-    font-size: 2rem;
+    font-size: 8rem;
 
     background:rgba(0,0,0,0.6);
     opacity: 0;
@@ -123,7 +186,7 @@ div.banner {
   &:hover::after {
     cursor: pointer;
     opacity: 1;
-    content: "Watch the trailer";
+    content: "\f167";
 
     display: flex;
     align-items: center;
@@ -150,66 +213,39 @@ div.banner {
   background-color: $ctf;
 }
 
-a.icon-button {
-  text-decoration: none;
-  font-size: 2rem;
+.project-card {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
 
-  border: .2rem solid #fff;
-  border-radius: 50%;
+  border-radius: 1rem;
+  margin-top: 128px;
 
-  padding: .2rem;
+  .thumbnail {
+    border-radius: 1rem;
+    box-shadow: 1px 1px 1px 1px #eee;
+  }
 
-  margin-right: .8rem;
-
-  background-color: #fff;
-  color: $primary-color;
-  transition: all ease-in-out .2s;
-
-  &:hover {
-    background-color: $primary-color;
-    color: #fff;
+  .content {
+    flex: 1;
+    .name { margin-top: 0; }
+    .created { font-style: italic; }
   }
 }
-a.icon-button-alt {
-  text-decoration: none;
-  font-size: 2rem;
 
-  border: .2rem solid #fff;
-  border-radius: 50%;
+.project-card:nth-child(even) {
+  .content {
+    margin-left: 64px;
+    text-align: left;
+  }
+}
 
-  padding: .2rem;
-
-  margin-right: .8rem;
-
-  background-color: #fff;
-  color: $ctf;
-  transition: all ease-in-out .2s;
-
-  &:hover {
-    background-color: $ctf;
-    color: #fff;
+.project-card:nth-child(odd) {
+  flex-direction: row-reverse;
+  .content {
+    margin-right: 64px;
+    text-align: right;
   }
 }
 
 </style>
-
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-
-@Component
-export default class HomePage extends Vue {
-  hideVideo() {
-    const vpContainer = this.$refs.vpContainer as HTMLElement;
-    vpContainer.classList.remove('playing');
-    const vp = this.$refs.vp as HTMLIFrameElement;
-    vp.src = "";
-  }
-
-  playVideo() {
-    const vpContainer = this.$refs.vpContainer as HTMLElement;
-    vpContainer.classList.add('playing');
-    const vp = this.$refs.vp as HTMLIFrameElement;
-    vp.src = "https://www.youtube.com/embed/2XkQUIhuKnY?autoplay=1";
-  }
-}
-</script>

@@ -4,7 +4,7 @@ thumbnail: ./unnamed.png
 description: An app designed and developed by students from NUS High School of Mathematics and Science under the guidance of advisors from NUS Dentistry for the purposes of keeping track of people's (primarily children's) dental health on a regular basis.
 allContributors: [yetongt, zaynes, mathanc]
 created:
-  name: [yetongt, zaynes, mathanc]
+  contributors: [yetongt, zaynes, mathanc]
 type: "/Year 6/By Request"
 tags: [android]
 gallery:
@@ -14,3 +14,4 @@ gallery:
   - ./dental-app-4.jpg
   - ./dental-app-5.jpg
   - ./dental-app-6.jpg
+featured: true
