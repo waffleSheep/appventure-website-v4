@@ -74,15 +74,13 @@ query CybersecPage {
         path
         date (format: "D. MMMM YYYY")
         excerpt
-        poster
-        content
         author {
           id
           name
           path
           avatar (width: 30)
         }
-        tags {
+        tags (sortBy: "category", order: ASC) {
           id
           name
           category
@@ -95,29 +93,35 @@ query CybersecPage {
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { BlogPost } from '../types/BlogPost';
-import BlogCard from '../components/BlogCard.vue';
+import { BlogPost } from '@/types/BlogPost';
+import BlogCard from '@/components/BlogCard.vue';
 
 @Component({
   components: {
     BlogCard
   },
 })
+
 export default class CybersecPage extends Vue {
   selectedSection = 'Write-ups';
-  get cybersecBlogPosts(): BlogPost[] {
+  posts: BlogPost[] = [];
+
+  created() {
     // @ts-ignore
-    console.log(this.$page.posts.edges.map(it => it.node))
-    // @ts-ignore
-      return this.$page.posts.edges.map(it => it.node).filter(it => it.tags.map(it => it.category).includes('cybersec'))
-        // @ts-ignore
-          .filter(it => !it.tags.map(it => it.id).includes('writeup'));
+    this.posts = this.$page.posts.edges.map((it) => it.node);
   }
+
+  /* NOTE: Deep filtering is not available using GraphQL yet */
+  get cybersecBlogPosts(): BlogPost[] {
+    return this.posts
+      .filter(it => it.tags.map(it => it.category).includes('cybersec'))
+      .filter(it => !it.tags.map(it => it.id).includes('writeup'));
+  }
+
   get cybersecWriteups(): BlogPost[] {
-    // @ts-ignore
-    console.log(this.$page.posts.edges.map(it => it.node))
-    // @ts-ignore
-    return this.$page.posts.edges.map(it => it.node).filter(it => it.tags.map(it => it.id).includes('writeup'));
+    return this.posts
+      .filter(it => it.tags.map(it => it.category).includes('cybersec'))
+      .filter(it => it.tags.map(it => it.id).includes('writeup'));
   }
 }
 </script>
