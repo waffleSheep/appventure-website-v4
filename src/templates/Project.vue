@@ -215,7 +215,7 @@ export default class Project extends Vue {
         border-radius: .4rem;
         width: 46%;
 
-        // temporary fix avoid accidental select when going through carousel
+        // hack to avoid accidental select when going through carousel
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -244,6 +244,13 @@ export default class Project extends Vue {
         //font-style: italic;
       }
     }
+  }
+
+
+}
+@media (max-width: 620px) {
+  .project-showcase {
+    flex-flow: column wrap;
   }
 }
 </style>
