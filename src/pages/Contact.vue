@@ -11,7 +11,16 @@
           For admission and general school hotlines, visit our
           <a href="http://www.nushigh.edu.sg/others/contact-us">school website</a>.
         </p>
-
+        <p>
+          <a
+            class="icon-button lab la-instagram"
+            href="https://www.instagram.com/appventure_nush/"
+          />
+          <a
+            class="icon-button lab la-youtube"
+            href="https://www.youtube.com/channel/UCBLSYkLt1hFDL7RL8rEeU0w/"
+          />
+        </p>
       </div>
 
       <hr/>
@@ -31,5 +40,45 @@ export default class ContactPage extends Vue {}
 </script>
 
 <style scoped lang="scss">
+a.icon-button {
+  text-decoration: none;
+  font-size: 2rem;
 
+  border: .2rem solid #fff;
+  border-radius: 50%;
+
+  padding: .2rem;
+
+  margin-right: .8rem;
+
+  background-color: #fff;
+  color: $primary-color;
+  transition: all ease-in-out .2s;
+
+  &:hover {
+    background-color: $primary-color;
+    color: #fff;
+  }
+}
+a.icon-button-alt {
+  text-decoration: none;
+  font-size: 2rem;
+
+  border: .2rem solid #fff;
+  border-radius: 50%;
+
+  padding: .2rem;
+
+  margin-right: .8rem;
+
+  background-color: #fff;
+  color: $ctf;
+  transition: all ease-in-out .2s;
+
+  &:hover {
+    background-color: $ctf;
+    color: #fff;
+  }
+}
 </style>
+
