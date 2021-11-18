@@ -9,8 +9,17 @@
           <p class="lede text-center">
             Featuring student-written articles on programming and internal events
           </p>
+
+          <div class="filter-box">
+            <input
+              class="search-bar"
+              placeholder="Search posts..."
+              v-model="searchValue"
+            >
+            <p>{{ searchIndicator }}</p>
+          </div>
         </div>
-        <hr>
+
         <transition-group name="fade">
           <BlogCard
             class="blog-entries"
@@ -65,10 +74,13 @@ query BlogPage($page: Int) {
 </page-query>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import BlogCard from '@/components/BlogCard.vue';
 import { StateChanger } from 'vue-infinite-loading';
 import { BlogPost } from '../types/BlogPost';
+import Fuse from 'fuse.js';
+
+import { debounce } from 'lodash';
 
 @Component({
   components: {
@@ -77,20 +89,58 @@ import { BlogPost } from '../types/BlogPost';
 })
 
 export default class BlogPage extends Vue {
-  private loadedPosts: BlogPost[] = [];
+  loadedPosts: BlogPost[] = [];
   currentPage: number = 1;
 
-  get filteredPosts() {
-    return this.loadedPosts.filter((post) => this.filterPost(post));
+  searchValue: string = "";
+  searchValueIsDirty: boolean = false;
+  isCalculating: boolean = false;
+
+  searcher: Fuse<BlogPost> | undefined;
+  filteredPosts: BlogPost[] = [];
+  filterPosts: CallableFunction = () => {}; // need to assign in created
+
+  get searchIndicator(): string {
+    if (this.isCalculating) {
+      return '⟳ Searching';
+    } else if (this.searchValueIsDirty) {
+      return '... Typing';
+    } else {
+      return `✓ ${this.filteredPosts.length} result(s) found`;
+    }
+  }
+
+  updateSearcher() {
+    this.searcher = new Fuse<BlogPost>(this.loadedPosts, {
+      threshold: 0.2,
+      keys: ['name', 'author.name', 'tags.name'],
+    });
+    this.isCalculating = true;
+    this.filterPosts  = debounce(() => {
+      if (!this.searcher) return;
+      this.isCalculating = true;
+      this.filteredPosts = this.searchValue.length
+        ? this.searcher.search(this.searchValue).map((r) => r.item) 
+        : this.loadedPosts;
+
+      this.isCalculating = false;
+      this.searchValueIsDirty = false;
+    }, 100);
+    this.filterPosts();
+  }
+
+  @Watch("searchValue")
+  watchSearchValue() {
+    this.searchValueIsDirty = true;
+    this.filterPosts();
   }
 
   created() {
+    if (this.$route.query.search)
+      this.searchValue = this.$route.query.search as string;
     // @ts-ignore
     this.loadedPosts = this.$page.posts.edges.map((n) => n.node);
-  }
-
-  filterPost(blogPost: BlogPost): boolean {
-    return true;
+    this.updateSearcher();
   }
 
   async infiniteHandler($state: StateChanger): Promise<void> {
@@ -112,44 +162,28 @@ export default class BlogPage extends Vue {
     }
   }
 }
-
 </script>
-<style src="vue-multiselect/dist/vue-multiselect.min.css"/>
-<style scoped lang="scss">
 
+<style scoped lang="scss">
 .blog-entries {
   margin: 0 0 2rem;
 }
-hr {
-  margin: 2rem 0;
+
+.filter-box {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
+
 .search-bar {
-  max-height: inherit;
   font-family: $font-family;
-  width: 105%;
-  margin-left: -2%;
-  margin-bottom: 2rem;
+  text-align: center;
 
-  &::v-deep {
-    .multiselect__input {
-      border: none;
-      box-shadow: none;
-    }
-    .multiselect__tag {
-      //background: $secondary-color;
-      font-weight: bold;
-    }
-  //  .multiselect__option--highlight {
-  //    background: $secondary-color;
-  //  }
-  //  .multiselect__option--highlight:after {
-  //    background: $secondary-color;
-  //  }
-  //  .multiselect__spinner:after, .multiselect__spinner:before{
-  //    background: $secondary-color;
-  //  }
-  }
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid $primary-color;
+  border-radius: 32px;
+
+  margin-bottom: 8px;
 }
-
-
 </style>
