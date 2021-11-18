@@ -74,7 +74,7 @@ query CybersecPage {
         path
         date (format: "D. MMMM YYYY")
         excerpt
-        poster
+#        poster
         content
         author {
           id

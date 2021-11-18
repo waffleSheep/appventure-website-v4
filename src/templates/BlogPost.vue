@@ -29,7 +29,7 @@ query ($id: ID!){
   post: blogPost (id: $id) {
     title
     date (format: "D. MMMM YYYY")
-    poster
+#    poster
     author {
       name
       path
