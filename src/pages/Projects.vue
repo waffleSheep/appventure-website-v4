@@ -9,7 +9,11 @@
           <p class="lede text-center">
             Student made projects that improve the quality of life of those in school as well as the community
           </p>
-          <input class="search-bar" placeholder="Search projects..." v-model="searchValue"></input>
+          <input
+            class="search-bar"
+            placeholder="Search projects..."
+            v-model="searchValue"
+          >
           <p>{{ searchIndicator }}</p>
         </div>
         <hr style="margin-bottom: 2rem">
@@ -55,7 +59,10 @@ query ProjectPage {
         name
         description
         created {
-          name
+          contributors {
+            id
+            name
+          }
           year
         }
         maintained {
@@ -76,14 +83,13 @@ query ProjectPage {
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import ProjectCard from '@/components/ProjectCard.vue';
-import Multiselect from 'vue-multiselect';
 import { Project } from '../types/Project';
 import Fuse from 'fuse.js';
 
 import { debounce } from 'lodash';
 
 @Component({
-  components: { ProjectCard, Multiselect },
+  components: { ProjectCard },
 })
 
 export default class ProjectsPage extends Vue {

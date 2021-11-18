@@ -4,6 +4,20 @@ const yaml = require('js-yaml')
 
 module.exports = function (api) {
   api.loadSource(async (store) => {
+    // projects
+    store.addSchemaTypes(`
+      type Creation {
+        contributors: [Contributor] @reference(by: "id")
+        year: Int
+      }
+
+      type Project implements Node @infer {
+        created: Creation
+      }
+    `)
+
+    //store.getCollection("Project").addReference("creators", "Contributor");
+
     // contributors
     const authorsPath = path.join(__dirname, 'content/contributors/contributors.yaml');
     const authorsRaw = await fs.readFile(authorsPath, 'utf8');

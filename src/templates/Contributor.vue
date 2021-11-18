@@ -95,7 +95,10 @@ query ($id: ID!) {
             thumbnail (height: 128, width: 128)
             name
             created {
-              name
+              contributors {
+                id
+                name
+              }
               year
             }
             maintained {

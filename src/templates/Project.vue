@@ -47,10 +47,10 @@
           <hr/>
           <div class="contributors text-left">
             <h5>Created by:</h5>
-            <div class="creators" v-for="(creator, idx) in creators" :key="creator.id">
+            <div class="creators" v-for="(creator, idx) in $page.project.created.contributors" :key="creator.id">
               <ContributorTag :contributor="creator" />
-              <span v-if="idx < creators.length-2">, </span>
-              <span v-if="idx === creators.length-2">, and </span>
+              <span v-if="idx < $page.project.created.contributors.length-2">, </span>
+              <span v-if="idx === $page.project.created.contributors.length-2">, and </span>
             </div>
             <div class="text-center" v-if="$page.project.created.year">({{ $page.project.created.year }})</div>
             <hr/>
@@ -82,7 +82,11 @@ query ($id: ID!){
       avatar
     }
     created {
-      name
+      contributors {
+        id
+        name
+        avatar
+      }
       year
     }
     maintained {
@@ -130,15 +134,6 @@ import { Contribution } from '../types/Contribution';
 })
 export default class Project extends Vue {
   Contribution = Contribution
-  get creators() : Contributor[] {
-    // @ts-ignore
-    return this.$page.project.created.name
-      // @ts-ignore
-      .map((contId: string) => this.$page.authors.edges
-        .map((it: any) => it.node)
-        .find((it: any) => it.id === contId))
-      .filter((it: any) => it);
-  }
   get sortedTags() : Tag[] {
     // @ts-ignore
     return this.$page.project.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
