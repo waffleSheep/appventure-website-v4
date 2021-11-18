@@ -23,16 +23,16 @@
                    :tag="tag"
                    :filled="false"
                    :link-enabled="true"
-          :contribution-type="Contribution.PROJECT">
+                   :contribution-type="Contribution.PROJECT">
           </TagChip>
         </div>
 
         <h5 v-if="maintained && maintained.length">Maintenance Log:</h5>
         <div v-if="maintained" class="maintenance-log contributors text-left" v-for="maintainers in maintained">
-          <div class="creators" v-for="(contributorName, idx) in maintainers.name" :key="contributorName.id">
-            <ContributorTag :contributor="getContributorById(contributorName)" />
-            <span v-if="idx < maintainers.name.length-2">, </span>
-            <span v-if="idx === maintainers.name.length-2">, and </span>
+          <div class="creators" v-for="(contributor, idx) in maintainers.contributors" :key="contributor.id">
+            <ContributorTag :contributor="contributor" />
+            <span v-if="idx < maintainers.contributors.length-2">, </span>
+            <span v-if="idx === maintainers.contributors.length-2">, and </span>
           </div>
           <div class="text-center">({{ maintainers.year }})</div>
           <hr/>
@@ -70,49 +70,42 @@
 </template>
 
 <page-query>
-query ($id: ID!){
-  project (id: $id) {
+fragment contributionFields on Contribution {
+  contributors {
     id
     name
-    description
-    allContributors {
-      id
-      name
-      path
-      avatar
-    }
-    created {
-      contributors {
-        id
-        name
-        avatar
-      }
-      year
-    }
-    maintained {
-      name
-      year
-    }
-    tags {
-      id
-      name
-      category
-    }
-    type
-    gallery
-    achievements
-    website
-    attachment
+    path
+    avatar (width: 30)
   }
-  authors: allContributor {
-    edges {
-      node {
-        id
-        name
-        path
-        avatar (width: 30)
-      }
-    }
+  year
+}
+
+fragment projectFields on Project {
+  id
+  thumbnail (height: 128, width: 128)
+  name
+  description
+  created {
+    ...contributionFields
+  }
+  maintained {
+    ...contributionFields
+  }
+  tags {
+    id
+    name
+    category
+  }
+  type
+  gallery
+  achievements
+  website
+  attachment
+}
+
+query ($id: ID!) {
+  project (id: $id) {
+    ...projectFields
   }
 }
 </page-query>
@@ -122,32 +115,26 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import Carousel from '@/components/Carousel.vue';
 import { GlobeIcon, DownloadIcon } from 'vue-feather-icons';
-import ContributorTag from '../components/ContributorTag.vue';
-import { Contributor } from '../types/Contributor';
-import TagChip from '../components/TagChip.vue';
-import { Tag } from '../types/Tag';
-import { Contribution } from '../types/Contribution';
+import ContributorTag from '@/components/ContributorTag.vue';
+import TagChip from '@/components/TagChip.vue';
+
+import { Contributor } from '@/types/Contributor';
+import { Tag } from '@/types/Tag';
+import { Contribution } from '@/types/Project';
 
 @Component({
   // @ts-ignore
   components: { TagChip, ContributorTag, Carousel, GlobeIcon, DownloadIcon },
 })
 export default class Project extends Vue {
-  Contribution = Contribution
-  get sortedTags() : Tag[] {
+  get sortedTags(): Tag[] {
     // @ts-ignore
     return this.$page.project.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
   }
 
-  get maintained() : object {
+  get maintained(): Contribution[] {
     // @ts-ignore
     return this.$page.project.maintained;
-  }
-
-  getContributorById(id: string): Contributor {
-    // @ts-ignore
-    const tmp = this.$page.authors.edges.find((u: any) => u.node.id === id)
-    return tmp && tmp.node;
   }
 }
 </script>

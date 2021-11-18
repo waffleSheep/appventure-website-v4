@@ -6,13 +6,14 @@ module.exports = function (api) {
   api.loadSource(async (store) => {
     // projects
     store.addSchemaTypes(`
-      type Creation {
+      type Contribution {
         contributors: [Contributor] @reference(by: "id")
         year: Int
       }
 
       type Project implements Node @infer {
-        created: Creation
+        created: Contribution
+        maintained: [Contribution]
       }
     `)
 

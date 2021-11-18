@@ -1,7 +1,7 @@
 import { Tag } from './Tag';
 import { Contributor } from './Contributor';
 
-interface Creation {
+interface Contribution {
   contributors: Contributor;
   year: number;
 }
@@ -11,8 +11,8 @@ interface Project {
   name: string;
   thumbnail: File;
   description: string;
-  created: Creation;
-  maintained: object[];
+  created: Contribution;
+  maintained: Contribution[];
   type: string;
   tags: Tag[];
   gallery: File[];
@@ -22,4 +22,4 @@ interface Project {
   featured?: boolean;
 }
 
-export { Project, Creation };
+export { Project, Contribution };

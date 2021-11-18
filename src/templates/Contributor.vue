@@ -102,7 +102,10 @@ query ($id: ID!) {
               year
             }
             maintained {
-              name
+              contributors {
+                id
+                name
+              }
               year
             }
             tags {

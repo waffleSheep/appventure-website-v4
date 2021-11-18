@@ -14,11 +14,10 @@ description: |
           - Inventory Manager
   - Auto updater
 
-allContributors: [lyc]
 created:
-  name: [lyc]
+  contributors: [lyc]
   year: 2018
-type: "/Year 3/CS Module"
+type: "/Module/Year 3"
 tags: [java]
 gallery:
   - ./pic1.png

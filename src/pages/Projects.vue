@@ -9,14 +9,30 @@
           <p class="lede text-center">
             Student made projects that improve the quality of life of those in school as well as the community
           </p>
-          <input
-            class="search-bar"
-            placeholder="Search projects..."
-            v-model="searchValue"
-          >
-          <p>{{ searchIndicator }}</p>
+
+          <div class="filter-box">
+            <div class="category-filter">
+              <div
+                class="tab"
+                v-for="category in Object.keys(allProjects)"
+                :key="category"
+                @click="loadedCategory = category"
+                :class="[ loadedCategory == category ? 'selected' : '' ]"
+              >
+                {{ category.charAt(0).toUpperCase() + category.slice(1).toLowerCase() }}
+              </div>
+              <hr style="margin-bottom: 2rem">
+            </div>
+
+            <input
+              class="search-bar"
+              placeholder="Search projects..."
+              v-model="searchValue"
+            >
+            <p>{{ searchIndicator }}</p>
+          </div>
         </div>
-        <hr style="margin-bottom: 2rem">
+
         <ProjectCard
           v-for="project in filteredProjects"
           :key="project.id"
@@ -28,52 +44,55 @@
 </template>
 
 <page-query>
+fragment contributionFields on Contribution {
+  contributors {
+    id
+    name
+    path
+    avatar (width: 30)
+  }
+  year
+}
+
+fragment projectFields on Project {
+  id
+  thumbnail (height: 128, width: 128)
+  name
+  description
+  created {
+    ...contributionFields
+  }
+  maintained {
+    ...contributionFields
+  }
+  tags {
+    id
+    name
+    category
+  }
+}
+
 query ProjectPage {
-  tags: allTag(sortBy: "name", order: DESC) {
+  moduleProjects: allProject(filter: { type: { regex: "^\/Module\/.*" } }) {
     edges {
       node {
-        id
-        name
+        ...projectFields
       }
     }
   }
-  authors: allContributor(sortBy: "name",order: DESC) {
+
+  competitionProjects: allProject(filter: { type: { regex: "^\/Competition\/.*" } }) {
     edges {
       node {
-        id
-        name
+        ...projectFields
       }
     }
   }
-  projects: allProject {
+
+  appventureProjects: allProject(filter: { type: { regex: "^\/AppVenture\/" } }) {
     edges {
       node {
-        allContributors {
-          id
-          name
-          path
-          avatar (width: 30)
-        }
-        id
-        thumbnail (height: 128, width: 128)
-        name
-        description
-        created {
-          contributors {
-            id
-            name
-          }
-          year
-        }
-        maintained {
-          name
-          year
-        }
-        tags {
-          id
-          name
-          category
-        }
+        ...projectFields
       }
     }
   }
@@ -93,7 +112,8 @@ import { debounce } from 'lodash';
 })
 
 export default class ProjectsPage extends Vue {
-  loadedProjects: Project[] = [];
+  allProjects: { [category: string]: Project[] } = {};
+  loadedCategory: string = 'module';
 
   searchValue: string = "";
   searchValueIsDirty: boolean = false;
@@ -102,8 +122,12 @@ export default class ProjectsPage extends Vue {
   searcher: Fuse<Project> | undefined;
   filteredProjects: Project[] = [];
   filterProjects: CallableFunction = () => {}; // need to assign in created
+  
+  get loadedProjects(): Project[] {
+    return this.allProjects[this.loadedCategory];
+  }
 
-  get searchIndicator() {
+  get searchIndicator(): string {
     if (this.isCalculating) {
       return '⟳ Searching';
     } else if (this.searchValueIsDirty) {
@@ -113,23 +137,13 @@ export default class ProjectsPage extends Vue {
     }
   }
 
-  @Watch("searchValue")
-  watchSearchValue() {
-    this.searchValueIsDirty = true;
-    this.filterProjects();
-  }
-
-  created() {
-    if(this.$route.query.id)
-      this.searchValue = this.$route.query.id as string;
-    // @ts-ignore
-    this.loadedProjects.push(...this.$page.projects.edges.map((n) => n.node));
+  @Watch("loadedCategory")
+  updateSearcher() {
     this.searcher = new Fuse<Project>(this.loadedProjects, {
       threshold: 0.2,
-      keys: ['name', 'allContributors.name', 'tags.name'],
+      keys: ['name', 'created.contributors.name', 'tags.name'],
     });
-
-    this.filteredProjects = this.loadedProjects;
+    this.isCalculating = true;
     this.filterProjects = debounce(() => {
       if (!this.searcher) return;
       this.isCalculating = true;
@@ -140,20 +154,71 @@ export default class ProjectsPage extends Vue {
       this.isCalculating = false;
       this.searchValueIsDirty = false;
     }, 100);
+    this.filterProjects();
+  }
+
+  @Watch("searchValue")
+  watchSearchValue() {
+    this.searchValueIsDirty = true;
+    this.filterProjects();
+  }
+
+  created() {
+    if(this.$route.query.search)
+      this.searchValue = this.$route.query.search as string;
+    this.allProjects = {
+      // @ts-ignore
+      module: this.$page.moduleProjects.edges.map((n) => n.node),
+      // @ts-ignore
+      competition: this.$page.competitionProjects.edges.map((n) => n.node),
+      // @ts-ignore
+      appventure: this.$page.appventureProjects.edges.map((n) => n.node),
+    }
+
+    this.updateSearcher();
   }
 }
 </script>
 
 <style scoped lang="scss">
-.preamble {
-  .search-bar {
-    max-height: inherit;
-    font-family: $font-family;
-    width: 105%;
-    margin-left: -2%;
-    margin-bottom: 1rem;
+.filter-box {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
 
-    padding: 2px 8px;
+.category-filter {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-bottom: 16px;
+
+  .tab {
+    padding: .2rem .4rem;
+    margin: 0 .4rem;
+    border-radius: .4rem;
+
+    &:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+    &.selected {
+      color: $primary-color;
+      font-weight: bold;
+    }
   }
+}
+
+.search-bar {
+  font-family: $font-family;
+  text-align: center;
+
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid $primary-color;
+  border-radius: 32px;
+
+  margin-bottom: 8px;
 }
 </style>
