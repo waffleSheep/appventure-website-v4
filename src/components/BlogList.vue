@@ -32,7 +32,7 @@ query ($page: Int){
         path
         date (format: "D. MMMM YYYY")
         excerpt
-        poster
+#        poster
         content
         author {
           id
