@@ -13,8 +13,9 @@
         {{ $static.metadata.siteName }}
         <span class="tiny-text">by NUS High</span>
       </g-link>
-      <span style="flex: 1" />
-      <nav class="nav">
+
+      <i class="nav-button las la-bars" @click="toggleNav()" />
+      <nav class="nav" ref="nav" @click="toggleNav()">
         <g-link
           class="nav__link"
           to="/about"
@@ -83,7 +84,18 @@
 </template>
 
 <script lang="ts">
-  export default {};
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class DefaultLayout extends Vue {
+  toggleNav() {
+    let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (w <= 700) {
+      const nav = this.$refs.nav as HTMLElement;
+      nav.classList.toggle('visible');
+    }
+  }
+}
 </script>
 
 <static-query>
@@ -112,6 +124,17 @@
 }
 
 .header {
+  background-color: #fff;
+  position: sticky;
+  top: -16px;
+  z-index: 9001;
+  margin-top: -16px;
+
+  border: 2px solid $primary-color;
+  border-radius: 16px;
+
+  padding: 8px 16px 0 16px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -138,6 +161,52 @@
       padding-top: .4rem;
       padding-left: .2rem;
       font-size: .6rem;
+    }
+  }
+
+  .nav-button {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    nav {
+      display: none;
+    }
+
+    nav.visible {
+      position: fixed;
+      width: 100%; height: 100%;
+      top: 0; left: 0;
+
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: stretch;
+      justify-content: center;
+      padding: 32px;
+      
+      background: rgba(0,0,0,0.9);
+
+      .nav__link {
+        color: #fff;
+        text-align: center;
+        border: 2px solid #fff;
+        margin: 8px 0;
+      }
+
+      &::after {
+        color: #fff;
+        content: "Click anywhere to dismiss";
+        text-align: center;
+        margin: 16px 0;
+      }
+    }
+
+    .nav-button {
+      color: $primary-color;
+      display: block;
+      font-size: 1.6rem;
     }
   }
 }
