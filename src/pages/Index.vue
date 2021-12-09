@@ -6,16 +6,16 @@
         ref="vpContainer"
         @click="hideVideo"
       >
-        <iframe
-          ref="vp"
-          width="560"
-          height="315"
-          src=""
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        />
+        <div class="iframe-wrapper">
+          <iframe
+            ref="vp"
+            src=""
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          />
+        </div>
       </div>
 
       <div
@@ -25,7 +25,7 @@
       >
         <div class="info">
           <h1>AppVenture</h1>
-          <h3>An adventure into the work of our CS students</h3>
+          <h3>WATCH: An adventure into the work of our CS students</h3>
         </div>
         <img
           id="nush-animation"
@@ -36,8 +36,9 @@
 
       <div
         id="featured-projects"
+        class="featured-section"
       >
-        <h1 style="text-align: center; margin-top: 128px">Featured</h1>
+        <h1 class="section-header">Featured</h1>
         <div class="project-card" v-for="project in featuredProjects" :key="project.id">
           <g-image class="thumbnail" v-if="project.thumbnail" :src="project.thumbnail" />
           <div class="content">
@@ -111,12 +112,44 @@ export default class HomePage extends Vue {
     const vpContainer = this.$refs.vpContainer as HTMLElement;
     vpContainer.classList.add('playing');
     const vp = this.$refs.vp as HTMLIFrameElement;
-    vp.src = "https://www.youtube.com/embed/2XkQUIhuKnY?autoplay=1";
+    vp.src = "https://www.youtube.com/embed/2XkQUIhuKnY?autoplay=1&rel=0";
   }
 }
 </script>
 
 <style lang="scss" scoped>
+/* 480px, 768px, 992px, 1200px */
+
+#home-banner {
+  background-color: $primary-color;
+  position: relative;
+
+  border-radius: 1rem;
+  box-shadow: 0 5px 9px 2px rgba(177, 184, 183, 0.93);
+
+  padding: 1rem 2rem;
+  margin: 1.5rem 0;
+
+  display: flex;
+  flex-flow: row wrap;
+
+  .info { flex: 1; }
+  .info h1, h3, h4 { color: #fff; }
+  .info h1 {
+    background-color: #fff;
+    color: $primary-color;
+    text-align: center;
+    padding: 6px 8px;
+    width: auto;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+
+  #nush-animation {
+    @media (min-width: 768px) { width: 60%; }
+  }
+}
+
 .iframe-container {
   display: none;
 
@@ -127,6 +160,29 @@ export default class HomePage extends Vue {
 
   transition: all 0.2s;
   -webkit-transition: all 0.2s;
+
+  .iframe-wrapper {
+    width: 560px;
+    height: 315px;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 560px) {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%;
+
+      iframe {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
 }
 
 .iframe-container.playing {
@@ -145,81 +201,60 @@ export default class HomePage extends Vue {
   }
 }
 
-div.banner {
-  border-radius: 1rem;
-  color: #fff;
+/* Laptop */
+@media (min-width: 1200px) {
+  #home-banner {
+    &::after {
+      color: #fff;
+      content: '\A';
+      position: absolute;
+      width: 100%; height:100%;
+      top:0; left:0;
+      border-radius: 1rem;
 
-  box-shadow: 0 5px 9px 2px rgba(177, 184, 183, 0.93);
+      font-size: 8rem;
 
-  padding: 1rem 2rem;
-  margin: 1.5rem 0;
+      background:rgba(0,0,0,0.6);
+      opacity: 0;
+      transition: all 0.2s;
+      -webkit-transition: all 0.2s;
+    }
 
-  display: flex;
-  flex-flow: row wrap;
+    &:hover::after {
+      cursor: pointer;
+      opacity: 1;
+      content: "\f167";
 
-  .info {
-    flex: 1;
-
-    h1, h3, h4 { color: #fff; }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 
-#home-banner {
-  background-color: $primary-color;
-  position: relative;
-
-  &::after {
-    content: '\A';
-    position: absolute;
-    width: 100%; height:100%;
-    top:0; left:0;
-    border-radius: 1rem;
-
-    font-size: 8rem;
-
-    background:rgba(0,0,0,0.6);
-    opacity: 0;
-    transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-  }
-
-  &:hover::after {
-    cursor: pointer;
-    opacity: 1;
-    content: "\f167";
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .info h1 {
-    background-color: #fff;
-    color: $primary-color;
+.featured-section {
+  .section-header {
     text-align: center;
-    padding: 6px 8px;
-    width: auto;
-    border-radius: 8px;
-    font-weight: 600;
+    margin: 64px 0 0 0;
+    @media (min-width: 768px) { margin-top: 128px; }
   }
-}
-
-#nush-animation {
-  width: 60%;
-}
-
-.ctf-banner {
-  width: 58%;
-  background-color: $ctf;
 }
 
 .project-card {
   position: relative;
   display: flex;
-  flex-flow: row wrap;
 
+  flex-flow: column nowrap;
+  align-items: center;
+  text-align: center;
   border-radius: 1rem;
-  margin-top: 128px;
+  margin-top: 64px;
+
+  @media (min-width: 768px) {
+    flex-flow: row wrap;
+    margin-top: 128px; 
+  }
+
 
   .thumbnail {
     border-radius: 1rem;
@@ -228,24 +263,26 @@ div.banner {
 
   .content {
     flex: 1;
+    margin: 16px 0;
     .name { margin-top: 0; }
     .created { font-style: italic; }
   }
 }
 
-.project-card:nth-child(even) {
-  .content {
-    margin-left: 64px;
-    text-align: left;
+@media (min-width: 768px) { 
+  .project-card:nth-child(even) {
+    .content {
+      margin-left: 64px;
+      text-align: left;
+    }
+  }
+
+  .project-card:nth-child(odd) {
+    flex-direction: row-reverse;
+    .content {
+      margin-right: 64px;
+      text-align: right;
+    }
   }
 }
-
-.project-card:nth-child(odd) {
-  flex-direction: row-reverse;
-  .content {
-    margin-right: 64px;
-    text-align: right;
-  }
-}
-
 </style>

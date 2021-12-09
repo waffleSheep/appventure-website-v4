@@ -30,7 +30,7 @@ import InfiniteLoading from 'vue-infinite-loading';
  */
 const client: ClientApiConstructor = (Vue, { head }) => {
   Vue.component('Layout', DefaultLayout);
-  head.title = "My Awesome Gridsome Project";
+  head.title = "AppVenture NUSH";
 
   Vue.use(InfiniteLoading)
 
