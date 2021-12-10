@@ -53,22 +53,22 @@ div.project-card {
   flex-flow: row wrap;
 
   border-radius: 1rem;
-  padding: 0;
   margin-bottom: 2rem;
 
-
-  box-shadow: 1px 1px 1px 1px #eee;
+  padding: 4px;
+  box-shadow: 0 5px 9px 2px rgba(0, 0, 0, 0.1);
 
   background-color: white;
   transition: all .3s;
   &:hover {
-    filter: brightness(90%);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 23px 4px rgba(0, 0, 0, 0.1);
   }
 
   .thumbnail {
     margin: 2px;
     border-radius: 1rem;
-    box-shadow: 1px 1px 1px 1px #eee;
+    border: 1px solid #eee;
   }
 
   .content {

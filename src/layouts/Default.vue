@@ -53,7 +53,7 @@
       name="fade"
       appear
     >
-      <main>
+      <main class="main">
         <slot />
       </main>
     </transition>
@@ -116,7 +116,7 @@ export default class DefaultLayout extends Vue {
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
-  align-items: stretch;
+  align-items: center;
 
   main {
     padding-bottom: 2rem;
@@ -132,6 +132,8 @@ export default class DefaultLayout extends Vue {
 
   border: 2px solid $primary-color;
   border-radius: 16px;
+  box-shadow: 0 5px 9px 2px rgba(0, 0, 0, 0.3);
+  width: calc(100% + 36px);
 
   padding: 8px 16px 0 16px;
 
@@ -150,6 +152,7 @@ export default class DefaultLayout extends Vue {
     &.active, &:hover {
       text-decoration: none;
     }
+    margin-left: 0;
 
     .logo {
       height: 1.6rem;
@@ -242,6 +245,10 @@ export default class DefaultLayout extends Vue {
   opacity: 0;
 }
 
+.main {
+  width: 100%;
+}
+
 footer {
   margin-top: auto;
   padding: 1rem;
@@ -270,11 +277,12 @@ footer {
     font-size: 0.9rem;
     color: inherit;
     text-decoration: none;
+    text-align: center;
 
     &:hover {
       color: #777;
     }
-  }
+  } 
 }
 
 </style>

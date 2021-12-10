@@ -7,9 +7,8 @@
       </div>
       <hr/>
       <div>
-        <h2>CTFs</h2>
-      <a href="https://ctf.nush.app"
-              class="link">
+        <h2 class="section-header">CTFs</h2>
+        <a href="https://ctf.nush.app" class="link">
         <div class="banner medium-container">
         <div class="info">
           <h3>Looking for a some CTF action? Join us at ctf.nush.app</h3>
@@ -41,7 +40,7 @@
       </div>
 
       <div v-if="selectedSection === 'Write-ups'" >
-        <h2>Write-ups</h2>
+        <h2 class="section-header">Write-ups</h2>
         <BlogCard
           class="entries"
           v-for="post of cybersecWriteups"
@@ -213,6 +212,9 @@ a.icon-button {
 }
 .entries {
   margin: 0 0 2rem;
+}
+.section-header {
+  padding-left: 16px;
 }
 
 </style>

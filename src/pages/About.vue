@@ -1,11 +1,11 @@
 <template>
   <Layout>
     <main class="about">
-      <h1>What's AppVenture?</h1>
+      <h1 id="appventure">What's AppVenture?</h1>
       <p>One of the student interest groups in NUS High, we are a community of passionate students in Computer Science. In AppVenture, we develop a wide range of apps to benefit staff and students, compete in Capture the Flag (CTF) competitions, and also hold events and workshops to share our love for Computer Science.</p>
       <p>This website showcases students' outstanding CS projects, curated blog articles written by our members, and latest updates of our internal and outreach activities. We aim to recognise the students' efforts and also publicise them to whom may find them useful. Take a look to see what we are doing at NUS High!</p>
 
-      <h1>The Team</h1>
+      <h1 id="team">The Team</h1>
       <p>We started way back in 2017, but only welcomed the first batch of members in 2019 - we're a young interest group!</p>
       <p>In year n+1, our activities are overseen by a executive committee consisting of senior members in the interest group formed in year n. Nominated members at the end of the fourth year are encouraged to submit their applications to join the team.</p>
       <div class="timeline">
@@ -64,7 +64,7 @@
         </div>
       </div>
 
-      <h1>Interested to join us?</h1>
+      <h1 id="join">Interested to join us?</h1>
       <p>Do you have a passion for coding? Do you want to learn more about CS and share your ideas with like-minded people? Or would you like to practice your skills to help give back to the community in some way?</p>
       <p>AppVenture is all about technical skills, leadership and community service. If you're a current NUS High student who shares our love for Computer Science and belief improving lives using technology, keep an eye out for our yearly recruitment! Even if you do not take Computer Science modules, do apply if you're interested and we will review your application on case-by-case basis. 🙂</p>
 
@@ -91,6 +91,7 @@
 
 <style lang="scss" scoped>
 .timeline {
+  overflow-x: auto;
   display: flex;
   justify-content: center;
 

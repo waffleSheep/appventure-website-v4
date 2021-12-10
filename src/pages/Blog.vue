@@ -165,6 +165,10 @@ export default class BlogPage extends Vue {
 </script>
 
 <style scoped lang="scss">
+.blog {
+  width: 100%;
+}
+
 .blog-entries {
   margin: 0 0 2rem;
 }

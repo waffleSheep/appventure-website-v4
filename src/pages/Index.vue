@@ -146,6 +146,7 @@ export default class HomePage extends Vue {
   }
 
   #nush-animation {
+    width: 100%;
     @media (min-width: 768px) { width: 60%; }
   }
 }
@@ -258,7 +259,7 @@ export default class HomePage extends Vue {
 
   .thumbnail {
     border-radius: 1rem;
-    box-shadow: 1px 1px 1px 1px #eee;
+    box-shadow: 0 5px 9px 2px rgba(0, 0, 0, 0.1);
   }
 
   .content {
