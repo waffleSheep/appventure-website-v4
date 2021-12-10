@@ -50,7 +50,7 @@
         />
       </div>
       <div v-else>
-        <h2>Blog posts</h2>
+        <h2 class="section-header">Blog posts</h2>
         <BlogCard
           class="entries"
           v-for="post of cybersecBlogPosts"
