@@ -182,6 +182,13 @@ import { Contribution } from '@/types/Project';
   components: { TagChip, ContributorTag, Carousel, GlobeIcon, DownloadIcon },
 })
 export default class Project extends Vue {
+	public metaInfo() {
+		return {
+			// @ts-ignore
+			title: 'Project: ' + this.$page.project.name,
+		}
+	}
+
   get sortedTags(): Tag[] {
     // @ts-ignore
     return this.$page.project.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));

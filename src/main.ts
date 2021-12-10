@@ -26,11 +26,18 @@ import DefaultLayout from '~/layouts/Default.vue';
 import InfiniteLoading from 'vue-infinite-loading';
 
 /**
+ * Hooks
+ */
+import Component from 'vue-class-component'
+Component.registerHooks([
+  'metaInfo', // for vue-meta
+])
+
+/**
  * Client API contructor
  */
 const client: ClientApiConstructor = (Vue, { head }) => {
   Vue.component('Layout', DefaultLayout);
-  head.title = "AppVenture NUSH";
 
   Vue.use(InfiniteLoading)
 

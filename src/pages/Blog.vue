@@ -100,6 +100,12 @@ export default class BlogPage extends Vue {
   filteredPosts: BlogPost[] = [];
   filterPosts: CallableFunction = () => {}; // need to assign in created
 
+	public metaInfo() {
+		return {
+			title: 'Blog',
+		}
+	}
+
   get searchIndicator(): string {
     if (this.isCalculating) {
       return '⟳ Searching';

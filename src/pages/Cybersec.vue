@@ -105,6 +105,12 @@ export default class CybersecPage extends Vue {
   selectedSection = 'Write-ups';
   posts: BlogPost[] = [];
 
+	public metaInfo() {
+		return {
+			title: 'Cybersec',
+		}
+	}
+
   created() {
     // @ts-ignore
     this.posts = this.$page.posts.edges.map((it) => it.node);

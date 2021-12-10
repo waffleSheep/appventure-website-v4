@@ -190,6 +190,12 @@ import Profile from '~/components/Profile.vue';
 export default class AboutPage extends Vue {
   public readonly applicationLink = null;
 
+	public metaInfo() {
+		return {
+			title: 'About',
+		}
+	}
+
   public data() {
     return {
       selectedYear: 2021,

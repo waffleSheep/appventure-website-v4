@@ -123,6 +123,12 @@ export default class ProjectsPage extends Vue {
   filteredProjects: Project[] = [];
   filterProjects: CallableFunction = () => {}; // need to assign in created
   
+	public metaInfo() {
+		return {
+			title: 'Projects',
+		}
+	}
+
   get loadedProjects(): Project[] {
     return this.allProjects[this.loadedCategory];
   }

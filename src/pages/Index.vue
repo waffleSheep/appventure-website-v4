@@ -96,6 +96,12 @@ import { Project } from '@/types/Project';
 export default class HomePage extends Vue {
   featuredProjects: Project[] = [];
 
+	public metaInfo() {
+		return {
+			title: 'Home',
+		}
+	}
+
   created() {
     // @ts-ignore
     this.featuredProjects = this.$page.projects.edges.map((p) => p.node);

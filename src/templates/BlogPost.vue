@@ -77,6 +77,13 @@ import { Tag } from '../types/Tag';
   components: { BlogMeta, TagChip },
 })
 export default class BlogPost extends Vue {
+	public metaInfo() {
+		return {
+			// @ts-ignore
+			title: 'Blog: ' + this.$page.post.title,
+		}
+	}
+
   get sortedTags(): Tag[] {
     // @ts-ignore
     return this.$page.post.tags.sort((u: Tag,v: Tag) => v.category.localeCompare(u.category));
