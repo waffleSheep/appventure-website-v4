@@ -23,9 +23,12 @@ module.exports = function (api) {
     const authorsJson = yaml.load(authorsRaw);
     const authors = store.addCollection('Contributor');
 
-    authorsJson.forEach(({id,...fields }) => {
+
+    authorsJson.forEach(({id,avatar,...fields }) => {
+      avatar = (!avatar) ? `https://source.boringavatars.com/pixel/120/${id}?colors=009A90,333F48,41B883` : avatar;
       authors.addNode({
         id,
+        avatar,
         internal: {
           origin:authorsPath
         },

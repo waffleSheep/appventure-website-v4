@@ -16,7 +16,7 @@ Sample contributor entry:
   name: John Doe
   bio: A little bit about yourself
   quote: one fish, two fish, red fish, blue fish
-  avatar: ./images/johndoe.png # otherwise use ./images/default_avatar.svg
+  avatar: ./images/johndoe.png # will be replaced with boringavatars.com if unspecified
 ...
 ```
 

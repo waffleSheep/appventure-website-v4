@@ -138,7 +138,7 @@ export default class DefaultLayout extends Vue {
 
   border: 2px solid $primary-color;
   border-radius: 16px;
-  box-shadow: 0 5px 9px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 9px 2px rgba(0, 0, 0, 0.2);
   width: calc(100% + 36px);
 
   padding: 8px 16px 0 16px;
@@ -194,7 +194,7 @@ export default class DefaultLayout extends Vue {
       align-items: stretch;
       justify-content: center;
       padding: 32px;
-      
+
       background: rgba(0,0,0,0.9);
 
       .nav__link {
@@ -286,7 +286,7 @@ footer {
     &:hover {
       color: #777;
     }
-  } 
+  }
 }
 
 </style>
