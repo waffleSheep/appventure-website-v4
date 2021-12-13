@@ -36,6 +36,12 @@
         </g-link>
         <g-link
           class="nav__link"
+          to="/community"
+        >
+          Community
+        </g-link>
+        <g-link
+          class="nav__link"
           to="/blog"
         >
           Blog
@@ -106,7 +112,7 @@ export default class DefaultLayout extends Vue {
   }
 </static-query>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .layout {
   max-width: 760px;
   margin: 0 auto;
@@ -172,7 +178,7 @@ export default class DefaultLayout extends Vue {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 720px) {
   .header {
     nav {
       display: none;
@@ -215,14 +221,12 @@ export default class DefaultLayout extends Vue {
 }
 
 .nav__link {
-  margin-left: 20px;
-
   font-weight: bold;
   color: #2c3e50;
 
   vertical-align: baseline;
   padding: .2rem .6rem;
-  margin: 0 .8rem;
+  margin: 0 4px;
   text-decoration: none;
   border-radius: .4rem;
 

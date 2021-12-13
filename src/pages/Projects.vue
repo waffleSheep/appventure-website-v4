@@ -161,6 +161,7 @@ export default class ProjectsPage extends Vue {
       this.searchValueIsDirty = false;
     }, 100);
     this.filterProjects();
+		this.$router.push({ query: { category: this.loadedCategory } })
   }
 
   @Watch("searchValue")
@@ -172,6 +173,9 @@ export default class ProjectsPage extends Vue {
   created() {
     if (this.$route.query.search)
       this.searchValue = this.$route.query.search as string;
+    if (this.$route.query.category)
+      this.loadedCategory = this.$route.query.category as string;
+
     this.allProjects = {
       // @ts-ignore
       module: this.$page.moduleProjects.edges.map((n) => n.node),
