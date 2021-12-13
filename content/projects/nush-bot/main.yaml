@@ -2,10 +2,9 @@ id: nush-bot
 name: NUSH Bot
 thumbnail: ./nushbot1.png
 description: NUSH bot was developed as an automated solution for answering questions related to NUS High. This helps to reduce the load on teachers and staff, allowing them to focus on their work. The bot was originally developed for Facebook messenger, but has since been expanded to Telegram and a web app. The project also expanded to allow teachers to edit questions and answers in a human friendly way.
-website: https://nush-bot.staging.nush.app
-allContributors: [junron]
 created:
-  name: [junron]
+  contributors: [junron]
+type: /AppVenture/School
 tags: [web]
 gallery:
   - ./nushbot1.png

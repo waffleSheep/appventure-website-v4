@@ -17,11 +17,10 @@ description: |
   - Reminder to constantly be on track of what you are learning
 
   - And 12 unique achievements for you to earn.
-allContributors: [ethanyap]
 created:
-  name: [ethanyap]
+  contributors: [ethanyap]
   year: 2019
-type: "/Year 4/CS Module"
+type: /Module/Year-4
 tags: [android]
 gallery:
   - ./621658893965615209823006296463120118317056n.jpg
