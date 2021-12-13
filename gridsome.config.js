@@ -35,6 +35,17 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
+        typeName: 'Event',
+        path: 'content/events/**/*.yaml',
+				refs: {
+					tags: 'Tag',
+				},
+      },
+    },
+
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
         typeName: 'Project',
         path: 'content/projects/**/*.yaml',
         refs: {

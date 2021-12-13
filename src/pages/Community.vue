@@ -33,8 +33,12 @@
       <div class="section">
         <h2 class="title">Events</h2>
         <div class="content">
-          <div v-for="event in events" class="entry">
-          </div>
+          <EventCard
+						v-for="event in events"
+						:key="event.id"
+						:event_="event"
+						:fancy="true" />
+					<p v-if="!events.length" class="text-center">Nothing here yet.</p>
         </div>
       </div>
 
@@ -43,11 +47,21 @@
 </template>
 
 <page-query>
-
 fragment projectFields on Project {
   id
   thumbnail (height: 128, width: 128)
   name
+}
+
+fragment eventFields on Event {
+  id
+  banner (height: 128, width: 256)
+  name
+	description
+	tags {
+		id
+		name
+	}
 }
 
 query CommunityPage {
@@ -58,22 +72,32 @@ query CommunityPage {
       }
     }
   }
+	events: allEvent {
+		edges {
+			node {
+				...eventFields
+			}
+		}
+	}
 }
 </page-query>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import ProjectCard from '@/components/ProjectCard.vue';
+import EventCard from '@/components/EventCard.vue';
 import { Project } from '../types/Project';
+import { Event_ } from '../types/Event';
 
 import { debounce } from 'lodash';
 
 @Component({
-  components: { ProjectCard },
+  components: { ProjectCard, EventCard },
 })
 
 export default class ProjectsPage extends Vue {
   public readonly projects: Project[] = [];
+  public readonly events: Event_[] = [];
 
   public metaInfo() {
     return {
@@ -84,12 +108,14 @@ export default class ProjectsPage extends Vue {
   created() {
     // @ts-ignore
     this.projects = this.$page.appventureProjects.edges.map((n) => n.node);
+    // @ts-ignore
+    this.events = this.$page.events.edges.map((n) => n.node);
   }
 }
 </script>
 
 <style scoped lang="scss">
-.project .content {
+.section .content {
 	display: flex;
 	justify-content: center;
 }
