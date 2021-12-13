@@ -11,17 +11,16 @@ description: |
   You, of course, wish to return to the past and warn the people of the danger...
 
   But your time machine was one-use only. Tsk, tsk. Hence, you had made your final stand in the city of Singadon. Will you triumph?
-allContributors: [jianxic, yujinl, bohany]
 created:
-  name: [jianxic, yujinl, bohany]
+  contributors: [jianxic, yujinl, bohany]
   year: 2017
-type: "/Year 3/Competition"
-tags: ["unity"]
-achievements:
-  - Champion, Singapore Games Creation Competition, 2017
+type: /Competition/Year-3
+tags: [unity]
 gallery:
   - ./302d08ab75d8a6e87fba31096499bf1e.png
   - ./5b3b10c043615dd2a29a90b7b28ff6a1.png
   - ./7bf2afe4526c7514ac7b0feba9d50a45.png
   - ./83ba42aedcf1244700f76c05159f5343.png
+achievements:
+  - Champion, Singapore Games Creation Competition, 2017
 attachment: ./guardianofearthexe.zip

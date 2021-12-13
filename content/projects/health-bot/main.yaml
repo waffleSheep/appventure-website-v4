@@ -1,0 +1,21 @@
+id: health-bot
+name: "Operation Health: Healthbot"
+thumbnail: ./logo512.png
+description: |
+  Greetings from the Family of Ealth Tee! Ealth Tee and his family plan on living a healthy lifestyle. However, they just need a little more motivation. That's where you come in as Healthbot!
+
+  "Operation Health: Healthbot" is a game made for the 2018 Singapore Games Creation Competition organised by Nanyang Polytechnic. Based on the theme of "Promoting Healthy Lifestyle for You in Your Family", Operation Health: Healthbot was designed based on the Sims games. When the health of the characters decline while they are engaging in unhealthy activities, the player must click on the characters to stop them from doing unhealthy actions. To increase the health of the characters, the player must promote healthier options to them. Players will also learn more about healthy living through information and quizzes made available throughout the game."
+created:
+  contributors: [jamesc, ihurt, xuant, yeshuy]
+  year: 2018
+type: /Competition/Year-4
+tags: [unity]
+achievements:
+  - Champion Team, 2018 SGCC
+gallery:
+  - ./title-screen.png
+  - ./tutorial.png
+  - ./gameplay.png
+  - ./note.png
+  - ./event.png
+attachment: ./operation-health-healthbot.zip
