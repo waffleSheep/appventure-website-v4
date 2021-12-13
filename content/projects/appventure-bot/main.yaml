@@ -1,0 +1,16 @@
+id: appventure-bot
+name: AppVenture Bot
+thumbnail:
+description: |
+  Discord Bot for AppVenture Discord Server
+created:
+  contributors: [junron]
+  year: 2021
+maintained:
+type: /AppVenture/Internal
+tags: [web]
+gallery:
+achievements:
+attachment:
+website: https://enotes.nush.app/
+featured: false

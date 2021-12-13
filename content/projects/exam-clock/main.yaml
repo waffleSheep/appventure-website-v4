@@ -1,0 +1,18 @@
+id: exam-clock
+name: Exam Clock
+thumbnail: ./thumbnail.png
+description: A display for use during tests and exams. Includes a clock, exam information, and tracker for the number of students outside.
+created:
+  contributors: [leongys]
+  year: 2016
+maintained:
+  - contributors: [zhaoyun]
+    year: 2021
+type: /AppVenture/School
+tags: [desktop]
+gallery:
+  - ./exam-display-1.jpeg
+achievements:
+attachment:
+website:
+featured: false

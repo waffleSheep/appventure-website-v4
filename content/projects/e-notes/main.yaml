@@ -1,0 +1,16 @@
+id: e-notes
+name: E-Notes
+thumbnail:
+description: |
+  E Notes for NUS High
+created:
+  contributors: [zhaoyun]
+  year: 2021
+maintained:
+type: /AppVenture/School
+tags: [web]
+gallery:
+achievements:
+attachment:
+website: https://enotes.nush.app/
+featured: false
