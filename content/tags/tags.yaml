@@ -14,7 +14,7 @@
   category: cs
 
 - id: android
-  name: android
+  name: Android
   description: Description for web-development
   category: cs
 
@@ -37,3 +37,11 @@
   name: Write-up
   description: Writeup for past CTFs
   category: cybersec
+
+- id: unity
+  name: Unity
+  category: cs
+
+- id: java
+  name: Java
+  category: cs
