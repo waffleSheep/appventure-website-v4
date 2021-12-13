@@ -1,0 +1,9 @@
+id: 
+name: 
+banner: ./file.xxx
+description: |
+  ...
+type: /External/Workshop
+tags: [tagID]
+gallery: 
+  - ./file.xxx
