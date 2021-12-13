@@ -1,0 +1,8 @@
+id: rosyth-workshop
+name: Rosyth Workshop
+banner: ./placeholder.png
+description: Insert event description
+type: /External/Workshop
+tags: []
+gallery: 
+  - ./placeholder.png

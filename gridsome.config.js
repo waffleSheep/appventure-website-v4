@@ -59,6 +59,7 @@ module.exports = {
   templates: {
     BlogPost: '/blog/:year/:month/:day/:slug',
     Contributor: '/contributor/:id',
+    Event: '/events/:id',
     Project: '/projects/:id',
   },
   chainWebpack (config) {
