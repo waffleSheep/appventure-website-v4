@@ -32,7 +32,7 @@
           <pre class="type text-center">{{ $page.event.type }}</pre>
           <hr>
         </div>
-        {{ $page.event.description }}
+        <div class="description">{{ $page.event.description }}</div>
       </div>
     </main>
   </Layout>
@@ -139,6 +139,10 @@ export default class Event extends Vue {
         margin: 1rem 0;
         //font-style: italic;
       }
+    }
+
+    .description {
+      white-space: pre-wrap;
     }
   }
 

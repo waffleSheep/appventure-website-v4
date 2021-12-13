@@ -37,9 +37,9 @@ module.exports = {
       options: {
         typeName: 'Event',
         path: 'content/events/**/*.yaml',
-				refs: {
-					tags: 'Tag',
-				},
+        refs: {
+          tags: 'Tag',
+        },
       },
     },
 

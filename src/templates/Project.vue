@@ -119,7 +119,7 @@
             <hr>
           </div>
         </div>
-        {{ $page.project.description }}
+        <div class="description">{{ $page.project.description }}</div>
       </div>
     </main>
   </Layout>
@@ -251,10 +251,13 @@ export default class Project extends Vue {
         //font-style: italic;
       }
     }
+
+    .description {
+      white-space: pre-wrap;
+    }
   }
-
-
 }
+
 @media (max-width: 620px) {
   .project-showcase {
     flex-flow: column wrap;
