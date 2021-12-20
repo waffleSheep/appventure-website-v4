@@ -43,10 +43,6 @@ export default class EventCard extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.event-card:not(:first-child) {
-	margin-left: 32px;
-}
-
 .event-card {
   position: relative;
 
