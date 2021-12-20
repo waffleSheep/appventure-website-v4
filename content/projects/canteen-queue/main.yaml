@@ -1,7 +1,7 @@
 id: canteen-queue
 name: Canteen Queue Tracker
-thumbnail:
-description: |
+thumbnail: ./square.png
+description: This website shows the live NUS High canteen queue length, and provides an API to enquire past queue data. Queue length is computed with the number of unique Wi-Fi emitting devices (usually phones) near the canteen food stalls.
 created:
   contributors: [wernjie]
   year: 2020
@@ -11,7 +11,7 @@ maintained:
 type: /AppVenture/School
 tags: [web]
 gallery:
-  - 
+  - ./widescreen.png
 achievements:
 attachment:
 website: https://canteen.nush.app

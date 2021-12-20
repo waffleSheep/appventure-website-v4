@@ -1,0 +1,19 @@
+id: ch4
+name: CH4
+thumbnail: ./thumb.png
+description: |
+  CH4 is an organic chemistry application intended to help students learn about organic chemistry and organic compounds via hands-on learning. It allows students to create organic molecules, learn about their properties and interact with them. Users can drag and drop atoms, form different types of bonds between them, use the app to determine their properties and experiment. 
+created:
+  contributors: [kaiwen]
+  year: 2021
+maintained:
+type: /Module/Year-3
+tags: [java, javafx, educational]
+gallery:
+  - ./thumb.png
+  - ./0.png
+  - ./1.png
+achievements:
+attachment: ./ch4.zip
+website:
+featured: false

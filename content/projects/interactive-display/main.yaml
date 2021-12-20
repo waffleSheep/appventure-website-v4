@@ -1,7 +1,7 @@
 id: interactive-display
 name: Interactive Display
-thumbnail: 
-description: |
+thumbnail: ./main.jpg
+description: The interactive display is a TV screen at the entrance to NUS High. It shows the bus timings and a map of the school for use by visitors or students. It also showcases some projects done by NUS High Students.
 created:
   contributors: [teewayne]
   year: 2017
@@ -9,9 +9,14 @@ maintained:
   - contributors: [ranen]
     year: 2021
 type: /AppVenture/School
-tags: []
+tags: [android, java]
 gallery:
-  - ./exam-display-1.jpeg
+  - ./main.jpg
+  - ./0_wide_cropped.png
+  - ./1_home.jpg
+  - ./2_about.jpg
+  - ./3_timeline.jpg
+  - ./4_credits.jpg
 achievements:
 attachment:
 website:

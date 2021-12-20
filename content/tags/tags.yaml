@@ -45,3 +45,11 @@
 - id: java
   name: Java
   category: cs
+
+- id: javafx
+  name: JavaFX
+  category: framework
+
+- id: educational
+  name: Educational
+  category: content

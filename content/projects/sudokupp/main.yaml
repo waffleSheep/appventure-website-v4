@@ -1,0 +1,19 @@
+id: sudokupp
+name: Sudoku++
+thumbnail: ./2.png
+description: |
+  The project was made for OOP2 and is a Sudoku app made in Java. It supports different types of Sudoku, such as X-Sudoku and Killer Sudoku. Using backtracking algorithms, it can generate puzzles of varying difficulty, guaranteed to have exactly one solution. The program helps in telling you what squares are correct and what are not. Information about the puzzle can be added to the puzzle, appearing on the right sidebar. A timer keeps track of the solve speed. For storage and sending, each puzzle can be saved in an .sdk file, that is in plaintext, to be sent to friends. If one does not like the default colours to indicate the state of the square, they can change the colour in Settings. When received, a puzzle can be opened using the same file system. This app is built to support multiple copies of the app being open, so that one can make as many puzzles as their computer can support at a time.
+created:
+  contributors: [chuaweechong]
+  year: 2021
+maintained:
+type: /Module/Year-3
+tags: [java, javafx, game]
+gallery:
+  - ./0.png
+  - ./2.png
+  - ./3.png
+achievements:
+attachment: ./sudoku++.zip
+website:
+featured: false

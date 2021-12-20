@@ -1,8 +1,7 @@
 id: e-notes
 name: E-Notes
-thumbnail:
-description: |
-  E Notes for NUS High
+thumbnail: ./thumb.png
+description: E Notes for NUS High
 created:
   contributors: [zhaoyun]
   year: 2021
@@ -10,6 +9,9 @@ maintained:
 type: /AppVenture/School
 tags: [web]
 gallery:
+  - ./enotes_1.png
+  - ./enotes_2.png
+  - ./enotes_3.png
 achievements:
 attachment:
 website: https://enotes.nush.app/

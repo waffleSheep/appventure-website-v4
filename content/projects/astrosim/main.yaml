@@ -1,0 +1,19 @@
+id: astrosim
+name: AstroSim
+thumbnail: ./astrosim1.png
+description: |
+  AstroSim is a gravity simulator. By placing down a few planets, the simulator shows gravitational interactions over time. This allows students to learn about gravitational phenomena in a sandbox environment.
+created:
+  contributors: [liuwenkai]
+  year: 2021
+maintained:
+type: /Module/Year-3
+tags: [java, javafx, educational]
+gallery:
+  - ./astrosim1.png
+  - ./astrosim2.png
+  - ./astrosim3.png
+achievements:
+attachment: astrosim.zip
+website:
+featured: false
