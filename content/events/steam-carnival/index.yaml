@@ -1,0 +1,8 @@
+id: steam-carnival
+name: STEAM Carnival
+banner: ./placeholder.png
+description: Yearly affair held in conjunction with the other student interest groups of NUS High with activities and workshops.
+type: /School/Events
+tags: [outreach]
+gallery: 
+  - ./placeholder.png

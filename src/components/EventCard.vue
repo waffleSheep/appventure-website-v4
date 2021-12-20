@@ -45,6 +45,7 @@ export default class EventCard extends Vue {
 <style lang="scss" scoped>
 .event-card {
   position: relative;
+  max-width: 256px;
 
   .link {
     position: absolute;
@@ -52,11 +53,11 @@ export default class EventCard extends Vue {
     height: 100%;
   }
 
-  margin-bottom: 2rem;
+  margin: 0 16px 64px;
 
   display: flex;
   flex-flow: column wrap;
-	align-items: center;
+  align-items: center;
 
   border-radius: 1rem;
   box-shadow: 0 5px 9px 2px rgba(0, 0, 0, 0.1);
@@ -71,23 +72,23 @@ export default class EventCard extends Vue {
   .banner {
     border-radius: 1rem;
     border: 1px solid #eee;
-		width: 100%;
-		object-fit: cover;
+    width: 100%;
+    object-fit: cover;
   }
 
-	.content {
-		text-align: center;
-		margin: 0 4px;
+  .content {
+    text-align: center;
+    margin: 0 4px;
 
-		.name {
-			margin: 8px 0;
-		}
-	}
+    .name {
+      margin: 8px 0;
+    }
+  }
 
   .tags {
     display: flex;
     justify-content: flex-end;
-		padding: 4px 8px;
+    padding: 4px 0;
   }
 }
 

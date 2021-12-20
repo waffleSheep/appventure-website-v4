@@ -1,8 +1,8 @@
 id: rosyth-workshop
 name: Rosyth Workshop
 banner: ./placeholder.png
-description: Insert event description
+description: Outreach programme students from Rosyth Primary School introducing NUS High's CS curriculum as well as Python programming with Microbit.
 type: /External/Workshop
-tags: []
+tags: [outreach]
 gallery: 
   - ./placeholder.png

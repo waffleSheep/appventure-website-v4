@@ -60,14 +60,10 @@ export default class ProjectCard extends Vue {
   }
 }
 
-.project-card.compact:not(:first-child) {
-	margin-left: 32px;
-}
-
 .project-card.compact {
   display: flex;
   flex-flow: row wrap;
-	margin-bottom: 64px;
+  margin: 0 16px 64px 16px;
 
   border-radius: 1rem;
   box-shadow: 0 5px 9px 2px rgba(0, 0, 0, 0.1);
@@ -85,15 +81,15 @@ export default class ProjectCard extends Vue {
     border: 1px solid #eee;
   }
 
-	.content {
-		position: absolute;
-		top: 100%;
-		width: 100%;
-		text-align: center;
+  .content {
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      text-align: center;
 
-		margin-top: 8px;
-		h5 { margin: 0; }
-	}
+      margin-top: 8px;
+      h5 { margin: 0; }
+  }
 }
 
 .project-card.fancy {
