@@ -6,7 +6,7 @@
           Community
         </h1>
         <p class="lede text-center">
-          Projects, events, and other collaborations with school the wider community
+          Projects, events, and other collaborations with the school and wider community
         </p>
       </div>
       <hr/>
