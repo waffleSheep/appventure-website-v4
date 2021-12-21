@@ -1,2 +1,0 @@
-AstroSim is a gravity simulator. By placing down a few planets, the simulator shows gravitational
-interactions over time. This allows students to learn about gravitational phenomena in a sandbox environment.

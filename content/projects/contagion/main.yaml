@@ -7,7 +7,7 @@ created:
   contributors: [josherlo]
   year: 2021
 maintained:
-  type: /Module/Year-3
+type: /Module/Year-3
 tags: [java, javafx, educational]
 gallery:
   - ./Screenshot1.png
