@@ -145,10 +145,14 @@ export default class Event extends Vue {
       white-space: pre-wrap;
     }
   }
-
-
 }
+
 @media (max-width: 620px) {
+  .tags {
+	margin: 0 auto;
+	text-align: center;
+  }
+
   .event-info {
     flex-flow: column wrap;
   }

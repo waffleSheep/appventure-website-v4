@@ -44,8 +44,7 @@ export default class TagChip extends Vue {
   text-decoration: none;
   font-size: 0.8rem;
 
-  padding: .4rem .4rem;
-  margin-right: .8rem;
+  margin: 2px;
 
   transition: all ease-in-out .2s;
 

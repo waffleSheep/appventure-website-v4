@@ -1,13 +1,11 @@
 <template>
-  <div :class="'project-card ' + (fancy ? 'fancy' : 'compact')">
-    <g-link
-      class="link"
-      :to="'/projects/' + project.id"
-    />
-
+  <g-link 
+    :class="'project-card ' + (fancy ? 'fancy' : 'compact')" 
+    :to="'/projects/' + project.id"
+  >
     <g-image 
-			class="thumbnail" 
-			:src="project.thumbnail || 'https://via.placeholder.com/128'" />
+            class="thumbnail" 
+            :src="project.thumbnail || 'https://via.placeholder.com/128'" />
     <div class="content">
       <h5 class="name">{{ project.name }}</h5>
       <div v-if="fancy" class="created">
@@ -26,7 +24,7 @@
           :link-enabled="false" />
       </div>
     </div>
-  </div>
+  </g-link>
 </template>
 
 <static-query>
@@ -52,12 +50,8 @@ export default class ProjectCard extends Vue {
 
 .project-card {
   position: relative;
-
-  .link {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
+  text-decoration: none;
+  color: #404040;
 }
 
 .project-card.compact {
@@ -94,7 +88,7 @@ export default class ProjectCard extends Vue {
 
 .project-card.fancy {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   margin-bottom: 2rem;
 
   border-radius: 1rem;
@@ -110,22 +104,36 @@ export default class ProjectCard extends Vue {
 
   .thumbnail {
     margin: 2px;
+    margin-right: 8px;
     border-radius: 1rem;
     border: 1px solid #eee;
   }
 
   .content {
-    padding: 1rem;
     flex: 1;
+    height: 128px;
+    display: flex;
+    flex-flow: column nowrap;
+    overflow-y: auto;
 
     .name {
-      margin: 1rem 0 1rem 0;
+      margin: 16px 0 8px 0;
+      padding-right: 0 8px;
     }
-  }
 
-  .tags {
-    display: flex;
-    justify-content: flex-end;
+    .created {
+      padding-right: 0 8px;
+      flex: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: flex-end;
+      height: 36px;
+      margin-top: 8px;
+    }
   }
 }
 

@@ -230,6 +230,7 @@ export default class Project extends Vue {
         user-select: none;
       }
     }
+    
     .tag-chip {
       display: inline;
     }
@@ -259,6 +260,11 @@ export default class Project extends Vue {
 }
 
 @media (max-width: 620px) {
+  .tags {
+	margin: 0 auto;
+	text-align: center;
+  }
+
   .project-showcase {
     flex-flow: column wrap;
   }
