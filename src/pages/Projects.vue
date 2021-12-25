@@ -33,11 +33,16 @@
           </div>
         </div>
 
-        <ProjectCard
-          v-for="project in filteredProjects"
-          :key="project.id"
-          :project="project"
-        />
+        <div v-for="yearlyProjects in groupedProjects">
+          {{ yearlyProjects[0].created.year }}
+          <hr/>
+          <ProjectCard
+            v-for="project in yearlyProjects"
+            :key="project.id"
+            :project="project"
+          />
+        </div>
+
       </div>
     </main>
   </Layout>
@@ -106,7 +111,7 @@ import ProjectCard from '@/components/ProjectCard.vue';
 import { Project } from '../types/Project';
 import Fuse from 'fuse.js';
 
-import { debounce } from 'lodash';
+import { debounce, groupBy } from 'lodash';
 
 @Component({
   components: { ProjectCard },
@@ -122,8 +127,12 @@ export default class ProjectsPage extends Vue {
 
   searcher: Fuse<Project> | undefined;
   filteredProjects: Project[] = [];
+  get groupedProjects() {
+    return Object.values(groupBy(this.filteredProjects, project => project.created.year))
+      .sort((a, b) => b[0].created.year - a[0].created.year);
+  }
   filterProjects: CallableFunction = () => {}; // need to assign in created
-  
+
 	public metaInfo() {
 		return {
 			title: 'Projects',
@@ -155,7 +164,7 @@ export default class ProjectsPage extends Vue {
       if (!this.searcher) return;
       this.isCalculating = true;
       this.filteredProjects = this.searchValue.length
-        ? this.searcher.search(this.searchValue).map((r) => r.item) 
+        ? this.searcher.search(this.searchValue).map((r) => r.item)
         : this.loadedProjects;
 
       this.isCalculating = false;
