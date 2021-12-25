@@ -58,3 +58,8 @@
   name: iOS
   description: Description for web-development
   category: cs
+
+- id: cs3233
+  name: CS3233
+  description: Object Oriented Programming II. Also covers GUI programming in JavaFX.
+  category: module

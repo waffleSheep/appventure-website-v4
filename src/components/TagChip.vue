@@ -1,10 +1,12 @@
 <template>
-  <g-link class="round-button chip route" :style="cssProps" :to="routerLink">{{ tag.name }}</g-link>
+  <g-link v-if="routerLink" class="round-button chip route" :style="cssProps" :to="routerLink" @click="handleClick">{{ tag.name }}</g-link>
+  <div v-else class="round-button chip route" :style="cssProps" :to="routerLink" @click="handleClick">{{ tag.name }}</div>
 </template>
 
 <script lang="ts">
 import { Vue, Prop, Component } from 'vue-property-decorator';
 import { Tag } from '@/types/Tag';
+import Swal from 'sweetalert2';
 
 @Component
 export default class TagChip extends Vue {
@@ -12,22 +14,34 @@ export default class TagChip extends Vue {
   @Prop({default: true}) filled!: boolean;
   @Prop({default: true}) linkEnabled!: boolean;
   @Prop() routerLink?: object;
+  @Prop() clickHandler?: CallableFunction;
 
   get cssProps() {
     if (this.filled) {
       return {
         '--color': '#009a90',
         '--chip-color': 'white',
-        'pointer-events': this.linkEnabled ? 'auto' : 'none',
+        'pointer-events': 'auto',
       }
     } else {
       return {
         '--color': 'white',
         '--chip-color': '#009a90',
-        'pointer-events': this.linkEnabled ? 'auto' : 'none',
+        'pointer-events': 'auto',
       }
     }
+  }
 
+  handleClick(event: Event) {
+	if (this.linkEnabled) return;
+	event.preventDefault();
+	Swal.fire({
+	  title: this.tag.name,
+	  text: this.tag.description,
+	  icon: 'info',
+	  confirmButtonText: 'Cool',
+	  confirmButtonColor: '#009a90',
+	})
   }
 }
 </script>

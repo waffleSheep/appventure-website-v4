@@ -119,7 +119,7 @@
             <hr>
           </div>
         </div>
-        <div class="description">{{ $page.project.description }}</div>
+        <div class="description" v-html="$page.project.description"></div>
       </div>
     </main>
   </Layout>

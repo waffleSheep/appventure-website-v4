@@ -76,13 +76,22 @@ export default class ProjectCard extends Vue {
   }
 
   .content {
-      position: absolute;
-      top: 100%;
-      width: 100%;
-      text-align: center;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    text-align: center;
 
-      margin-top: 8px;
-      h5 { margin: 0; }
+    margin-top: 8px;
+
+    .name { 
+		  margin: 0; 
+
+			display: -webkit-box;
+		  -webkit-line-clamp: 2;
+		  -webkit-box-orient: vertical;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		}
   }
 }
 

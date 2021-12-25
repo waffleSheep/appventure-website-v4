@@ -65,7 +65,7 @@ fragment eventFields on Event {
 }
 
 query CommunityPage {
-  appventureProjects: allProject(filter: { type: { regex: "^\/AppVenture\/" } }) {
+  appventureProjects: allProject(filter: { type: { regex: "^\/AppVenture\/(School|Community)" } }) {
     edges {
       node {
         ...projectFields

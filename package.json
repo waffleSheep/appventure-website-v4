@@ -24,6 +24,7 @@
     "infinite-loading": "^0.2.8",
     "lodash": "^4.17.21",
     "sass": "^1.35.2",
+    "sweetalert2": "^11.3.0",
     "vue-feather-icons": "^5.1.0",
     "vue-infinite-loading": "^2.4.5",
     "vue-multiselect": "^2.1.6",

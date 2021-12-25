@@ -68,6 +68,7 @@ fragment projectFields on Project {
   tags (sortBy: "category", order: ASC) {
     id
     name
+	description
     category
   }
 }

@@ -3,10 +3,8 @@ name: SGH Crisis Manual
 thumbnail: ./logo.svg
 description: |
   This application was created for Singapore General Hospital, as a repository of critical information to facilitate the handling of medical crises. 
-
   <figure>
-    <blockquote>"...We would like to express our heartfelt appreciation for the work that you have done in developing a user-friendly Crisis Manual application, that allows our doctors and nurses easy access to information in our Crisis Manual during a medical emergency."</blockquote>
-    <figcaption>—Dr Chong Shin Yuet, <cite>Senior Consultant, Singapore General Hospital</cite></figcaption>
+    <blockquote>"...We would like to express our heartfelt appreciation for the work that you have done in developing a user-friendly Crisis Manual application, that allows our doctors and nurses easy access to information in our Crisis Manual during a medical emergency."</blockquote><figcaption>—Dr Chong Shin Yuet, <cite>Senior Consultant, Singapore General Hospital</cite></figcaption>
   </figure>
 created:
   contributors: [wernjie, shevonne]
