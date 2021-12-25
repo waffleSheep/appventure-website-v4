@@ -1,0 +1,21 @@
+id: library-app
+name: Library App
+thumbnail: ./2.png
+description: |
+  The Library booking app is a web application made with the PERN stack. Its main functionality is to allow students and teachers to book timeslots to use the library function rooms. Library staff also have additional moderation tools which will allow them to manage students booking capabilities.
+created:
+  contributors: [jianxic]
+  year: 2020
+maintained:
+  - contributors: [jianxic, markusas]
+    year: 2021
+type: /AppVenture/School
+tags: [web, react]
+gallery:
+  - ./0.png
+  - ./1.png
+  - ./2.png
+achievements:
+attachment:
+website: https://library.nush.app
+featured: false

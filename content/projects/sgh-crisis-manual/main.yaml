@@ -1,0 +1,27 @@
+id: sgh-crisis-manual
+name: SGH Crisis Manual
+thumbnail: ./logo.svg
+description: |
+  This application was created for Singapore General Hospital, as a repository of critical information to facilitate the handling of medical crises. 
+
+  <figure>
+    <blockquote>"...We would like to express our heartfelt appreciation for the work that you have done in developing a user-friendly Crisis Manual application, that allows our doctors and nurses easy access to information in our Crisis Manual during a medical emergency."</blockquote>
+    <figcaption>—Dr Chong Shin Yuet, <cite>Senior Consultant, Singapore General Hospital</cite></figcaption>
+  </figure>
+created:
+  contributors: [wernjie, shevonne]
+  year: 2020
+maintained:
+  - contributors: [wernjie, shevonne]
+    year: 2021
+type: /AppVenture/Community
+tags: [android, ios]
+gallery:
+  - ./0.jpeg
+  - ./1.png
+  - ./2.png
+  - ./3.png
+achievements:
+attachment:
+website: https://owl10124.com/crisis-manual/
+featured: true

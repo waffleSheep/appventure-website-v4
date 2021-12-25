@@ -53,3 +53,8 @@
 - id: educational
   name: Educational
   category: content
+
+- id: ios
+  name: iOS
+  description: Description for web-development
+  category: cs

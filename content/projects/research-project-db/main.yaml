@@ -1,0 +1,21 @@
+id: research-project-db
+name: Research Project Database
+thumbnail: ./0.png
+description: |
+  The Research Project Database is a platform to collate and display students' past works, providing a portal for uploading their work for others' reference. It's a work in progress!
+created:
+  contributors: [bolin, vernon, shevonne]
+  year: 2021
+maintained:
+  - contributors: [shevonne]
+    year: 2022
+type: /AppVenture/School
+tags: [web]
+gallery:
+  - ./0.png
+  - ./1.png
+  - ./2.png
+achievements:
+attachment:
+website:
+featured: false
