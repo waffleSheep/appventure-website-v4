@@ -4,7 +4,7 @@
       <div class="preamble medium-container">
         <h1 class="text-center">Cybersecurity Division</h1>
         <p class="lede text-center">From student-organized CTFs to articles on making software secure, here is a showcase of what we have to offer. </p>
-        <p class="text-center">Psst... Join us at <a href="https://ctf.nush.app">ctf.nush.app</a> for seasonal challenges set by yours truly.</p>
+        <p class="text-center">Psst... Join us at <a href="https://ctf.nush.app">ctf.nush.app</a> for seasonal challenges set by yours truly!</p>
       </div>
 <!--      <hr/>-->
 <!--      <div>-->
