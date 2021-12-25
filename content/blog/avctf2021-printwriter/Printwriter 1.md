@@ -3,7 +3,7 @@ title: "[AVCTF2021] Printwriter 1"
 slug: avctf2021-printwriter
 author: [zhaoyun]
 date: 2021-12-21
-tags: [ctf, pwn]
+tags: [ctf, pwn,writeup]
 ---
 
 > My wonderful app works both as an echo server and a file lister!

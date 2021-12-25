@@ -119,13 +119,13 @@ export default class CybersecPage extends Vue {
   /* NOTE: Deep filtering is not available using GraphQL yet */
   get cybersecBlogPosts(): BlogPost[] {
     return this.posts
-      .filter(it => it.tags.map(it => it.category).includes('cybersec'))
+      .filter(it => it.tags.map(it => it.id).includes('ctf'))
       .filter(it => !it.tags.map(it => it.id).includes('writeup'));
   }
 
   get cybersecWriteups(): BlogPost[] {
     return this.posts
-      .filter(it => it.tags.map(it => it.category).includes('cybersec'))
+      .filter(it => it.tags.map(it => it.id).includes('ctf'))
       .filter(it => it.tags.map(it => it.id).includes('writeup'));
   }
 }

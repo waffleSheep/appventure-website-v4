@@ -24,7 +24,7 @@
   category: platform
 
 - id: web
-  name: Web Development
+  name: Web
   description: Websites, web apps, and more!
   category: skill
 
@@ -45,12 +45,12 @@
 
 - id: educational
   name: Educational
-  description: Contains education content 
+  description: Contains education content
   category: content
 
 - id: game
   name: Game
-  description: Contains game content 
+  description: Contains game content
   category: content
 
 - id: unity

@@ -3,7 +3,7 @@ title: "[AVCTF2021] Super Secure Trustable Implementation"
 slug: avctf2021-ssti
 author: [zhaoyun]
 date: 2021-12-21
-tags: [ctf, web]
+tags: [ctf, web,writeup]
 ---
 
 > I've added a bunch of filters, so my app must be really secure now.

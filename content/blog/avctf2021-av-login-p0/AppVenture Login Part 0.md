@@ -3,7 +3,7 @@ title: "[AVCTF2021] AppVenture Login Part 0"
 slug: avctf2021-av-login-p0
 author: [zhaoyun]
 date: 2021-12-21
-tags: [ctf, web]
+tags: [ctf, web, writeup]
 ---
 
 > AppVenture Login page must be the most secure right? URL: http://35.240.143.82:4208/
