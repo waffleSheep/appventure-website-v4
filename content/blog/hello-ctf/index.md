@@ -1,9 +1,9 @@
 ---
 title: Hello CTF!
-slug: ctf-testing
+slug: hello-ctf
 author: [lyc]
 date: 2021-11-18
 tags: [ctf]
 ---
 
-Sample CTF blog post
+Sorry to disappoint- this is another hello world post. You can scroll past now :)

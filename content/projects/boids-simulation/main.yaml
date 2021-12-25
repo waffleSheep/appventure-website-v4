@@ -1,6 +1,6 @@
 id: boids-simulation
 name: Boids Simulation
-thumbnail: ./0.png
+thumbnail: ./1.png
 description: |
   Boids Simulation is a Java Project aiming to simulate how flocks of birds behave together. Their flight patterns are a result of Emergence, where complex behaviour can arise from simple rules. In my project, the rules are Alignment, Coherence, Separation and Collision-Evasion. Users can customise the appearance of the simulation, such as the bird size, shape and colour as well as the colours of the application and map. Users are also encouraged to change the bird settings to see how different rules affect the behaviour of the birds. Maps (a 2D array representing where the walls of the map are) for the birds to fly can be randomly generated under Map Settings via using a cellular automata algorithm on a 2D array of random wall/no-wall values to achieve a cave-like result. To edit a map further to one’s liking, the user can use a brush and eraser tool to change the values on the map by dragging on the map to set tiles to a wall/no-wall value. A flood fill function is included to fill big areas of the map to be a single value using the flood fill algorithm. Users can also save and load their own simulations.
 created:
@@ -10,9 +10,9 @@ maintained:
 type: /Module/Year-3
 tags: [java, javafx, educational]
 gallery:
-  - 0.png
-  - 1.png
-  - 2.png
+  - ./0.png
+  - ./1.png
+  - ./2.png
 achievements:
 attachment: ./boids-simulation.zip
 website:
