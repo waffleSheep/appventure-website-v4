@@ -18,7 +18,6 @@ interface Project {
   gallery: File[];
   website: string;
   attachment: File;
-  allContributors: Contributor[];
   featured?: boolean;
 }
 

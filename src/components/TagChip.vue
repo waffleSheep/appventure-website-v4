@@ -1,6 +1,6 @@
 <template>
   <g-link v-if="routerLink" class="round-button chip route" :style="cssProps" :to="routerLink" @click="handleClick">{{ tag.name }}</g-link>
-  <div v-else class="round-button chip route" :style="cssProps" :to="routerLink" @click="handleClick">{{ tag.name }}</div>
+  <span v-else class="round-button chip route" :style="cssProps" :to="routerLink" @click="handleClick">{{ tag.name }}</span>
 </template>
 
 <script lang="ts">
@@ -21,13 +21,11 @@ export default class TagChip extends Vue {
       return {
         '--color': '#009a90',
         '--chip-color': 'white',
-        'pointer-events': 'auto',
       }
     } else {
       return {
         '--color': 'white',
         '--chip-color': '#009a90',
-        'pointer-events': 'auto',
       }
     }
   }
@@ -63,6 +61,8 @@ export default class TagChip extends Vue {
   transition: all ease-in-out .2s;
 
   border: solid var(--chip-color) .15rem;
+
+  cursor: pointer;
 
   &:hover {
     background-color: var(--color);

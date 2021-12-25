@@ -1,65 +1,89 @@
-- id: ml
-  name: machine learning
-  description: Subset of AI to engineer systems to learn from data, spot patterns and make decisions with minimal human interaction.
-  category: cs
-
-- id: ctf
-  name: cybersecurity/CTF
-  description: Description for cybersecurity & CTF
-  category: cybersec
-
-- id: web
-  name: web-development
-  description: Description for web-development
-  category: cs
-
-- id: android
-  name: Android
-  description: Description for web-development
-  category: cs
-
-- id: desktop
-  name: Desktop
-  description: Description for Desktop apps
-  category: cs
-
 - id: outreach
   name: outreach
-  description: Description for outreach
-  category: internal
+  description: Cool stuff that AppVenture works on together with the school and community
+  category: activity
 
 - id: event
   name: event
-  description: Description for event
-  category: internal
+  description: Fun events that AppVenture organises!
+  category: activity
 
-- id: writeup
-  name: Write-up
-  description: Writeup for past CTFs
-  category: cybersec
-
-- id: unity
-  name: Unity
-  category: cs
-
-- id: java
-  name: Java
-  category: cs
-
-- id: javafx
-  name: JavaFX
-  category: framework
-
-- id: educational
-  name: Educational
-  category: content
+- id: android
+  name: Android
+  description: Targets android mobile devices
+  category: platform
 
 - id: ios
   name: iOS
-  description: Description for web-development
-  category: cs
+  description: Targets iOS mobile devices
+  category: platform
+
+- id: desktop
+  name: Desktop
+  description: Targets desktop devices
+  category: platform
+
+- id: web
+  name: Web Development
+  description: Websites, web apps, and more!
+  category: skill
+
+- id: ml
+  name: Machine Learning
+  description: Subset of AI to engineer systems to learn from data, spot patterns and make decisions with minimal human interaction.
+  category: skill
+
+- id: ctf
+  name: CTF
+  description: Cybersecurity Capture-the-Flag Competitions
+  category: content
+
+- id: writeup
+  name: Write-up
+  description: Solution discussion for past CTFs
+  category: content
+
+- id: educational
+  name: Educational
+  description: Contains education content 
+  category: content
+
+- id: game
+  name: Game
+  description: Contains game content 
+  category: content
+
+- id: unity
+  name: Unity
+  description: Built with Unity, a cross-platform game engine
+  category: framework
+
+- id: javafx
+  name: JavaFX
+  description: Built with JavaFX, an app development platform for Java
+  category: framework
+
+- id: java
+  name: Java
+  description: Written in Java
+  category: language
+
+- id: js
+  name: JavaScript
+  description: Written in TypeScript
+  category: language
+
+- id: ts
+  name: TypeScript
+  description: Written in TypeScript
+  category: language
 
 - id: cs3233
   name: CS3233
-  description: Object Oriented Programming II. Also covers GUI programming in JavaFX.
+  description: Year 3 Object Oriented Programming II Module. Also covers GUI programming in JavaFX.
+  category: module
+
+- id: cs4131
+  name: CS4131
+  description: Year 4 Android Programming Module.
   category: module

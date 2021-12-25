@@ -65,6 +65,7 @@ query BlogPage($page: Int) {
         tags (sortBy: "category", order: ASC) {
           id
           name
+          description
           category
         }
       }
