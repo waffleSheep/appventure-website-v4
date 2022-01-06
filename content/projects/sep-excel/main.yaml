@@ -1,0 +1,19 @@
+id: sep-excel
+name: SEP Excel
+thumbnail: ./add_page.png
+description: >
+  A simple javafx program that helps create a master Excel.
+  This helps the admin department in managing Student Exchange Programs (SEP).
+created:
+  contributors: [yapyx]
+  year: 2021
+maintained:
+type: /AppVenture/School
+tags: [excel]
+gallery:
+  - ./add_page.png
+  - ./schedules_page.png
+achievements:
+attachment:
+website:
+featured: false
