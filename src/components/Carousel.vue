@@ -40,14 +40,10 @@ export default class Carousel extends Vue {
   viewport?: HTMLElement;
   activeIdx = 0;
   index = null;
-  breakpoints: number[] = [];
 
   mounted() {
     // @ts-ignore
     this.viewport = this.$refs.viewport;
-    this.viewport?.querySelectorAll('img').forEach((e) => {
-      this.breakpoints.push(e.offsetLeft);
-    });
   }
 
   prev() {
@@ -55,7 +51,7 @@ export default class Carousel extends Vue {
   }
 
   next() {
-    this.setIndex(this.activeIdx+1 === this.gallery.length ? 0 : this.activeIdx + 1);
+    this.setIndex(this.activeIdx+1 === this.gallery.length ? 0 : this.activeIdx+1);
   }
 
   setIndex(i: number) {
@@ -68,12 +64,12 @@ export default class Carousel extends Vue {
 
   handleScroll() {
     if (!this.viewport) return;
-    for (let i = this.breakpoints.length-1; i >= 0; --i) { // probably won't have many
-      if (this.viewport.scrollLeft >= this.breakpoints[i]-32) {
-        this.activeIdx = i;
-        break;
+    const vp = this.viewport;
+    vp.querySelectorAll('img').forEach((e, idx) => {
+      if (vp.scrollLeft >= e.offsetLeft-32) {
+        this.activeIdx = idx;
       }
-    }
+    });
   }
 }
 </script>
