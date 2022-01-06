@@ -3,7 +3,7 @@ title: "[AVCTF2021] AppVenture Login Part 2"
 slug: avctf2021-av-login-p2
 author: [zhaoyun]
 date: 2021-12-21
-tags: [ctf, web]
+tags: [ctf, web,writeup]
 ---
 
 > Ok, you got the flag, but I bet you'll never get my password!

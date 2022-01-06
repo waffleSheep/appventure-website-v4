@@ -3,7 +3,7 @@ title: "[AVCTF2021] Espace 0"
 slug: avctf2021-espace-0
 author: [zhaoyun]
 date: 2021-12-21
-tags: [ctf, web]
+tags: [ctf, web,writeup]
 ---
 
 The hardest challenge of the web category, but was actually solved before Login Part 0 since my brain was dead

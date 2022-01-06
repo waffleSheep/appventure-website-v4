@@ -3,7 +3,7 @@ title: "[AVCTF2021] AppVenture Login Part 1"
 slug: avctf2021-av-login-p1
 author: [zhaoyun]
 date: 2021-12-21
-tags: [ctf, web]
+tags: [ctf, web,writeup]
 ---
 
 > Well, I haven't taken CS6131 yet but databases should be easy right??

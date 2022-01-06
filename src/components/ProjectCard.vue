@@ -1,10 +1,10 @@
 <template>
-  <g-link 
-    :class="'project-card ' + (fancy ? 'fancy' : 'compact')" 
+  <g-link
+    :class="'project-card ' + (fancy ? 'fancy' : 'compact')"
     :to="'/projects/' + project.id"
   >
-    <g-image 
-            class="thumbnail" 
+    <g-image
+            class="thumbnail"
             :src="project.thumbnail || 'https://via.placeholder.com/128'" />
     <div class="content">
       <h5 class="name">{{ project.name }}</h5>
@@ -15,7 +15,7 @@
         </span>
       </div>
       <div v-if="fancy" class="tags">
-        <TagChip 
+        <TagChip
           class="tagChip"
           v-for="tag in project.tags"
           :key="tag.id"
@@ -83,8 +83,8 @@ export default class ProjectCard extends Vue {
 
     margin-top: 8px;
 
-    .name { 
-		  margin: 0; 
+    .name {
+		  margin: 0;
 
 			display: -webkit-box;
 		  -webkit-line-clamp: 2;
@@ -125,6 +125,7 @@ export default class ProjectCard extends Vue {
     flex-flow: column nowrap;
     overflow-y: auto;
 
+    padding-left: 6px;
     .name {
       margin: 16px 0 8px 0;
       padding-right: 0 8px;

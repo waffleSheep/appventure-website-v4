@@ -3,29 +3,30 @@
     <main>
       <div class="preamble medium-container">
         <h1 class="text-center">Cybersecurity Division</h1>
-        <p class="lede text-center">From student-organized CTFs to articles on making software secure, here is a showcase of what we have to offer.</p>
+        <p class="lede text-center">From student-organized CTFs to articles on making software secure, here is a showcase of what we have to offer. </p>
+        <p class="text-center">Psst... Join us at <a href="https://ctf.nush.app">ctf.nush.app</a> for seasonal challenges set by yours truly!</p>
       </div>
-      <hr/>
-      <div>
-        <h2 class="section-header">CTFs</h2>
-        <a href="https://ctf.nush.app" class="link">
-        <div class="banner medium-container">
-        <div class="info">
-          <h3>Looking for a some CTF action? Join us at ctf.nush.app</h3>
-          <h4>Current event: MiniCTF #15</h4>
-          <a
-            class="icon-button la la-link"
-            href="https://ctf.nush.app"
-          />
-          <!-- TODO: Getting current CTF to be automated -->
-          <a
-            class="icon-button la la-file-alt"
-            href="http://localhost:8080/blog/2019/10/08/minictf000/"
-          />
-        </div>
-      </div>
-      </a>
-      </div>
+<!--      <hr/>-->
+<!--      <div>-->
+<!--        <h2 class="section-header">CTFs</h2>-->
+<!--        <a href="https://ctf.nush.app" class="link">-->
+<!--        <div class="banner medium-container">-->
+<!--        <div class="info">-->
+<!--          <h3>Looking for a some CTF action? Join us at ctf.nush.app</h3>-->
+<!--          <h4>Current event: MiniCTF #15</h4>-->
+<!--          <a-->
+<!--            class="icon-button la la-link"-->
+<!--            href="https://ctf.nush.app"-->
+<!--          />-->
+<!--          &lt;!&ndash; TODO: Getting current CTF to be automated &ndash;&gt;-->
+<!--          <a-->
+<!--            class="icon-button la la-file-alt"-->
+<!--            href="http://localhost:8080/blog/2019/10/08/minictf000/"-->
+<!--          />-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      </a>-->
+<!--      </div>-->
       <hr/>
       <div class="cybersec-section">
         <div
@@ -119,13 +120,13 @@ export default class CybersecPage extends Vue {
   /* NOTE: Deep filtering is not available using GraphQL yet */
   get cybersecBlogPosts(): BlogPost[] {
     return this.posts
-      .filter(it => it.tags.map(it => it.category).includes('cybersec'))
+      .filter(it => it.tags.map(it => it.id).includes('ctf'))
       .filter(it => !it.tags.map(it => it.id).includes('writeup'));
   }
 
   get cybersecWriteups(): BlogPost[] {
     return this.posts
-      .filter(it => it.tags.map(it => it.category).includes('cybersec'))
+      .filter(it => it.tags.map(it => it.id).includes('ctf'))
       .filter(it => it.tags.map(it => it.id).includes('writeup'));
   }
 }
