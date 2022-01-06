@@ -1,0 +1,10 @@
+id: opp-guide
+name: Opportunities Guide
+thumbnail: ./0.png
+description: Powered by Wiki.js, Opportunities Guide is an initiative for seniors to share about the various opportunities available in NUS High School with their juniors.
+created:
+  contributors: [junron]
+type: /AppVenture/School
+tags: [web]
+gallery:
+  - ./0.png
