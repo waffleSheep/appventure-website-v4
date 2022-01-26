@@ -70,7 +70,7 @@
 
 <page-query>
 query Featured {
-  projects: allProject(filter: { featured: { eq: true } }){
+  projects: allProject(filter: { featured: { eq: true } }, sortBy: "weight", order: ASC) {
     edges {
       node {
         id
@@ -96,11 +96,11 @@ import { Project } from '@/types/Project';
 export default class HomePage extends Vue {
   featuredProjects: Project[] = [];
 
-	public metaInfo() {
-		return {
-			title: 'Home',
-		}
-	}
+  public metaInfo() {
+    return {
+      title: 'Home',
+    }
+  }
 
   created() {
     // @ts-ignore
