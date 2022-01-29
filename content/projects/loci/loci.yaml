@@ -1,0 +1,23 @@
+id: loci
+name: "Loci: A Whiteboard for Everybody"
+thumbnail: ./thumb.png
+description: |
+  Loci is a collaborative online whiteboard designed for fast, responsive real-time syncing and compatibility with all platforms via any modern browser. No sign-in is required to get started — everyone can get on board quickly and enjoy learning, working, and socialising together online through an intuitive interface.
+created:
+  contributors: [lyc, wernjie]
+  year: 2020
+maintained:
+  - contributors: [lyc, wernjie]
+    year: 2021
+  - contributors: [lyc, wernjie]
+    year: 2022
+type: /AppVenture/Others
+tags: [web]
+gallery:
+  - ./0.png
+achievements:
+  - Bronze Award, Singapore Techblazer Awards (Students Category), 2021
+attachment:
+website: https://loci.ink
+featured: true
+weight: 1
