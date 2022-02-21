@@ -9,7 +9,7 @@
         </p>
         <p>
           For admission and general school hotlines, visit our
-          <a href="http://www.nushigh.edu.sg/others/contact-us">school website</a>.
+          <a href="https://www.nushigh.edu.sg/our-dna/contact-us">school website</a>.
         </p>
         <p>
           <a
