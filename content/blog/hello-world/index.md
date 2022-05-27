@@ -9,7 +9,7 @@ tags: []
 As per tradition, to celebrate the launch of the AppVenture Website featuring this shiny new blog (finally, after bursts of development over the year), we'll have:
 
 ```javascript
-console.log("Hello World!");
+console.log("Hello, World!");
 ```
 
 Jokes aside, while we don't have a fixed posting schedule presently, here are things you can expect: write-ups after our CTF events, medium-style articles by our members on the latest tech news, reflections and sharings on projects, or even musings from interesting experiences and events we hold for the school and community.

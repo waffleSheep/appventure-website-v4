@@ -4,6 +4,9 @@ thumbnail: ./0.png
 description: Powered by Wiki.js, Opportunities Guide is an initiative for seniors to share about the various opportunities available in NUS High School with their juniors.
 created:
   contributors: [junron]
+maintained:
+  - contributors: [prannay, ishiang]
+    year: 2022
 type: /AppVenture/School
 tags: [web]
 website: https://wiki.nush.app

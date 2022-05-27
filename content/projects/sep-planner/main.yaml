@@ -8,8 +8,10 @@ created:
   contributors: [yapyx]
   year: 2021
 maintained:
+  - contributors: [yapyx, lirun, aiklok]
+  - year: 2022
 type: /AppVenture/School
-tags: [excel]
+tags: [javafx]
 gallery:
   - ./add_page.png
   - ./schedules_page.png
