@@ -1,10 +1,3 @@
----
-title: Building Convolutional Neural Networks from Scratch #1 - Matrix Calculus
-slug: cnn-math
-author: [zayan]
-date: 2022-05-26
-tags: [ml]
----
 
 ## Mathematics
 
@@ -53,9 +46,7 @@ In this case, for the objective function we will use Linear Least Squares (LLS) 
 
 $$F(\mathbf{x}) = {||A\mathbf{x}-\mathbf{b}||}_{2}^{2}$$
 
-
 ### Matrix Calculus
-
 
 Now, what do the weird lines and two occurences of "2" above mean and how exactly do we calculate the derivative of a scalar in terms of a vector? Well we have to learn matrix calculus, a very peculiar domain of math that is very torturous. Ideally, you want to avoid this at all cost, but I will do a gentle walk through this stuff.
 
@@ -134,7 +125,7 @@ $$\|{\mathbf {x}}\|_{2}:={\sqrt {x_{1}^{2}+\cdots +x_{n}^{2}}}$$
 We then square it giving rise to the second "2". Now we define and do the same thing we did with $Ax-b$, $\|{\mathbf {y}}\|_{2}^{2}$ is $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$. Hence, the derivative is a row vector.
 
 $$
-\bein{align*}
+\begin{align*}
 z&=\|{\mathbf {y}}\|_{2}^{2}\\
 &={\mathbf {y}}_{1}^{2} + {\mathbf {y}}_{2}^{2}
 \end{align*}
@@ -146,9 +137,9 @@ $$
 \frac{\partial F(\mathbf{x})}{\partial\mathbf{y}} = 
 \begin{bmatrix}
 \frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{1}} & \frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{2}}
-\end{bmatrix}\\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{1}}=2\mathbf{y}_{1}\\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{2}}=2\mathbf{y}_{2}\\
+\end{bmatrix} \\
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{1}}=2\mathbf{y}_{1} \\
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{2}}=2\mathbf{y}_{2} \\
 \frac{\partial F(\mathbf{x})}{\partial\mathbf{y}} = 
 \begin{bmatrix}
 2\mathbf{y}_{1} & 2\mathbf{y}_{2}
@@ -160,9 +151,10 @@ To illustrate the chain rule, I will calculate it individually and put it all to
 
 $$
 \begin{align*}
-F(\mathbf{x}) &= {||A\mathbf{x}-\mathbf{b}||}_{2}^{2}\\
+F(\mathbf{x}) &= {||A\mathbf{x}-\mathbf{b}||}_{2}^{2} \\
 &= {({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} +
-{({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2}
+{({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} \\
+\end{align*}
 $$
 
 Now we calculate the Final Gradient by calculating the individual derivative for every value.
