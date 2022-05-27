@@ -5,7 +5,8 @@ author: [zayan]
 date: 2022-05-26
 tags: [ml]
 ---
-## Mathematics
+
+# Mathematics
 
 **Mathematics** is an area of knowledge, which includes the study of such topics as numbers, formulas and related structures, shapes and spaces in which they are contained, and quantities and their changes. There is no general consensus about its exact scope or epistemological status. However, it is extremely labourious and time-consuming but necessary and is sometimes (albeit very rarely) interesting.
 
@@ -131,10 +132,10 @@ $$\|{\mathbf {x}}\|_{2}:={\sqrt {x_{1}^{2}+\cdots +x_{n}^{2}}}$$
 We then square it giving rise to the second "2". Now we define and do the same thing we did with $Ax-b$, $\|{\mathbf {y}}\|_{2}^{2}$ is $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$. Hence, the derivative is a row vector.
 
 $$
-\begin{align*}
+\begin{aligned}
 z&=\|{\mathbf {y}}\|_{2}^{2}\\
 &={\mathbf {y}}_{1}^{2} + {\mathbf {y}}_{2}^{2}
-\end{align*}
+\end{aligned}
 $$
 
 Now we calculate the Gradient (remember that it is transposed) by calculating the individual derivative for every value.
@@ -156,11 +157,11 @@ $$
 To illustrate the chain rule, I will calculate it individually and put it all together.
 
 $$
-\begin{align*}
+\begin{aligned}
 F(\mathbf{x}) &= {||A\mathbf{x}-\mathbf{b}||}_{2}^{2} \\
 &= {({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} +
 {({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} \\
-\end{align*}
+\end{aligned}
 $$
 
 Now we calculate the Final Gradient by calculating the individual derivative for every value.
@@ -192,18 +193,22 @@ As we can see from that last step, its pretty complex an expression, but you can
 
 I then transpose the derivative back into the denominator layout written below. The step function is also written below which we will use for the gradient descent.
 
-$$F(\mathbf{x}) = {||A\mathbf{x}-\mathbf{b}||}^{2}\\
+$$
+F(\mathbf{x}) = {||A\mathbf{x}-\mathbf{b}||}^{2}\\
 \nabla F(\mathbf {x} )=2A^{T}(A\mathbf {x} -\mathbf {b})\\
-\mathbf {x}_{n+1}=\mathbf {x}_{n}-\gamma \nabla F(\mathbf {x} _{n})$$
+\mathbf {x}_{n+1}=\mathbf {x}_{n}-\gamma \nabla F(\mathbf {x} _{n})
+$$
 
 where $\gamma$ is the learning rate, we need a small learning rate as it prevents the function from taking large steps and objective functions tend to overblow the "true" error of a function. 
 
 We can now implement this in code form for a very simple linear system written below:
 
-$$w+3x+2y-z=9\\
+$$
+w+3x+2y-z=9\\
 5w+2x+y-2z=4\\
 x+2y+4z=24\\
-w+x-y-3z=-12$$
+w+x-y-3z=-12
+$$
 
 This can be written as such in matrix form:
 
@@ -293,14 +298,18 @@ array([[0.09257854],
 
 #### The Objective Function and its Derivative
 
-$$F(\mathbf{x}) = {||A\mathbf{x}-\mathbf{b}||}^{2}$$
+$$
+F(\mathbf{x}) = {||A\mathbf{x}-\mathbf{b}||}^{2}
+$$
 
 ```python
 >>> def objective_function(x):
         return (np.matmul(A,x) - b) ** 2
 ```
 
-$$\nabla F(\mathbf {x} )=2A^{T}(A\mathbf {x} -\mathbf {b})$$
+$$
+\nabla F(\mathbf {x} )=2A^{T}(A\mathbf {x} -\mathbf {b})
+$$
 
 ```python
 >>> def objective_function_derivative(x):
@@ -309,7 +318,9 @@ $$\nabla F(\mathbf {x} )=2A^{T}(A\mathbf {x} -\mathbf {b})$$
 
 In this case, I implemented an arbritary learning rate and arbritary step count. In traditional non-machine learning gradient descent, the learning rate changes per step and is determined via a heuristic such as the Barzilai–Borwein method, however this is not necessary as gradient descent is very robust. I used an arbritary step count for simplicity but you should ideally use some sort of boolean condition to break the loop such as $F(\mathbf{x})<0.01$.
 
-$$\mathbf {x}_{n+1}=\mathbf {x}_{n}-\gamma \nabla F(\mathbf {x} _{n})$$
+$$
+\mathbf {x}_{n+1}=\mathbf {x}_{n}-\gamma \nabla F(\mathbf {x} _{n})
+$$
 
 ```python
 >>> learning_rate = 0.01
@@ -338,39 +349,48 @@ Voila, we have solved the equation with gradient descent, and the solution is su
 
 To understand the math behind a deep neural network layer, we will first look at the single perceptron case.
 
-<img src="single_perceptron_example.png" width=500/>
+![single perceptron example](./single_perceptron_example.png)
 
-$$z=xw+b\\
-a=\sigma (z)$$
+$$
+z=xw+b\\
+a=\sigma (z)
+$$
 
 where $w$ is the weight, $b$ is the bias, $x$ is the input, $\sigma$ is the activation function and $a$ is the output. In this case, it is quite easy to represent. Let us expand it to a layer with 4 input neurons and 4 output neurons.
 
-<img src="multiple_perceptron_example.png" width=500/>
+
+![multiple perceptron example](./multiple_perceptron_example.png)
 
 
-$${w}_{11}{x}_{1} + {w}_{21}{x}_{2} + {w}_{31}{x}_{3} + {w}_{41}{x}_{4} + {b}_{1}={z}_{1}\\
+$$
+{w}_{11}{x}_{1} + {w}_{21}{x}_{2} + {w}_{31}{x}_{3} + {w}_{41}{x}_{4} + {b}_{1}={z}_{1}\\
 {w}_{12}{x}_{1} + {w}_{22}{x}_{2} + {w}_{32}{x}_{3} + {w}_{42}{x}_{4} + {b}_{2}={z}_{2}\\
 {w}_{13}{x}_{1} + {w}_{23}{x}_{2} + {w}_{33}{x}_{3} + {w}_{43}{x}_{4} + {b}_{3}={z}_{3}\\
 {w}_{14}{x}_{1} + {w}_{24}{x}_{2} + {w}_{34}{x}_{3} + {w}_{44}{x}_{4} + {b}_{4}={z}_{4}\\
 {a}_{1}=\sigma({z}_{1}) 
 \; {a}_{2}=\sigma({z}_{2}) 
 \; {a}_{3}=\sigma({z}_{3})
-\; {a}_{4}=\sigma({z}_{4})$$
+\; {a}_{4}=\sigma({z}_{4})
+$$
 
 As you can see, this is just a linear system much like the one showed in the example and it becomes very simple.
 
-$$\mathbf{z} = W\mathbf{x} + \mathbf{b}\\
+$$
+\mathbf{z} = W\mathbf{x} + \mathbf{b}\\
 \mathbf{a} = \sigma(\mathbf{z})
 $$
 
 From our work earlier we know that:
 
-$$\frac{\partial \mathbf{z}}{\partial \mathbf{b}}=I$$
+$$
+\frac{\partial \mathbf{z}}{\partial \mathbf{b}}=I
+$$
 
 
 However we have once again hit a speedbump. How do we find the derivative of a vector $\mathbf{z}$ with respect to a matrix $W$? The function is of the form $f:\mathbb{R}^{m \times n} \rightarrow \mathbb{R}^{m}$. Hence, the derivative will be a third order tensor also known as a 3D matrix. (colloquially)
 
-$$\mathbf{z} = W\mathbf{x} + \mathbf{b}\\
+$$
+\mathbf{z} = W\mathbf{x} + \mathbf{b}\\
 \begin{bmatrix}
 {\mathbf{z}}_{1} \\
 {\mathbf{z}}_{2} \\
@@ -411,10 +431,15 @@ array([[1, 0, 2, 0],
 
 We can see that the derivative values in terms of the weight, bias and input are as follows:
 
-$$\frac{\partial \mathbf{a}}{\partial W} = \frac{\partial \mathbf{z}}{\partial W} 
-\frac{\partial \mathbf{a}}{\partial \mathbf{z}} = {\mathbf{x}}^{T} \otimes diag({\sigma}^{'}(W\mathbf{x} + \mathbf{b}))$$
-$$\frac{\partial \mathbf{a}}{\partial b} = \frac{\partial \mathbf{z}}{\partial b} 
-\frac{\partial \mathbf{a}}{\partial \mathbf{z}}=diag({\sigma}^{'}(W\mathbf{x} + \mathbf{b}))$$
+$$
+\frac{\partial \mathbf{a}}{\partial W} = \frac{\partial \mathbf{z}}{\partial W} 
+\frac{\partial \mathbf{a}}{\partial \mathbf{z}} = {\mathbf{x}}^{T} \otimes diag({\sigma}^{'}(W\mathbf{x} + \mathbf{b}))
+$$
+
+$$
+\frac{\partial \mathbf{a}}{\partial b} = \frac{\partial \mathbf{z}}{\partial b} 
+\frac{\partial \mathbf{a}}{\partial \mathbf{z}}=diag({\sigma}^{'}(W\mathbf{x} + \mathbf{b}))
+$$
 
 Yes, we now have an expression for a MLP!
 
