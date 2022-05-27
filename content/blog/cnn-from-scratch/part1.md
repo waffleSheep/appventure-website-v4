@@ -1,6 +1,6 @@
 ---
 title: Building Convolutional Neural Networks from Scratch #1 - Matrix Calculus
-slug: cnn-math
+slug: cnn-from-scratch-1
 author: [zayan]
 date: 2022-05-26
 tags: [ml]
@@ -69,6 +69,7 @@ $$\frac{\partial y}{\partial\mathbf{x}} =
 \frac{\partial y}{\partial{\mathbf{x}}_{n}}\\
 \end{bmatrix}
 $$
+
 $$
 \frac{\partial y}{\partial\mathbf{x}} = 
 \begin{bmatrix}
