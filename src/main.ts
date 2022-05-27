@@ -24,14 +24,14 @@ import DefaultLayout from '~/layouts/Default.vue';
  * script imports
  */
 import InfiniteLoading from 'vue-infinite-loading';
-
+import 'katex/dist/katex.min.css';
 /**
  * Hooks
  */
-import Component from 'vue-class-component'
+import Component from 'vue-class-component';
 Component.registerHooks([
   'metaInfo', // for vue-meta
-])
+]);
 
 /**
  * Client API contructor
@@ -39,7 +39,7 @@ Component.registerHooks([
 const client: ClientApiConstructor = (Vue, { head }) => {
   Vue.component('Layout', DefaultLayout);
 
-  Vue.use(InfiniteLoading)
+  Vue.use(InfiniteLoading);
 
   // Add an external CSS file
   if (head.link) {
