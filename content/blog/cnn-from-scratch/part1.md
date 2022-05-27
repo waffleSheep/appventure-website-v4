@@ -131,10 +131,10 @@ $$\|{\mathbf {x}}\|_{2}:={\sqrt {x_{1}^{2}+\cdots +x_{n}^{2}}}$$
 We then square it giving rise to the second "2". Now we define and do the same thing we did with $Ax-b$, $\|{\mathbf {y}}\|_{2}^{2}$ is $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$. Hence, the derivative is a row vector.
 
 $$
-\begin{align*}
+\begin{aligned}
 z&=\|{\mathbf {y}}\|_{2}^{2}\\
 &={\mathbf {y}}_{1}^{2} + {\mathbf {y}}_{2}^{2}
-\end{align*}
+\end{aligned}
 $$
 
 Now we calculate the Gradient (remember that it is transposed) by calculating the individual derivative for every value.
@@ -156,11 +156,11 @@ $$
 To illustrate the chain rule, I will calculate it individually and put it all together.
 
 $$
-\begin{align*}
+\begin{aligned}
 F(\mathbf{x}) &= {||A\mathbf{x}-\mathbf{b}||}_{2}^{2} \\
 &= {({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} +
 {({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} \\
-\end{align*}
+\end{aligned}
 $$
 
 Now we calculate the Final Gradient by calculating the individual derivative for every value.
