@@ -33,8 +33,10 @@ Numpy is introduced in CS4132 (or PC6432 for some reason), but for a quick summa
 Observe the following series of mathematical equations:
 
 $$
-4a+2b=22\\
-3a+8b=49
+\begin{aligned}
+4a+2b&=22\\
+3a+8b&=49
+\end{aligned}
 $$
 
 Despite the fact that solving these is pretty easy (as we learnt in Year 1), let's try going with a different solution from what is usually portrayed. Let's try using **gradient descent**.
@@ -78,12 +80,14 @@ Well, both actually can work (even if you think of a vector as a column vector),
 
 First lets look at the $A\mathbf{x}-\mathbf{b}$ term and we will see why the derivative is so and so with a simple $2 \times 2$ case. $A\mathbf{x}-\mathbf{b}$ is a $f:\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$ and hence the derivative will be a matrix (known as the Jacobian to many). Lets first, see the general equation and work it out for every value.
 
-$$\mathbf{y} = A\mathbf{x}-\mathbf{b}\\
+$$
+\begin{aligned}
+\mathbf{y} &= A\mathbf{x}-\mathbf{b}\\
 \begin{bmatrix}
 {\mathbf{y}}_{1} \\
 {\mathbf{y}}_{2}
 \end{bmatrix}
-=
+&=
 \begin{bmatrix}
 {a}_{11} & {a}_{12}\\
 {a}_{21} & {a}_{22}\\
@@ -96,31 +100,35 @@ $$\mathbf{y} = A\mathbf{x}-\mathbf{b}\\
 \begin{bmatrix}
 {\mathbf{b}}_{1} \\
 {\mathbf{b}}_{2}
-\end{bmatrix}
-=
+\end{bmatrix} \\
+&=
 \begin{bmatrix}
 {a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1} \\
 {a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}
 \end{bmatrix}
+\end{aligned}
 $$
 
 Now we calculate the Jacobian (remember that it is transposed) by calculating the individual derivative for every value.
 
-$$\frac{\partial \mathbf{y}}{\partial \mathbf{x}} =
+$$
+\begin{aligned}
+\frac{\partial \mathbf{y}}{\partial \mathbf{x}} &=
 \begin{bmatrix}
 \frac{\partial {\mathbf{y}}_{1}}{\partial{\mathbf{x}}_{1}} & \frac{\partial {\mathbf{y}}_{1}}{\partial{\mathbf{x}}_{2}}\\
 \frac{\partial {\mathbf{y}}_{2}}{\partial{\mathbf{x}}_{1}} & \frac{\partial {\mathbf{y}}_{2}}{\partial{\mathbf{x}}_{2}}\\
-\end{bmatrix}\\
-\frac{\partial {\mathbf{y}}_{1}}{\partial{\mathbf{x}}_{1}}={a}_{11}\\
-\frac{\partial {\mathbf{y}}_{1}}{\partial{\mathbf{x}}_{2}}={a}_{12}\\
-\frac{\partial {\mathbf{y}}_{2}}{\partial{\mathbf{x}}_{1}}={a}_{21}\\
-\frac{\partial {\mathbf{y}}_{2}}{\partial{\mathbf{x}}_{2}}={a}_{22}\\
-\frac{\partial \mathbf{y}}{\partial \mathbf{x}} =
+\end{bmatrix} \\
+\frac{\partial {\mathbf{y}}_{1}}{\partial{\mathbf{x}}_{1}} &= {a}_{11}\\
+\frac{\partial {\mathbf{y}}_{1}}{\partial{\mathbf{x}}_{2}} &= {a}_{12}\\
+\frac{\partial {\mathbf{y}}_{2}}{\partial{\mathbf{x}}_{1}} &= {a}_{21}\\
+\frac{\partial {\mathbf{y}}_{2}}{\partial{\mathbf{x}}_{2}} &= {a}_{22}\\
+\frac{\partial \mathbf{y}}{\partial \mathbf{x}} &= 
 \begin{bmatrix}
 {a}_{11} & {a}_{12}\\
 {a}_{21} & {a}_{22}\\
 \end{bmatrix}
-=A
+= A
+\end{aligned}
 $$
 
 We see that it is kind of the same with single variable, where if we have $f(x)=ax$, then $f'(x)=a$ where a is constant.
@@ -141,17 +149,19 @@ $$
 Now we calculate the Gradient (remember that it is transposed) by calculating the individual derivative for every value.
 
 $$
-\frac{\partial F(\mathbf{x})}{\partial\mathbf{y}} = 
+\begin{aligned}
+\frac{\partial F(\mathbf{x})}{\partial\mathbf{y}} &=
 \begin{bmatrix}
 \frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{1}} & \frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{2}}
 \end{bmatrix} \\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{1}}=2\mathbf{y}_{1} \\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{2}}=2\mathbf{y}_{2} \\
-\frac{\partial F(\mathbf{x})}{\partial\mathbf{y}} = 
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{1}} &= 2\mathbf{y}_{1} \\
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{y}}_{2}} &= 2\mathbf{y}_{2} \\
+\frac{\partial F(\mathbf{x})}{\partial\mathbf{y}} &=
 \begin{bmatrix}
 2\mathbf{y}_{1} & 2\mathbf{y}_{2}
 \end{bmatrix}
-=2\mathbf{y}^{T}
+= 2\mathbf{y}^{T}
+\end{aligned}
 $$
 
 To illustrate the chain rule, I will calculate it individually and put it all together.
@@ -167,26 +177,27 @@ $$
 Now we calculate the Final Gradient by calculating the individual derivative for every value.
 
 $$
-\frac{\partial F(\mathbf{x})}{\partial\mathbf{x}} = 
+\begin{aligned}
+\frac{\partial F(\mathbf{x})}{\partial\mathbf{x}} &=
 \begin{bmatrix}
 \frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{1}} & \frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{2}}
 \end{bmatrix}\\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{1}}=2{a}_{11}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{21}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})\\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{2}}=2{a}_{12}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{22}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})\\
-\frac{\partial F(\mathbf{x})}{\partial\mathbf{x}} = 
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{1}} &= 2{a}_{11}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{21}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})\\
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{2}} &= 2{a}_{12}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{22}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})\\
+\frac{\partial F(\mathbf{x})}{\partial\mathbf{x}} &=
 \begin{bmatrix}
 2{a}_{11}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{21}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) & 2{a}_{12}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{22}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})
 \end{bmatrix}\\
-=2
+&= 2
 \begin{bmatrix}
 {a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1} &
 {a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}
 \end{bmatrix}
 \begin{bmatrix}
-{a}_{11} & {a}_{12}\\
-{a}_{21} & {a}_{22}\\
-\end{bmatrix}
-=2{(A\mathbf{x}-\mathbf{b})}^{T}A
+{a}_{11} & {a}_{12} \\
+{a}_{21} & {a}_{22} \\
+\end{bmatrix} = 2{(A\mathbf{x}-\mathbf{b})}^{T}A
+\end{aligned}
 $$
 
 As we can see from that last step, its pretty complex an expression, but you can see how neat matrix notation is as compared to writing all that out and you see how matrix calculus works. With numerator layout, its very similar to single-variable but with a few extra steps.
@@ -194,9 +205,11 @@ As we can see from that last step, its pretty complex an expression, but you can
 I then transpose the derivative back into the denominator layout written below. The step function is also written below which we will use for the gradient descent.
 
 $$
-F(\mathbf{x}) = {||A\mathbf{x}-\mathbf{b}||}^{2}\\
-\nabla F(\mathbf {x} )=2A^{T}(A\mathbf {x} -\mathbf {b})\\
-\mathbf {x}_{n+1}=\mathbf {x}_{n}-\gamma \nabla F(\mathbf {x} _{n})
+\begin{aligned}
+F(\mathbf{x}) &= {||A\mathbf{x}-\mathbf{b}||}^{2} \\
+\nabla F(\mathbf {x} ) &= 2 A^{T}(A\mathbf {x} -\mathbf{b}) \\
+\mathbf{x}_{n+1} &= \mathbf{x}_{n}-\gamma \nabla F(\mathbf {x} _{n})
+\end{aligned}
 $$
 
 where $\gamma$ is the learning rate, we need a small learning rate as it prevents the function from taking large steps and objective functions tend to overblow the "true" error of a function. 
@@ -204,10 +217,12 @@ where $\gamma$ is the learning rate, we need a small learning rate as it prevent
 We can now implement this in code form for a very simple linear system written below:
 
 $$
+\begin{aligned}
 w+3x+2y-z=9\\
 5w+2x+y-2z=4\\
 x+2y+4z=24\\
 w+x-y-3z=-12
+\end{aligned}
 $$
 
 This can be written as such in matrix form:
@@ -361,23 +376,26 @@ where $w$ is the weight, $b$ is the bias, $x$ is the input, $\sigma$ is the acti
 
 ![multiple perceptron example](./multiple_perceptron_example.png)
 
-
 $$
-{w}_{11}{x}_{1} + {w}_{21}{x}_{2} + {w}_{31}{x}_{3} + {w}_{41}{x}_{4} + {b}_{1}={z}_{1}\\
-{w}_{12}{x}_{1} + {w}_{22}{x}_{2} + {w}_{32}{x}_{3} + {w}_{42}{x}_{4} + {b}_{2}={z}_{2}\\
-{w}_{13}{x}_{1} + {w}_{23}{x}_{2} + {w}_{33}{x}_{3} + {w}_{43}{x}_{4} + {b}_{3}={z}_{3}\\
-{w}_{14}{x}_{1} + {w}_{24}{x}_{2} + {w}_{34}{x}_{3} + {w}_{44}{x}_{4} + {b}_{4}={z}_{4}\\
-{a}_{1}=\sigma({z}_{1}) 
-\; {a}_{2}=\sigma({z}_{2}) 
-\; {a}_{3}=\sigma({z}_{3})
-\; {a}_{4}=\sigma({z}_{4})
+\begin{aligned}
+{w}_{11}{x}_{1} + {w}_{21}{x}_{2} + {w}_{31}{x}_{3} + {w}_{41}{x}_{4} + {b}_{1} = &{z}_{1}\\
+{w}_{12}{x}_{1} + {w}_{22}{x}_{2} + {w}_{32}{x}_{3} + {w}_{42}{x}_{4} + {b}_{2} = &{z}_{2}\\
+{w}_{13}{x}_{1} + {w}_{23}{x}_{2} + {w}_{33}{x}_{3} + {w}_{43}{x}_{4} + {b}_{3} = &{z}_{3}\\
+{w}_{14}{x}_{1} + {w}_{24}{x}_{2} + {w}_{34}{x}_{3} + {w}_{44}{x}_{4} + {b}_{4} = &{z}_{4}\\
+{a}_{1}=\sigma(&{z}_{1})\\
+{a}_{2}=\sigma(&{z}_{2})\\
+{a}_{3}=\sigma(&{z}_{3})\\
+{a}_{4}=\sigma(&{z}_{4})
+\end{aligned}
 $$
 
 As you can see, this is just a linear system much like the one showed in the example and it becomes very simple.
 
 $$
-\mathbf{z} = W\mathbf{x} + \mathbf{b}\\
-\mathbf{a} = \sigma(\mathbf{z})
+\begin{aligned}
+\mathbf{z} &= W\mathbf{x} + \mathbf{b}\\
+\mathbf{a} &= \sigma(\mathbf{z})
+\end{aligned}
 $$
 
 From our work earlier we know that:
@@ -390,14 +408,13 @@ $$
 However we have once again hit a speedbump. How do we find the derivative of a vector $\mathbf{z}$ with respect to a matrix $W$? The function is of the form $f:\mathbb{R}^{m \times n} \rightarrow \mathbb{R}^{m}$. Hence, the derivative will be a third order tensor also known as a 3D matrix. (colloquially)
 
 $$
+\begin{aligned}
 \mathbf{z} = W\mathbf{x} + \mathbf{b}\\
 \begin{bmatrix}
 {\mathbf{z}}_{1} \\
 {\mathbf{z}}_{2} \\
 {\mathbf{z}}_{3}
-\end{bmatrix}
-=
-\begin{bmatrix}
+\end{bmatrix} &= \begin{bmatrix}
 {w}_{11} & {w}_{12}\\
 {w}_{21} & {w}_{22}\\
 {w}_{31} & {w}_{32}\\
@@ -411,13 +428,14 @@ $$
 {\mathbf{b}}_{1} \\
 {\mathbf{b}}_{2} \\
 {\mathbf{b}}_{3}
-\end{bmatrix}
-=
+\end{bmatrix} \\
+&=
 \begin{bmatrix}
 {w}_{11}{\mathbf{x}}_{1} + {w}_{12}{\mathbf{x}}_{2} - {\mathbf{b}}_{1}\\
 {w}_{21}{\mathbf{x}}_{1} + {w}_{22}{\mathbf{x}}_{2} - {\mathbf{b}}_{1}\\
 {w}_{31}{\mathbf{x}}_{1} + {w}_{32}{\mathbf{x}}_{2} - {\mathbf{b}}_{1}\\
 \end{bmatrix}
+\end{aligned}
 $$
 
 
