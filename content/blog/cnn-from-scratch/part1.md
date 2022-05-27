@@ -1,4 +1,10 @@
-
+---
+title: Building Convolutional Neural Networks from Scratch #1 - Matrix Calculus
+slug: cnn-math
+author: [zayan]
+date: 2022-05-26
+tags: [ml]
+---
 ## Mathematics
 
 **Mathematics** is an area of knowledge, which includes the study of such topics as numbers, formulas and related structures, shapes and spaces in which they are contained, and quantities and their changes. There is no general consensus about its exact scope or epistemological status. However, it is extremely labourious and time-consuming but necessary and is sometimes (albeit very rarely) interesting.
