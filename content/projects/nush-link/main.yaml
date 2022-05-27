@@ -1,6 +1,6 @@
 id: nush-link
 name: NUSH Link Shortener
-thumbnail:
+thumbnail: ./nushlink.png
 description: |
   NUSH.link is NUS High's own URL shortener.  Designed to shorten form links and references, it is built with trust and security in mind, ensuring links can only be created by verified individuals. Links can also be edited and deleted, ensuring links remain short and convenient.
 created:
@@ -14,7 +14,7 @@ maintained:
 type: /AppVenture/School
 tags: [web]
 gallery:
-  -
+  - ./nushlink.png
 achievements:
 attachment:
 website: https://nush.link
