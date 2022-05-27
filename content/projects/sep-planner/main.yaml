@@ -1,9 +1,10 @@
-id: sep-excel
-name: SEP Excel
+id: sep-planner
+name: Student Exchange Programme Planner
 thumbnail: ./add_page.png
 description: >
-  A simple javafx program that helps create a master Excel.
-  This helps the admin department in managing Student Exchange Programs (SEP).
+  A simple JavaFX application that helps plan Student Exchange Programmes (SEPs) 
+  in order to assist the admin staff. The application creates a master spreadsheet 
+  (in Excel) based on a few key attractions and trips to take.
 created:
   contributors: [yapyx]
   year: 2021
