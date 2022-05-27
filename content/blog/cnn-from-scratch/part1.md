@@ -1,5 +1,5 @@
 ---
-title: Building Convolutional Neural Networks from Scratch #1 - Matrix Calculus
+title: Building Convolutional Neural Networks from Scratch - Part 1 (Matrix Calculus)
 slug: cnn-from-scratch-1
 author: [zayan]
 date: 2022-05-26
