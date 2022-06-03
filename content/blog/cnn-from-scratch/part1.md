@@ -59,13 +59,33 @@ $$F(\mathbf{x}) = {||A\mathbf{x}-\mathbf{b}||}_{2}^{2}$$
 
 Now, what do the weird lines and two occurences of "2" above mean and how exactly do we calculate the derivative of a scalar in terms of a vector? Well we have to learn matrix calculus, a very peculiar domain of math that is very torturous. Ideally, you want to avoid this at all cost, but I will do a gentle walk through this stuff.
 
+Firstly, let's revise derivatives wth this simple example:
+
+$$
+\begin{aligned}
+y&=sin(x^2)+5\\
+\frac{dy}{dx}&=\frac{d}{dx}\left(sin(x^2)+5\right)\\
+&=2xcos(x^2)
+\end{aligned}
+$$
+
+For functions with multiple variables, we can find the partial derivative with respect to each of the variables, as shown below:
+$$
+\begin{aligned}
+f(x,y)&=3xy+x^2\\
+\frac{\partial f(x,y)}{\partial x}&=3y+2x\\
+\frac{\partial f(x,y)}{\partial y}&=3x
+\end{aligned}
+$$
+
+
 A thing to understand is that vectors are just a collection of numbers, so an n-sized vector will have n partial derivatives if the function is $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$ (the derivative is known as the gradient). But do we represent these n partial derivatives as a column vector or row vector?
 
 $$\frac{\partial y}{\partial\mathbf{x}} = 
 \begin{bmatrix}
 \frac{\partial y}{\partial{\mathbf{x}}_{1}}\\
 \frac{\partial y}{\partial{\mathbf{x}}_{2}}\\
-\cdots\\
+\vdots\\
 \frac{\partial y}{\partial{\mathbf{x}}_{n}}\\
 \end{bmatrix}
 $$
@@ -372,7 +392,16 @@ z=xw+b\\
 a=\sigma (z)
 $$
 
-where $w$ is the weight, $b$ is the bias, $x$ is the input, $\sigma$ is the activation function and $a$ is the output. In this case, it is quite easy to represent. Let us expand it to a layer with 4 input neurons and 4 output neurons.
+where $w$ is the weight, $b$ is the bias, $x$ is the input, $\sigma$ is the activation function and $a$ is the output.
+
+We assume that this is a single layer network and that the loss function is just applied after, and we will just use the MSE loss.
+
+$$L = {(a-y)}^2$$
+
+where $y$ is the true y, $L$ is the cost.
+
+
+In this case, it is quite easy to represent. Let us expand it to a layer with 4 input neurons and 4 output neurons.
 
 
 ![multiple perceptron example](./multiple_perceptron_example.png)
@@ -406,7 +435,7 @@ $$
 $$
 
 
-However we have once again hit a speedbump. How do we find the derivative of a vector $\mathbf{z}$ with respect to a matrix $W$? The function is of the form $f:\mathbb{R}^{m \times n} \rightarrow \mathbb{R}^{m}$. Hence, the derivative will be a third order tensor also known as a 3D matrix. (colloquially)
+However we have once again hit a speedbump. How do we find the derivative of a vector $\mathbf{z}$ with respect to a matrix $W$? The function is of the form $f:\mathbb{R}^{m \times n} \rightarrow \mathbb{R}^{m}$. Hence, the derivative will be a third order tensor also known as a 3D matrix. (colloquially) But for now we will use a trick to dodge the usage of third order tensors because of the nature of the function $W\mathbf{x}$. For this example, I use $m=3$ and $n=2$ but its generalizable for any sizes.
 
 $$
 \begin{aligned}
@@ -438,6 +467,38 @@ $$
 \end{bmatrix}
 \end{aligned}
 $$
+
+We now calculate the individual derivatives of $\mathbf{z}$ wrt to $W$.
+
+$$
+\begin{aligned}
+\frac{\partial \mathbf{z}_{1}}{\partial w_{11}}=\mathbf{x}_{1}\quad
+\frac{\partial \mathbf{z}_{2}}{\partial w_{11}}=0\quad
+\frac{\partial \mathbf{z}_{3}}{\partial w_{11}}=0\\
+\frac{\partial \mathbf{z}_{1}}{\partial w_{12}}=\mathbf{x}_{2}\quad
+\frac{\partial \mathbf{z}_{2}}{\partial w_{12}}=0\quad
+\frac{\partial \mathbf{z}_{3}}{\partial w_{12}}=0\\
+\frac{\partial \mathbf{z}_{1}}{\partial w_{21}}=0\quad
+\frac{\partial \mathbf{z}_{2}}{\partial w_{21}}=\mathbf{x}_{1}\quad
+\frac{\partial \mathbf{z}_{3}}{\partial w_{21}}=0\\
+\frac{\partial \mathbf{z}_{1}}{\partial w_{22}}=0\quad
+\frac{\partial \mathbf{z}_{2}}{\partial w_{22}}=\mathbf{x}_{2}\quad
+\frac{\partial \mathbf{z}_{3}}{\partial w_{22}}=0\\
+\frac{\partial \mathbf{z}_{1}}{\partial w_{31}}=0\quad
+\frac{\partial \mathbf{z}_{2}}{\partial w_{31}}=0\quad
+\frac{\partial \mathbf{z}_{3}}{\partial w_{31}}=\mathbf{x}_{1}\\
+\frac{\partial \mathbf{z}_{1}}{\partial w_{32}}=0\quad
+\frac{\partial \mathbf{z}_{2}}{\partial w_{32}}=0\quad
+\frac{\partial \mathbf{z}_{3}}{\partial w_{32}}=\mathbf{x}_{2}\\
+\end{aligned}
+$$
+
+We see that this is a pretty complex looking tensor but we see that a majority of the values are 0 allowing us to pull of an epic hack by considering the fact that at the end we are essentially trying to get a singular scalar value (the loss) and find the partial derivative of that wrt to $W$. There are some steps involved in getting from $\mathbf{z}$ to $c$ but for simplicity instead of showing everything, we will condense all of this into a function $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$ which is defined as $c=f(\mathbf{z})$. In this case, we know the tensor values and we know the gradient and what the derivative should be. Hence, we now just evaluate it and see if we can see any property:
+
+
+
+
+
 
 
 ```python
