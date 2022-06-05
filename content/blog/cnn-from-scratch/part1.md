@@ -470,6 +470,7 @@ $$
 
 We now calculate the individual derivatives of $\mathbf{z}$ wrt to $W$.
 
+
 $$
 \begin{aligned}
 \frac{\partial \mathbf{z}_{1}}{\partial w_{11}}=\mathbf{x}_{1}\quad
@@ -493,8 +494,7 @@ $$
 \end{aligned}
 $$
 
-We see that this is a pretty complex looking tensor but we see that a majority of the values are 0 allowing us to pull of an amazing hack by considering the fact that at the end, we are essentially trying to get a singular scalar value (the loss) and find the partial derivative of that with respect to $W$. There are some steps involved in getting from $\mathbf{z}$ to $c$ but for simplicity instead of showing everything, we will condense all of this into a function $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$ which is defined as $c=f(\mathbf{z})$. In this case, we know the tensor values and we know the gradient and what the derivative should be. Hence, we now just evaluate it and see if we can see any property:
-
+We see that this is a pretty complex looking tensor but we see that a majority of the values are 0 allowing us to pull of an epic hack by considering the fact that at the end we are essentially trying to get a singular scalar value (the loss) and find the partial derivative of that wrt to $W$. There are some steps involved in getting from $\mathbf{z}$ to $c$ but for simplicity instead of showing everything, we will condense all of this into a function $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$ which is defined as $c=f(\mathbf{z})$. In this case, we know the tensor values and we know the gradient and what the derivative should be. Hence, we now just evaluate it and see if we can see any property:
 
 $$
 \begin{aligned}
