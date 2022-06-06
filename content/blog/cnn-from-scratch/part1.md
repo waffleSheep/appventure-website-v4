@@ -10,16 +10,16 @@ tags: [ml]
 
 **Mathematics** is an area of knowledge, which includes the study of such topics as numbers, formulas and related structures, shapes and spaces in which they are contained, and quantities and their changes. There is no general consensus about its exact scope or epistemological status. However, it is extremely labourious and time-consuming but necessary and is sometimes (albeit very rarely) interesting.
 
-Neural Networks are somewhat interesting. Everyone knows the math behind NNs (the gist of it). It was taught in **CS5131** to a very limited extent and is incredibly matrix-y (in its full form) but not many know the math behind convolutional neural networks. I mean people get that it has something to do with backpropogation or whatever, but how do you find derivative of the convolution function or the derivative of the max pooling function? As you will come to learn, these derivations are incredibly computationally intensive and time-consuming, especially during implementation. But I have done it because I care about AppVenture and I want to help the casual onlooker understand the many trials and tribulations a simple `Conv2D` layer goes through to deliver what we should consider peak perfection. It was a fun but painful exercise and I gained a deeper understanding of the mathematical constructs that embody our world. Anyways, let's start out with a referesher. Warning that Matrix Math lurks ahead, so tread with caution. This is deeper than **CS5131** could have ever hoped to cover, so you will learn some stuff with this excercise.
+Neural Networks are somewhat interesting. Everyone kind of knows the math behind NNs (the gist of it). It was taught in **CS5131** to a very limited extent but not many know about the full math behind deep and convolutional neural networks. I mean people get that it has something to do with backpropogation or whatever, but how do you scale it up to multiple value and multiple derivatives. As you will come to learn, these derivations are incredibly computationally intensive and time-consuming, especially during implementation. But I have done it because I care about AppVenture and I want to help the casual onlooker understand the many trials and tribulations a simple layer goes through to deliver what we should consider peak perfection. It was a fun but painful exercise and I gained a deeper understanding of the mathematical constructs that embody our world. Anyways, let's start out with a referesher. Warning that Matrix Math lurks ahead, so tread with caution. This is deeper than **CS5131** could have ever hoped to cover, so you will learn some stuff with this excercise. This first part is about the math behind deep neural networks.
 
 This article is written with some assumed knowledge of the reader but it is not that bad for most CS students especially since NNs are baby level for the most part. Nonetheless, assumed knowledge is written below.
 - Deep Neural Network (How to implement + basic understanding of the math)
 - Gradient Descent
 - Linear Algebra
-- Convolution
-- Max Pooling
 
-Let's start by importing our lord, our saviour, our messiah, **Numpy**.
+If you don't know this stuff, all you really need to do is read an introduction to linear algebra, understand how matrices and vectors are multiplied and watch 3b1b's series on machine learning.
+
+Let's start by importing our bff for life, **Numpy**.
 
 ```python
 >>> import numpy as np
@@ -340,7 +340,7 @@ $$
 
 ```python
 >>> def objective_function(x):
-        return (np.matmul(A,x) - b) ** 2
+        return np.linalg.norm(np.matmul(A,x) - b) ** 2
 ```
 
 $$
@@ -396,9 +396,9 @@ where $w$ is the weight, $b$ is the bias, $x$ is the input, $\sigma$ is the acti
 
 We assume that this is a single layer network and that the loss function is just applied after, and we will just use the MSE loss.
 
-$$L = {(a-y)}^2$$
+$$c = {(a-y)}^2$$
 
-where $y$ is the true y, $L$ is the cost.
+where $y$ is the true y, $c$ is the cost.
 
 
 In this case, it is quite easy to represent. Let us expand it to a layer with 4 input neurons and 4 output neurons.
@@ -415,7 +415,8 @@ $$
 {a}_{1}=\sigma(&{z}_{1})\\
 {a}_{2}=\sigma(&{z}_{2})\\
 {a}_{3}=\sigma(&{z}_{3})\\
-{a}_{4}=\sigma(&{z}_{4})
+{a}_{4}=\sigma(&{z}_{4})\\
+c = \frac{1}{4} \left((a_1-y_1)^2 + (a_2 - y_2)^2 + (a_3 - y_3)^2 + (a_4 - y_4)^2\right)
 \end{aligned}
 $$
 
@@ -424,14 +425,19 @@ As you can see, this is just a linear system much like the one showed in the exa
 $$
 \begin{aligned}
 \mathbf{z} &= W\mathbf{x} + \mathbf{b}\\
-\mathbf{a} &= \sigma(\mathbf{z})
+\mathbf{a} &= \sigma(\mathbf{z}) \\
+c &= \frac{1}{n} ||\mathbf{a} - \mathbf{y}||^2_2
 \end{aligned}
 $$
 
 From our work earlier we know that:
 
 $$
-\frac{\partial \mathbf{z}}{\partial \mathbf{b}}=I
+\begin{aligned}
+\frac{\partial \mathbf{z}}{\partial \mathbf{b}}&=I \\
+\frac{\partial \mathbf{z}}{\partial \mathbf{x}}&= W \\
+\frac{\partial c}{\partial \mathbf{a}} &= \frac{2}{n} \left(\mathbf{a} - \mathbf{y} \right)^\text{T}
+\end{aligned}
 $$
 
 
@@ -753,7 +759,7 @@ In the next part, it is time for the actual hard part. Good luck!
 
 ## References
 
-A lot of people think I just collated a bunch of sources and rephrased, and honestly I walked into writing this thinking I would be doing just that. The problem is that many sources who have attempted to do this, only cover the single to multi-perceptron layer case and not the multi to multi-perceptron case. Which is pretty sad. The true math is hidden behind mountains of research papers that loosely connect to give the results of this blogpot which I cant figure out by myself. So, I did the math myself. Yes, it was a bit crazy, and it destroyed me to my core, but as my good friend Jude once said, I am slightly masochistic. This was a great character building moment for me. So these are the actual sources:
+A lot of people think I just collated a bunch of sources and rephrased, and honestly I walked into writing this thinking I would be doing just that. The problem is that many sources who have attempted to do this, only cover the single to multi-perceptron layer case and not the multi to multi-perceptron case. Which is pretty sad. The true math is hidden behind mountains of research papers that loosely connect to give the results of this blogpot which I am too incomponent to connect by myself. So, I just did the math myself. (The math may not be presented in this way but it works so it should be correct) Yes, it was a bit crazy, and it destroyed me to my core. This was a great character building moment for me. So these are the actual sources:
 
 - https://numpy.org/
 - https://en.wikipedia.org/wiki/Gradient_descent
