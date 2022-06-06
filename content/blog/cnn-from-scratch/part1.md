@@ -637,7 +637,7 @@ I couldn't find a good, but rather small dataset because most people really do l
 
 Oh no! Training? Testing? What is that? In all fairness, I am simply trying to show you that the mathematical functions that dictate neural networks as we have found above, fits perfectly with this task of a neural network, and that these neural networks that everyone hears about can really just mimic any function.
 
-<img src="./XNOR_input_output.png" width=180/>
+![XNOR input output]("./XNOR_input_output.png")
 
 For those who do not know, the XNOR gates inputs and outputs are written above. It is pretty suitable for this example, because the inputs and outputs are all 0 and 1, hence it is fast to train and there is no bias in the data.
 
@@ -651,7 +651,7 @@ data = [[np.array([[0],[0]], dtype=np.float64),np.array([[1]], dtype=np.float64)
 ```
 We then define a network structure. It doesn't have to be too complex because it is a pretty simple function. I decided on a $2 \rightarrow 3 \rightarrow 1$ multi-layer perceptron (MLP) structure, with the sigmoid activation function.
 
-<img src="./multiple_perceptron_network.png" width=500/>
+![multiple perceptron network]("./multiple_perceptron_network.png")
 
 Next, let's try coding out our mathematical work based off the following class:
 
