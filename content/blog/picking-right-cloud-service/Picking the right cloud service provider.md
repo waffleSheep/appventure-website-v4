@@ -47,7 +47,7 @@ To setup your own server, login to your oracle cloud dashboard and click on **Cr
 Although not as good of a deal as Oracle's, through the GitHub student pack you can redeem \$100 of DigitalOcean credits which last indefinitely, unlike the "\$100 for 3 months" offers available by scouring for referral links online. With the [updated pricing](https://www.digitalocean.com/try/new-pricing) (billing is per hour), this will get you a 1GB server for 16 months or a 2GB server for 8 months.  Alternatively, if you just want to blow it on compute resources (max. 8GB unless you request for 16GB or the specialized droplets), then you might as well just use referral links.
 
 
-![DigitalOcean pricing](.\dg.png)
+![DigitalOcean pricing](./dg.png)
 
 
 # Other VPS services
