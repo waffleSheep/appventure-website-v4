@@ -95,8 +95,12 @@ export default class BlogPost extends Vue {
 .content {
   max-width: 100%;
   &::v-deep img {
-    margin-left: -10%;
-    max-width: 120%;
+    //margin-left: -10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+
   }
 }
 .blog-poster{

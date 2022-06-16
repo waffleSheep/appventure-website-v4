@@ -87,3 +87,8 @@
   name: CS4131
   description: Year 4 Android Programming Module.
   category: module
+
+- id: cloud
+  name: Cloud
+  description: Cloud services, databases, self-hosting
+  category: platform
