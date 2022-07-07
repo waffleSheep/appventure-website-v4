@@ -198,7 +198,7 @@ export default class AboutPage extends Vue {
 
   public data() {
     return {
-      selectedYear: 2021,
+      selectedYear: 2022,
       teams: {
         2017: [
           { name: 'Wayne', description: 'Wayne believes in using technology to make life better. Interested in everything from cryptography to web development, Wayne looks forward to the exciting world ahead. He is also Ambrose\'s best friend.' },
