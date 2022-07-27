@@ -125,7 +125,7 @@ $$
 &=
 \begin{bmatrix}
 {a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1} \\
-{a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}
+{a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{2}
 \end{bmatrix}
 \end{aligned}
 $$
@@ -191,7 +191,7 @@ $$
 \begin{aligned}
 F(\mathbf{x}) &= {||A\mathbf{x}-\mathbf{b}||}_{2}^{2} \\
 &= {({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} +
-{({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})}^{2} \\
+{({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{2})}^{2} \\
 \end{aligned}
 $$
 
@@ -203,16 +203,16 @@ $$
 \begin{bmatrix}
 \frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{1}} & \frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{2}}
 \end{bmatrix}\\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{1}} &= 2{a}_{11}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{21}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})\\
-\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{2}} &= 2{a}_{12}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{22}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})\\
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{1}} &= 2{a}_{11}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{21}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{2})\\
+\frac{\partial F(\mathbf{x})}{\partial{\mathbf{x}}_{2}} &= 2{a}_{12}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{22}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{2})\\
 \frac{\partial F(\mathbf{x})}{\partial\mathbf{x}} &=
 \begin{bmatrix}
-2{a}_{11}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{21}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) & 2{a}_{12}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{22}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1})
+2{a}_{11}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{21}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{2}) & 2{a}_{12}({a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}) + 2{a}_{22}({a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{2})
 \end{bmatrix}\\
 &= 2
 \begin{bmatrix}
 {a}_{11}{\mathbf{x}}_{1} + {a}_{12}{\mathbf{x}}_{2}-{\mathbf{b}}_{1} &
-{a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{1}
+{a}_{21}{\mathbf{x}}_{1} + {a}_{22}{\mathbf{x}}_{2}-{\mathbf{b}}_{2}
 \end{bmatrix}
 \begin{bmatrix}
 {a}_{11} & {a}_{12} \\
@@ -467,9 +467,9 @@ $$
 \end{bmatrix} \\
 &=
 \begin{bmatrix}
-{w}_{11}{\mathbf{x}}_{1} + {w}_{12}{\mathbf{x}}_{2} - {\mathbf{b}}_{1}\\
-{w}_{21}{\mathbf{x}}_{1} + {w}_{22}{\mathbf{x}}_{2} - {\mathbf{b}}_{1}\\
-{w}_{31}{\mathbf{x}}_{1} + {w}_{32}{\mathbf{x}}_{2} - {\mathbf{b}}_{1}\\
+{w}_{11}{\mathbf{x}}_{1} + {w}_{12}{\mathbf{x}}_{2} + {\mathbf{b}}_{1}\\
+{w}_{21}{\mathbf{x}}_{1} + {w}_{22}{\mathbf{x}}_{2} + {\mathbf{b}}_{2}\\
+{w}_{31}{\mathbf{x}}_{1} + {w}_{32}{\mathbf{x}}_{2} + {\mathbf{b}}_{3}\\
 \end{bmatrix}
 \end{aligned}
 $$
