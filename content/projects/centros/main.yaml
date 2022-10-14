@@ -1,7 +1,8 @@
 id: centros
 name: Centros
 thumbnail: ./centros.png
-description: College Counselling plays a crucial role for NUSH students to determine the most suitable and ideal place of study for their tertiary education. There are many processes involved in college counselling, such as university research, writing of personal essays, filling out application to universities and requesting recommendation letters from teachers, to name a few. Hence, it often involves a significant amount of admin work and definitely troubles the college counsellors, and many of these tasks could be otherwise automated. Hence, a web college counselling management system was created to resolve the issues mentioned in a scalable, systematic, and organized manner.
+description:
+    College Counselling plays a crucial role for NUSH students to determine the most suitable and ideal place of study for their tertiary education. There are many processes involved in college counselling, such as university research, writing of personal essays, filling out application to universities and requesting recommendation letters from teachers, to name a few. Hence, it often involves a significant amount of admin work and definitely troubles the college counsellors, and many of these tasks could be otherwise automated. Hence, a web college counselling management system was created to resolve the issues mentioned in a scalable, systematic, and organized manner.
 created:
   contributors: [limheelai]
   year: 2022
@@ -9,6 +10,8 @@ maintained:
 type: /Module/Year-6
 tags: [web]
 gallery:
-    - ./thumb.png
+    - ./centros.png
 attachment:
+achievements:
 website: https://centros.nush.app/
+featured: false
