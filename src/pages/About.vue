@@ -246,6 +246,14 @@ export default class AboutPage extends Vue {
           { name: 'Vishal', position: 'Infrastructure IC', description: '' },
           { name: 'Wenkai', position: 'Infrastructure IC', description: '' },
         ],
+        2023: [
+          { name: 'Jed', position: 'Development IC', description: '' },
+          { name: 'Vishal', position: 'Infrastructure IC', description: '' },
+          { name: 'Prannaya', position: 'Outreach IC', description: '' },
+          { name: 'Kai Wen', position: 'Events IC', description: '' },
+          { name: 'Wenkai', position: 'Projects IC', description: '' },
+          { name: 'Mahir', position: 'Cybersecurity IC', description: '' },
+        ],
         Teachers: [
           { name: 'Mrs Phylliscia Lee', position: 'Overall TIC', description: '' },
         ],
